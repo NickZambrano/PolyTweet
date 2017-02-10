@@ -13,36 +13,80 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var Connexion: UIButton!
-    var nom : String = "";
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+    }
+    
         // Do any additional setup after loading the view, typically from a nib.
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    func keyboardWillShow(notification: NSNotification) {
+        
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 100
+            }
+        
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 100
+            }
+        
     }
 
     @IBAction func connexion(_ sender: Any) {
         
         if let user=self.username.text{
-            self.nom=user;
-        }else{
-            self.nom="";
+
+            if let pass=self.password.text{
+                if user == "John" && pass == "123" {
+                    
+                    performSegue(withIdentifier: "login", sender: self)
+                }
+            }else{
+                performSegue(withIdentifier: "loginFailed", sender: self)
+            }
+            self.alert(title:"Erreur", message:"Erreur d'identifiant");
+
         }
-        self.password.text=self.nom;
+
+    }
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepare (for segue:UIStoryboardSegue, sender : Any?){
+    /*override func prepare (for segue:UIStoryboardSegue, sender : Any?){
         if segue.identifier=="toInscription"{
             let inscriptionViewController = segue.destination as! InscriptionViewController;
             if let user=self.username.text{
-                inscriptionViewController.nom=self.username.text!;
+                inscriptionViewController.nom=user;
             }else{
                 inscriptionViewController.nom="";
             }
             
         }
-    }
+    }*/
 
 }
 
