@@ -59,6 +59,9 @@
                                 <state key="normal" title="Connexion">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="connexion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rYv-qA-pdg"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="polytech_montpellier_rvb" translatesAutoresizingMaskIntoConstraints="NO" id="AUh-0s-GEA">
                                 <rect key="frame" x="88" y="165" width="591" height="249"/>
@@ -73,7 +76,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="GwT-5B-YbJ" kind="show" id="jNa-s8-WTF"/>
+                                    <segue destination="GwT-5B-YbJ" kind="show" identifier="toInscription" id="jNa-s8-WTF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -100,15 +103,20 @@
                             <constraint firstItem="Sol-5v-xa4" firstAttribute="centerX" secondItem="JP9-Sh-gLJ" secondAttribute="centerX" id="zfa-zd-NWz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="Connexion" destination="Sol-5v-xa4" id="IhG-FW-nUu"/>
+                        <outlet property="password" destination="YAK-9O-6L5" id="k2g-nE-NSn"/>
+                        <outlet property="username" destination="wNV-1B-iBQ" id="9hf-l7-1gu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135.9375" y="138.28125"/>
         </scene>
-        <!--View Controller-->
+        <!--Inscription View Controller-->
         <scene sceneID="C0f-J1-4oG">
             <objects>
-                <viewController id="GwT-5B-YbJ" sceneMemberID="viewController">
+                <viewController id="GwT-5B-YbJ" customClass="InscriptionViewController" customModule="PolyTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ot6-sf-c3Y"/>
                         <viewControllerLayoutGuide type="bottom" id="395-xT-92k"/>
@@ -216,6 +224,9 @@
                             <constraint firstItem="Rja-4Z-qkb" firstAttribute="top" secondItem="qBi-QF-bk3" secondAttribute="bottom" constant="30" id="zdT-Mk-nKa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="username" destination="4Ry-Dl-sQY" id="hp4-bS-XnV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ttv-7N-0Xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
