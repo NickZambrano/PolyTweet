@@ -15,6 +15,7 @@
 		B821E8CE1E4DB9560030D669 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B821E8CC1E4DB9560030D669 /* LaunchScreen.storyboard */; };
 		B821E8D91E4DB9560030D669 /* PolyTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8D81E4DB9560030D669 /* PolyTweetTests.swift */; };
 		B821E8E41E4DB9560030D669 /* PolyTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8E31E4DB9560030D669 /* PolyTweetUITests.swift */; };
+		B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B821E8DF1E4DB9560030D669 /* PolyTweetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PolyTweetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B821E8E31E4DB9560030D669 /* PolyTweetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyTweetUITests.swift; sourceTree = "<group>"; };
 		B821E8E51E4DB9560030D669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
 				B821E8C21E4DB9560030D669 /* ViewController.swift */,
 				B821E8C41E4DB9560030D669 /* Main.storyboard */,
+				B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */,
 				B821E8CA1E4DB9560030D669 /* Assets.xcassets */,
 				B821E8CC1E4DB9560030D669 /* LaunchScreen.storyboard */,
 				B821E8CF1E4DB9560030D669 /* Info.plist */,
@@ -268,6 +271,7 @@
 				B821E8C91E4DB9560030D669 /* PolyTweet.xcdatamodeld in Sources */,
 				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
 				B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */,
+				B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
