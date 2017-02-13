@@ -6,6 +6,7 @@
         <relationship name="qualifie" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="appartient" inverseEntity="Message" syncable="YES"/>
     </entity>
     <entity name="Departement" representedClassName="Departement" syncable="YES" codeGenerationType="class">
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="appartient" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -36,13 +37,13 @@
     </entity>
     <elements>
         <element name="Administration" positionX="-1044" positionY="4662" width="128" height="45"/>
-        <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="43"/>
+        <element name="CategorieMessage" positionX="-677" positionY="4503" width="128" height="73"/>
+        <element name="Departement" positionX="-1188" positionY="4329" width="128" height="90"/>
+        <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="45"/>
         <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
+        <element name="Message" positionX="-684" positionY="4320" width="128" height="103"/>
+        <element name="PieceJointe" positionX="-686" positionY="4194" width="128" height="88"/>
         <element name="RespoDepart" positionX="-1188" positionY="4662" width="128" height="45"/>
         <element name="User" positionX="-1001" positionY="4299" width="128" height="148"/>
-        <element name="Departement" positionX="-1188" positionY="4329" width="128" height="73"/>
-        <element name="Message" positionX="-684" positionY="4320" width="128" height="103"/>
-        <element name="CategorieMessage" positionX="-677" positionY="4503" width="128" height="73"/>
-        <element name="PieceJointe" positionX="-686" positionY="4194" width="128" height="88"/>
     </elements>
 </model>

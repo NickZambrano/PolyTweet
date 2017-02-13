@@ -29,38 +29,52 @@ class ViewController: UIViewController {
             return
         }
         let context=appDelegate.persistentContainer.viewContext
-       /* let request : NSFetchRequest<Departement> = Departement.fetchRequest();
+        let request : NSFetchRequest<Departement> = Departement.fetchRequest();
         do{
              let result: [Departement] = try context.fetch(request)
-            print(result);
-                if(result.count>0){*/
+            print(result.count);
+                if(result.count==0){
                     let ig = Departement(context:context);
                     ig.name="IG";
+                    ig.fullName="Informatique et Gestion";
                     let mea = Departement(context:context);
                     mea.name="MEA";
+                    mea.fullName="Microélectronique et Automatique";
                     let mat = Departement(context:context);
                     mat.name="MAT";
+                    mat.fullName="Matériaux";
+
                     let gba = Departement(context:context);
                     gba.name="GBA";
+                    gba.fullName="Génie biologique et Agroalimentaire";
+
                     let ste = Departement(context:context);
                     ste.name="STE";
+                    ste.fullName="Sciences et Technologies de l'eau";
+
                     let mi = Departement(context:context);
                     mi.name="MI";
+                    mi.fullName="Mécanique et Interactions";
+
                     let msi = Departement(context:context);
                     msi.name="MSI";
+                    msi.fullName="Mécanique structures industrielles";
+
                     let se = Departement(context:context);
                     se.name="SE";
+                    se.fullName="Systèmes embarqués";
+
                     do{
                         try context.save();
                     }
                     catch let error as NSError{
                         print(error);
                     }
-        /*        }
+              }
         }
         catch let error as NSError{
             print(error);
-        }*/
+        }
 
     }
     
@@ -85,7 +99,25 @@ class ViewController: UIViewController {
             }
         
     }
-
+    func deleteAllData(entity: String)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest :NSFetchRequest<Departement> = Departement.fetchRequest();
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+        }
+    }
     @IBAction func connexion(_ sender: Any) {
         
         if let user=self.username.text{
