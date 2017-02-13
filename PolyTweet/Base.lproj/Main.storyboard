@@ -178,6 +178,9 @@
                                 <rect key="frame" x="282" y="893" width="205" height="77"/>
                                 <accessibility key="accessibilityConfiguration" identifier="45CD6E41-0B3D-4E18-8E6D-DD2D0FF66934-asset"/>
                                 <state key="normal" image="valider"/>
+                                <connections>
+                                    <segue destination="S9Y-fR-FQi" kind="presentation" identifier="signIn" id="IY8-hj-EX6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1684835851" green="0.33879953619999997" blue="0.47185611719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -195,6 +198,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fname" destination="whi-ng-JcU" id="AOm-nw-RvO"/>
+                        <outlet property="lname" destination="3aP-VZ-pGw" id="EHv-Y3-YQy"/>
+                        <outlet property="mail" destination="0W8-bQ-7oU" id="RCW-Fh-99B"/>
+                        <outlet property="password" destination="HCY-9n-BLL" id="FyY-Or-Zd0"/>
                         <outlet property="pickerDepartement" destination="vZB-dS-usb" id="g8U-y4-H70"/>
                         <outlet property="username" destination="Avi-fq-aRS" id="mrq-Sg-pi7"/>
                     </connections>
@@ -466,4 +473,7 @@
         <image name="retour" width="92" height="43"/>
         <image name="valider" width="205" height="77"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="IY8-hj-EX6"/>
+    </inferredMetricsTieBreakers>
 </document>

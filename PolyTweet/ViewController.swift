@@ -124,12 +124,34 @@ class ViewController: UIViewController {
         if let user=self.username.text{
 
             if let pass=self.password.text{
-                if user == "John" && pass == "123" {
-                    
-                    performSegue(withIdentifier: "login", sender: self)
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+                    return
                 }
-            }else{
-                performSegue(withIdentifier: "loginFailed", sender: self)
+                let context=appDelegate.persistentContainer.viewContext
+
+                let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
+                let predicate = NSPredicate(format: "mail == %@",user);
+                request.predicate=predicate;
+                do{
+                    let result: [Etudiant] = try context.fetch(request)
+                    if(result.count>0){
+                        if(result[0].password==pass){
+                            performSegue(withIdentifier: "login", sender: self)
+
+                        }
+                        else{
+                            self.alert(title:"Erreur", message:"Erreur d'identifiant");
+                        }
+                    }
+                    else{
+                        self.alert(title:"Erreur", message:"Erreur d'identifiant");
+
+                    }
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+
             }
             self.alert(title:"Erreur", message:"Erreur d'identifiant");
 
