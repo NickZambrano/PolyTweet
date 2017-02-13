@@ -52,9 +52,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" identifier="BEED80D8-B620-456C-8029-6EEA34C9DC19-asset"/>
                                 <state key="normal" image="retour"/>
-                                <connections>
-                                    <segue destination="x6t-zd-6xy" kind="presentation" id="023-64-fWq"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1684835851" green="0.33879953619999997" blue="0.47185611719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -462,9 +459,11 @@
         <image name="déconnexion" width="205" height="77"/>
         <image name="documents" width="205" height="77"/>
         <image name="etudiant" width="358" height="82"/>
+        <image name="inscription" width="421" height="83"/>
         <image name="logoComplet" width="2025" height="410"/>
         <image name="profil" width="205" height="77"/>
         <image name="rectangle" width="216" height="1024"/>
         <image name="retour" width="92" height="43"/>
+        <image name="valider" width="205" height="77"/>
     </resources>
 </document>
