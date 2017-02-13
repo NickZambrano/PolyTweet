@@ -174,10 +174,13 @@
                                 <accessibility key="accessibilityConfiguration" identifier="45CD6E41-0B3D-4E18-8E6D-DD2D0FF66934-asset"/>
                                 <state key="normal" image="valider"/>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdH-Vp-mfn">
-                                <rect key="frame" x="141" y="592" width="486" height="122"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vZB-dS-usb">
+                                <rect key="frame" x="218" y="745" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.1684835851" green="0.33879953619999997" blue="0.47185611719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -216,8 +219,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="listeDepartement" destination="gdH-Vp-mfn" id="vm1-W5-08G"/>
-                        <outlet property="picker" destination="gdH-Vp-mfn" id="qhJ-1E-e4e"/>
+                        <outlet property="pickerTextField" destination="vZB-dS-usb" id="fDZ-Q2-ouB"/>
                         <outlet property="username" destination="Avi-fq-aRS" id="mrq-Sg-pi7"/>
                     </connections>
                 </viewController>

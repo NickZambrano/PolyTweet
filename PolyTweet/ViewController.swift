@@ -29,10 +29,11 @@ class ViewController: UIViewController {
             return
         }
         let context=appDelegate.persistentContainer.viewContext
-        let request : NSFetchRequest<Departement> = Departement.fetchRequest();
+       /* let request : NSFetchRequest<Departement> = Departement.fetchRequest();
         do{
              let result: [Departement] = try context.fetch(request)
-                if(result.count<0){
+            print(result);
+                if(result.count>0){*/
                     let ig = Departement(context:context);
                     ig.name="IG";
                     let mea = Departement(context:context);
@@ -55,11 +56,11 @@ class ViewController: UIViewController {
                     catch let error as NSError{
                         print(error);
                     }
-                }
+        /*        }
         }
         catch let error as NSError{
             print(error);
-        }
+        }*/
 
     }
     
