@@ -24,8 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SN3-Ys-803">
-                                <rect key="frame" x="32" y="30" width="92" height="43"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SN3-Ys-803">
+                                <rect key="frame" x="20" y="28" width="132" height="63"/>
                                 <color key="backgroundColor" red="0.18652938929999999" green="0.40646653579999997" blue="0.8006226206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="BEED80D8-B620-456C-8029-6EEA34C9DC19-asset"/>
                                 <constraints>
@@ -34,6 +34,9 @@
                                 <state key="normal" image="group">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="i0t-go-RX7" kind="presentation" id="Q9c-Cy-fhJ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inscription" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1x-oV-Pf7">
                                 <rect key="frame" x="20" y="103" width="728" height="101"/>
@@ -192,6 +195,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" identifier="BEED80D8-B620-456C-8029-6EEA34C9DC19-asset"/>
                                 <state key="normal" image="group"/>
+                                <connections>
+                                    <segue destination="3vk-DM-dTb" kind="presentation" id="IcZ-wO-5Fx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1684835851" green="0.33879953619999997" blue="0.47185611719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -208,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iDF-Zj-EYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="-24"/>
+            <point key="canvasLocation" x="949.80468749999989" y="-24.21875"/>
         </scene>
         <!--4A159E6D-5D18-449E-8795-E27AB63FF59A-410-000002EA8A4F4FF6-->
         <scene sceneID="irM-Gv-TEY">
@@ -332,4 +338,7 @@
         <image name="group" width="92" height="43"/>
         <image name="logoComplet" width="2025" height="410"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Q9c-Cy-fhJ"/>
+    </inferredMetricsTieBreakers>
 </document>
