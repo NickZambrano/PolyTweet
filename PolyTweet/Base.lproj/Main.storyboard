@@ -177,6 +177,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="82"/>
                                         <accessibility key="accessibilityConfiguration" identifier="DBFAF8F9-5C20-4624-A63B-9A7DBD5764FD-asset"/>
                                         <state key="normal" image="etudiant"/>
+                                        <connections>
+                                            <segue destination="cgs-mj-sNm" kind="presentation" id="ky9-FA-u8j"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPY-Wm-6mB">
                                         <rect key="frame" x="0.0" y="152" width="358" height="82"/>
