@@ -31,7 +31,8 @@ class ViewController: UIViewController {
         let context=appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Departement> = Departement.fetchRequest();
         do{
-             let result: [Departement] = try context.fetch(request)
+            let result: [Departement] = try context.fetch(request)
+
             print(result.count);
                 if(result.count==0){
                     let ig = Departement(context:context);

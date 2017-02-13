@@ -31,9 +31,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="82"/>
                                         <accessibility key="accessibilityConfiguration" identifier="DBFAF8F9-5C20-4624-A63B-9A7DBD5764FD-asset"/>
                                         <state key="normal" image="etudiant"/>
-                                        <connections>
-                                            <segue destination="0m6-8n-g8e" kind="presentation" id="fB4-TV-zlM"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-2Z-FHz">
                                         <rect key="frame" x="0.0" y="152" width="358" height="82"/>
@@ -412,6 +409,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="82"/>
                                         <accessibility key="accessibilityConfiguration" identifier="DBFAF8F9-5C20-4624-A63B-9A7DBD5764FD-asset"/>
                                         <state key="normal" image="etudiant"/>
+                                        <connections>
+                                            <segue destination="0m6-8n-g8e" kind="presentation" id="wtR-Rr-GHA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQi-Qq-2j0">
                                         <rect key="frame" x="0.0" y="152" width="358" height="82"/>
