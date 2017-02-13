@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class ViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
 
@@ -25,6 +25,42 @@ class ViewController: UIViewController {
         //tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let context=appDelegate.persistentContainer.viewContext
+        let request : NSFetchRequest<Departement> = Departement.fetchRequest();
+        do{
+             let result: [Departement] = try context.fetch(request)
+                if(result.count<0){
+                    let ig = Departement(context:context);
+                    ig.name="IG";
+                    let mea = Departement(context:context);
+                    mea.name="MEA";
+                    let mat = Departement(context:context);
+                    mat.name="MAT";
+                    let gba = Departement(context:context);
+                    gba.name="GBA";
+                    let ste = Departement(context:context);
+                    ste.name="STE";
+                    let mi = Departement(context:context);
+                    mi.name="MI";
+                    let msi = Departement(context:context);
+                    msi.name="MSI";
+                    let se = Departement(context:context);
+                    se.name="SE";
+                    do{
+                        try context.save();
+                    }
+                    catch let error as NSError{
+                        print(error);
+                    }
+                }
+        }
+        catch let error as NSError{
+            print(error);
+        }
+
     }
     
         // Do any additional setup after loading the view, typically from a nib.

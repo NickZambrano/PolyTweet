@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Administration" representedClassName="Administration" parentEntity="Enseignant" syncable="YES" codeGenerationType="class"/>
+    <entity name="CategorieMessage" representedClassName="CategorieMessage" syncable="YES" codeGenerationType="class">
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="qualifie" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="appartient" inverseEntity="Message" syncable="YES"/>
+    </entity>
+    <entity name="Departement" representedClassName="Departement" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="appartient" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Enseignant" representedClassName="Enseignant" parentEntity="User" syncable="YES" codeGenerationType="class"/>
-    <entity name="Etudiant" representedClassName="Etudiant" parentEntity="User" syncable="YES" codeGenerationType="class"/>
+    <entity name="Etudiant" representedClassName="Etudiant" parentEntity="User" syncable="YES" codeGenerationType="class">
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
+        <attribute name="contenu" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="appartient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CategorieMessage" inverseName="qualifie" inverseEntity="CategorieMessage" syncable="YES"/>
+        <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PieceJointe" inverseName="appartient" inverseEntity="PieceJointe" syncable="YES"/>
+        <relationship name="sendBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="send" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="PieceJointe" representedClassName="PieceJointe" syncable="YES" codeGenerationType="class">
+        <attribute name="file" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="appartient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Message" inverseName="contient" inverseEntity="Message" syncable="YES"/>
+    </entity>
     <entity name="RespoDepart" representedClassName="RespoDepart" parentEntity="Enseignant" syncable="YES" codeGenerationType="class"/>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="fname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="img" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="lname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="appartient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departement" inverseName="contient" inverseEntity="Departement" syncable="YES"/>
+        <relationship name="send" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="sendBy" inverseEntity="Message" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-954" positionY="4293" width="128" height="103"/>
+        <element name="Administration" positionX="-1044" positionY="4662" width="128" height="45"/>
         <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="43"/>
-        <element name="Etudiant" positionX="-1026" positionY="4410" width="128" height="45"/>
-        <element name="RespoDepart" positionX="-1017" positionY="4419" width="128" height="45"/>
-        <element name="Administration" positionX="-1008" positionY="4428" width="128" height="45"/>
+        <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
+        <element name="RespoDepart" positionX="-1188" positionY="4662" width="128" height="45"/>
+        <element name="User" positionX="-1001" positionY="4299" width="128" height="148"/>
+        <element name="Departement" positionX="-1188" positionY="4329" width="128" height="73"/>
+        <element name="Message" positionX="-684" positionY="4320" width="128" height="103"/>
+        <element name="CategorieMessage" positionX="-677" positionY="4503" width="128" height="73"/>
+        <element name="PieceJointe" positionX="-686" positionY="4194" width="128" height="88"/>
     </elements>
 </model>
