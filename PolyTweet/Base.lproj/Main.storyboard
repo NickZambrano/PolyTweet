@@ -26,7 +26,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SN3-Ys-803">
                                 <rect key="frame" x="20" y="28" width="132" height="63"/>
-                                <color key="backgroundColor" red="0.18652938929999999" green="0.40646653579999997" blue="0.8006226206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="BEED80D8-B620-456C-8029-6EEA34C9DC19-asset"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="s2J-VJ-WLD"/>
