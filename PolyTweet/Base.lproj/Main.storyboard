@@ -73,7 +73,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="GwT-5B-YbJ" kind="show" identifier="toInscription" id="jNa-s8-WTF"/>
+                                    <segue destination="GwT-5B-YbJ" kind="modal" identifier="toInscription" id="jNa-s8-WTF"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoComplet" translatesAutoresizingMaskIntoConstraints="NO" id="AUh-0s-GEA">
@@ -109,7 +109,7 @@
                         <outlet property="Connexion" destination="Sol-5v-xa4" id="IhG-FW-nUu"/>
                         <outlet property="password" destination="YAK-9O-6L5" id="k2g-nE-NSn"/>
                         <outlet property="username" destination="wNV-1B-iBQ" id="9hf-l7-1gu"/>
-                        <segue destination="vkF-YO-sh2" kind="show" identifier="login" id="bfL-1x-bbv"/>
+                        <segue destination="vkF-YO-sh2" kind="presentation" identifier="login" id="bfL-1x-bbv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -166,7 +166,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="kTC-AQ-DTF"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" id="kTC-AQ-DTF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inscription" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOi-o3-CSI">
