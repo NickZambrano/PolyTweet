@@ -25,14 +25,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YAK-9O-6L5">
-                                <rect key="frame" x="52" y="505" width="664" height="30"/>
+                                <rect key="frame" x="52" y="505" width="918" height="30"/>
                                 <color key="backgroundColor" red="0.95607049543458889" green="0.98919548784502442" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom d'utilisateur" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNV-1B-iBQ">
-                                <rect key="frame" x="52" y="446" width="664" height="30"/>
+                                <rect key="frame" x="52" y="446" width="918" height="30"/>
                                 <color key="backgroundColor" red="0.9560704954" green="0.9891954878" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -77,7 +77,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoComplet" translatesAutoresizingMaskIntoConstraints="NO" id="AUh-0s-GEA">
-                                <rect key="frame" x="66" y="119.5" width="636" height="170.5"/>
+                                <rect key="frame" x="66" y="85.5" width="890" height="239"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="AUh-0s-GEA" secondAttribute="height" multiplier="890:239" id="FJW-R7-fNG"/>
                                     <constraint firstAttribute="height" constant="239" id="NU6-61-1Mx"/>
@@ -260,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ttv-7N-0Xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959.375" y="141.796875"/>
+            <point key="canvasLocation" x="899" y="127"/>
         </scene>
     </scenes>
     <resources>
