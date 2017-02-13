@@ -25,38 +25,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PolyTweet/ViewController.swift"
-            timestampString = "508679846.813444"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PolyTweet/ViewController.swift"
-            timestampString = "508680860.669147"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PolyTweet/InscriptionViewController.swift"
             timestampString = "508681696.453565"
             startingColumnNumber = "9223372036854775807"
@@ -106,7 +74,7 @@
                   moduleName = "PolyTweet"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zambra/Desktop/Cours/PolyTweet/PolyTweet/InscriptionViewController.swift"
-                  timestampString = "508681697.816687"
+                  timestampString = "508681790.467205"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -117,16 +85,16 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PolyTweet.InscriptionViewController.nom.setter : Swift.String"
+                  symbolName = "PolyTweet.InscriptionViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; PolyTweet.InscriptionViewController"
                   moduleName = "PolyTweet"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zambra/Desktop/Cours/PolyTweet/PolyTweet/InscriptionViewController.swift"
-                  timestampString = "508681697.819045"
+                  timestampString = "508681790.47218"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
                   endingLineNumber = "17"
-                  offsetFromSymbolStart = "95">
+                  offsetFromSymbolStart = "78">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -136,7 +104,7 @@
                   moduleName = "PolyTweet"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zambra/Desktop/Cours/PolyTweet/PolyTweet/InscriptionViewController.swift"
-                  timestampString = "508681697.822559"
+                  timestampString = "508681790.47595"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
