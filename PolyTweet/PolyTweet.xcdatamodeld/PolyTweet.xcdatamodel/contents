@@ -22,6 +22,7 @@
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
         <attribute name="contenu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="appartient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CategorieMessage" inverseName="qualifie" inverseEntity="CategorieMessage" syncable="YES"/>
         <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PieceJointe" inverseName="appartient" inverseEntity="PieceJointe" syncable="YES"/>
         <relationship name="dep" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departement" inverseName="messages" inverseEntity="Departement" syncable="YES"/>
@@ -56,7 +57,7 @@
         <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="45"/>
         <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
         <element name="Group" positionX="-999" positionY="4194" width="128" height="88"/>
-        <element name="Message" positionX="-684" positionY="4320" width="128" height="133"/>
+        <element name="Message" positionX="-684" positionY="4320" width="128" height="150"/>
         <element name="PieceJointe" positionX="-686" positionY="4194" width="128" height="88"/>
         <element name="RespoDepart" positionX="-1188" positionY="4662" width="128" height="45"/>
         <element name="User" positionX="-1001" positionY="4299" width="128" height="165"/>

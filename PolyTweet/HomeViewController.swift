@@ -34,6 +34,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         request.predicate=predicate;
         do{
             messages = try context.fetch(request)
+            print(messages.count)
         }
         catch let error as NSError{
             print(error);
@@ -59,10 +60,14 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         if let contenu=messageField.text{
             message.contenu=contenu
             message.sendBy=user
+            message.date=NSDate()
             message.dep=user?.appartient
         }
         do{
-            try context.save();
+            try context.save()
+            messages.append(message)
+            messageField.text=""
+            self.tableMessage.reloadData()
         }
         catch let error as NSError{
             print(error);
@@ -91,12 +96,24 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.messages.count
     }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
         cell.message.text=self.messages[indexPath.row].contenu
-       // cell.userName.text=self.messages[indexPath.row].sendBy.name
+        cell.userName.text=self.messages[indexPath.row].sendBy?.fname
+        if let image=self.messages[indexPath.row].sendBy?.img{
+            cell.profil.image=UIImage(data: image as Data)!
+        }
+        if let date=self.messages[indexPath.row].date{
+            cell.setTimeStamp(time: date)
+        }
+        cell.layer.cornerRadius=10
         return cell
     }
+    
+
     
 }
 
