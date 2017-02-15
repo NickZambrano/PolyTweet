@@ -384,6 +384,9 @@
                                     <constraint firstAttribute="width" constant="83" id="XUP-bt-Bfq"/>
                                 </constraints>
                                 <state key="normal" image="envoyer"/>
+                                <connections>
+                                    <action selector="sendMessage:" destination="sef-9X-dS2" eventType="touchUpInside" id="ysp-44-7yc"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DJ8-c6-XC8">
                                 <rect key="frame" x="222" y="994" width="463" height="30"/>
@@ -467,7 +470,9 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="messageField" destination="DJ8-c6-XC8" id="hBg-7w-D6v"/>
                         <outlet property="photo" destination="liL-JY-ybT" id="kce-p3-akL"/>
+                        <outlet property="sendMessage" destination="vST-lx-z2s" id="lXg-wq-jwl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35W-7N-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
+class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
 
     var nom : String = "";
     var departements : [Departement] = [];
