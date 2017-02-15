@@ -33,9 +33,6 @@ class HomeViewController: UIViewController {
         
         view.addGestureRecognizer(tap)
 
-        info.text="Bonjour "+(user?.fname)!;
-        departement.text="Bienvenue sur le canal "+(user?.appartient?.name)!;
-        
         
         //
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
