@@ -15,6 +15,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     
     var messages : [Message] = []
+    var groupSelected : Group?=nil;
 
     var groupes : [Group]=[]
     @IBOutlet weak var tableMessage: UITableView!
@@ -30,25 +31,29 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             return
         }
         let context=appDelegate.persistentContainer.viewContext
-        groupes=(user?.contribue)!.allObjects as! [Group];
-        let request : NSFetchRequest<Message> = Message.fetchRequest();
-        let predicate = NSPredicate(format: "dep == %@",(user?.appartient)!);
-        request.predicate=predicate;
+
+        let requestGroupeGeneral : NSFetchRequest<Group> = Group.fetchRequest();
+        let nameGroupe : String = "Général"
+        let predicateGroupeGeneral = NSPredicate(format: "name == %@",nameGroupe);
+        requestGroupeGeneral.predicate=predicateGroupeGeneral;
         do{
-            messages = try context.fetch(request)
-            print(messages.count)
+            let groupeSel = try context.fetch(requestGroupeGeneral)
+            print(groupeSel.count)
+            groupSelected=groupeSel[0]
         }
         catch let error as NSError{
-            print(error);
+                print(error);
         }
-        
+        groupes=(user?.contribue)!.allObjects as! [Group];
+        loadMessage()
+
         //
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
         }
-        
+        self.tableGroupes.allowsSelection = true
 
         
     }
@@ -64,6 +69,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             message.sendBy=user
             message.date=NSDate()
             message.dep=user?.appartient
+            message.groupe=groupSelected
         }
         do{
             try context.save()
@@ -95,6 +101,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
      
      }
      }*/
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == tableGroupes){
             return self.groupes.count
@@ -105,11 +112,41 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(tableView == tableGroupes){
+
+                groupSelected=self.groupes[indexPath.row]
+                loadMessage()
+
+        }
+        
+    }
+    func loadMessage(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let context=appDelegate.persistentContainer.viewContext
+        let request : NSFetchRequest<Message> = Message.fetchRequest();
+        let predicate = NSPredicate(format: "dep == %@ AND groupe == %@",(user?.appartient)!,groupSelected!);
+        request.predicate=predicate;
+        do{
+            messages = try context.fetch(request)
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        self.tableMessage.reloadData()
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(tableView == tableGroupes){
             let cell = self.tableGroupes.dequeueReusableCell(withIdentifier: "groupeCell", for: indexPath) as! GroupeTableViewCell
             cell.buttonGroupe.setTitle(self.groupes[indexPath.row].name, for: .normal)
-            print(cell.buttonGroupe.currentTitle)
+            cell.accessoryType = .none
+            if(self.groupes[indexPath.row].name == "Général"){
+                tableGroupes.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+            }
             return cell
         }
        else{

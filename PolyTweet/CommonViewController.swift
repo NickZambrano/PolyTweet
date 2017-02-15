@@ -11,12 +11,12 @@ import CoreData
 class CommonViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CommonViewController.dismissKeyboard))
+        /*let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CommonViewController.dismissKeyboard))
         
         NotificationCenter.default.addObserver(self, selector: #selector(CommonViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(CommonViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)*/
 
         
     }
@@ -45,5 +45,10 @@ class CommonViewController : UIViewController {
             self.view.frame.origin.y += 150
         }
         
+    }
+    
+    @IBAction func retour(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+
     }
 }

@@ -91,7 +91,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qhE-80-RDk" kind="presentation" id="A4a-ls-wDZ"/>
+                                    <action selector="retour:" destination="0m6-8n-g8e" eventType="touchUpInside" id="clZ-26-P4z"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="czi-Vp-y55">
@@ -365,6 +365,9 @@
                                             <constraint firstAttribute="width" constant="205" id="zWl-Ys-B1e"/>
                                         </constraints>
                                         <state key="normal" image="déconnexion"/>
+                                        <connections>
+                                            <segue destination="S9Y-fR-FQi" kind="presentation" id="3C6-2K-9Zy"/>
+                                        </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1pV-NP-doY">
                                         <rect key="frame" x="0.0" y="512" width="222" height="128"/>
@@ -377,10 +380,10 @@
                                                 <rect key="frame" x="0.0" y="28" width="222" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pAp-Ip-CTB" id="gWT-KY-dRT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="222" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="222" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbg-LT-CCZ">
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbg-LT-CCZ">
                                                             <rect key="frame" x="8" y="7" width="206" height="30"/>
                                                             <state key="normal" title="Button"/>
                                                         </button>
@@ -443,7 +446,7 @@
                                         <rect key="frame" x="0.0" y="28" width="506" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v95-Bo-WRw" id="caU-zy-hIP">
-                                            <rect key="frame" x="0.0" y="0.0" width="506" height="94"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="506" height="93.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KVm-Ck-bjQ">
@@ -545,10 +548,10 @@
             </objects>
             <point key="canvasLocation" x="82.03125" y="849.0234375"/>
         </scene>
-        <!--View Controller-->
+        <!--Common View Controller-->
         <scene sceneID="0F8-Id-blJ">
             <objects>
-                <viewController id="gHM-P7-hjH" sceneMemberID="viewController">
+                <viewController id="gHM-P7-hjH" customClass="CommonViewController" customModule="PolyTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dcd-at-aig"/>
                         <viewControllerLayoutGuide type="bottom" id="WUs-1u-RMg"/>
@@ -586,7 +589,7 @@
                                 <accessibility key="accessibilityConfiguration" identifier="BEED80D8-B620-456C-8029-6EEA34C9DC19-asset"/>
                                 <state key="normal" image="retour"/>
                                 <connections>
-                                    <segue destination="S9Y-fR-FQi" kind="presentation" id="Rj9-5I-Y5e"/>
+                                    <action selector="retour:" destination="gHM-P7-hjH" eventType="touchUpInside" id="4SS-QK-J3C"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -622,6 +625,6 @@
         <image name="valider" width="205" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IY8-hj-EX6"/>
+        <segue reference="3C6-2K-9Zy"/>
     </inferredMetricsTieBreakers>
 </document>
