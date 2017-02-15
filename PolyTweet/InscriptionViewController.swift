@@ -157,27 +157,55 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
             }
             let context=appDelegate.persistentContainer.viewContext
             let user = Etudiant(context: context)
-            user.year=Int16(year!);
             user.lname=self.lname.text;
             user.fname=self.fname.text;
             user.lname=self.lname.text;
             user.password=self.password.text;
             user.mail=self.mail.text;
             user.appartient=departement;
-            if let image=self.imageView.image {
-                user.img=UIImageJPEGRepresentation(image,1) as NSData?
-            }
             
-            departement?.addToContient(user);
+            let requestYear : NSFetchRequest<Years> = Years.fetchRequest();
+            let predicateYear = NSPredicate(format: "numero = %d",year!);
+            requestYear.predicate=predicateYear;
+            let requestGroup : NSFetchRequest<Group> = Group.fetchRequest();
+
             do{
-                try context.save();
+                let year = try context.fetch(requestYear)
+                print(year.count)
+                user.annee=year[0]
+                
+                let predicateGroup = NSPredicate(format:"annee = %@",year[0])
+                requestGroup.predicate=predicateGroup;
+                do{
+                    let group = try context.fetch(requestGroup)
+                    user.addToContribue(group[0])
+                    group[0].addToContient(user);
+                    
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+                let predicateGroupGeneral = NSPredicate(format:"name = %@","Général")
+                requestGroup.predicate=predicateGroupGeneral;
+                do{
+                    let group = try context.fetch(requestGroup)
+                    user.addToContribue(group[0])
+                    group[0].addToContient(user);
+                    
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+                year[0].addToEtudiants(user)
+
             }
             catch let error as NSError{
                 print(error);
             }
-            let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
+
+            departement?.addToContient(user);
             do{
-                let result: [Etudiant] = try context.fetch(request)
+                try context.save();
             }
             catch let error as NSError{
                 print(error);

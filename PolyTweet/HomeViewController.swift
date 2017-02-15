@@ -8,22 +8,40 @@
 
 import UIKit
 import CoreData
-class HomeViewController: CommonViewController {
+class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate {
     
     
     var user:User?=nil;
     
     
+    var messages : [Message] = []
 
-
+    var groupes : [Group]=[]
+    @IBOutlet weak var tableMessage: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var photo: UIImageView!
     
+    @IBOutlet weak var tableGroupes: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let context=appDelegate.persistentContainer.viewContext
+        groupes=(user?.contribue)!.allObjects as! [Group];
+        let request : NSFetchRequest<Message> = Message.fetchRequest();
+        let predicate = NSPredicate(format: "dep == %@",(user?.appartient)!);
+        request.predicate=predicate;
+        do{
+            messages = try context.fetch(request)
+            print(messages.count)
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        
         //
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
@@ -44,8 +62,19 @@ class HomeViewController: CommonViewController {
         if let contenu=messageField.text{
             message.contenu=contenu
             message.sendBy=user
+            message.date=NSDate()
             message.dep=user?.appartient
         }
+        do{
+            try context.save()
+            messages.append(message)
+            messageField.text=""
+            self.tableMessage.reloadData()
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        
     }
     // Do any additional setup after loading the view, typically from a nib.
     //Calls this function when the tap is recognized.
@@ -66,6 +95,39 @@ class HomeViewController: CommonViewController {
      
      }
      }*/
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(tableView == tableGroupes){
+            return self.groupes.count
+        }else{
+            return self.messages.count
+        }
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if(tableView == tableGroupes){
+            let cell = self.tableGroupes.dequeueReusableCell(withIdentifier: "groupeCell", for: indexPath) as! GroupeTableViewCell
+            cell.buttonGroupe.setTitle(self.groupes[indexPath.row].name, for: .normal)
+            print(cell.buttonGroupe.currentTitle)
+            return cell
+        }
+       else{
+            let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
+            cell.message.text=self.messages[indexPath.row].contenu
+            cell.userName.text=self.messages[indexPath.row].sendBy?.fname
+            if let image=self.messages[indexPath.row].sendBy?.img{
+                cell.profil.image=UIImage(data: image as Data)!
+            }
+            if let date=self.messages[indexPath.row].date{
+                cell.setTimeStamp(time: date)
+            }
+            cell.layer.cornerRadius=10
+            return cell
+        }
+
+    }
 }
+
+
 

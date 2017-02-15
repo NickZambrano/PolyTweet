@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C3806F50CC2B56F805F8A45 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
+		B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */; };
 		B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8C01E4DB9560030D669 /* AppDelegate.swift */; };
 		B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8C21E4DB9560030D669 /* ViewController.swift */; };
 		B821E8C61E4DB9560030D669 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B821E8C41E4DB9560030D669 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		B844235E1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B8FEB12B1E5278FF00618FA4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */; };
 		B8FEB12D1E5454D400618FA4 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */; };
+		B8FEB12F1E545D2B00618FA4 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
+		B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = ../GroupTableViewCell.swift; sourceTree = "<group>"; };
 		B821E8BD1E4DB9560030D669 /* PolyTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B821E8C01E4DB9560030D669 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B821E8C21E4DB9560030D669 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
+		B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		B821E8BF1E4DB9560030D669 /* PolyTweet */ = {
 			isa = PBXGroup;
 			children = (
+				B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */,
 				B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */,
 				B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */,
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
@@ -119,6 +124,7 @@
 				B821E8CC1E4DB9560030D669 /* LaunchScreen.storyboard */,
 				B821E8CF1E4DB9560030D669 /* Info.plist */,
 				B821E8C71E4DB9560030D669 /* PolyTweet.xcdatamodeld */,
+				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
 			);
 			path = PolyTweet;
 			sourceTree = "<group>";
@@ -279,11 +285,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */,
 				B821E8C91E4DB9560030D669 /* PolyTweet.xcdatamodeld in Sources */,
 				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
 				B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */,
 				B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */,
 				B8FEB12D1E5454D400618FA4 /* CommonViewController.swift in Sources */,
+				B8FEB12F1E545D2B00618FA4 /* MessageTableViewCell.swift in Sources */,
 				6C3806F50CC2B56F805F8A45 /* CALayer+Extensions.swift in Sources */,
 				B8FEB12B1E5278FF00618FA4 /* HomeViewController.swift in Sources */,
 			);
