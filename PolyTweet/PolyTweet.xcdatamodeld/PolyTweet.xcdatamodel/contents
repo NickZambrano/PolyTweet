@@ -53,12 +53,12 @@
     <elements>
         <element name="Administration" positionX="-1044" positionY="4662" width="128" height="45"/>
         <element name="CategorieMessage" positionX="-677" positionY="4503" width="128" height="73"/>
-        <element name="Departement" positionX="-1188" positionY="4329" width="128" height="103"/>
+        <element name="Departement" positionX="-1179" positionY="4302" width="128" height="103"/>
         <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="45"/>
         <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
-        <element name="Group" positionX="-999" positionY="4194" width="128" height="88"/>
-        <element name="Message" positionX="-684" positionY="4320" width="128" height="150"/>
-        <element name="PieceJointe" positionX="-686" positionY="4194" width="128" height="88"/>
+        <element name="Group" positionX="-983" positionY="4167" width="128" height="88"/>
+        <element name="Message" positionX="-774" positionY="4278" width="128" height="150"/>
+        <element name="PieceJointe" positionX="-684" positionY="4077" width="128" height="88"/>
         <element name="RespoDepart" positionX="-1188" positionY="4662" width="128" height="45"/>
         <element name="User" positionX="-1001" positionY="4299" width="128" height="165"/>
     </elements>
