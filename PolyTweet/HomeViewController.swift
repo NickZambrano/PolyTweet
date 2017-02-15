@@ -16,6 +16,10 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var departement: UILabel!
     @IBOutlet weak var info: UILabel!
+    @IBOutlet weak var photo: UIImageView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
@@ -31,6 +35,15 @@ class HomeViewController: UIViewController {
 
         info.text="Bonjour "+(user?.fname)!;
         departement.text="Bienvenue sur le canal "+(user?.appartient?.name)!;
+        
+        
+        //
+        self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
+        self.photo.clipsToBounds = true;
+        if let image=user?.img {
+            photo.image=UIImage(data: image as Data)!
+        }
+        
 
         
     }
