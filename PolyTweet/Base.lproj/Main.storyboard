@@ -231,7 +231,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sm-Tp-0i2">
-                                <rect key="frame" x="218" y="964" width="333" height="40"/>
+                                <rect key="frame" x="217.5" y="964" width="333" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7Sm-Tp-0i2" secondAttribute="height" multiplier="333:40" id="Ux3-Xm-Xap"/>
                                 </constraints>
@@ -332,12 +332,12 @@
                                 <accessibility key="accessibilityConfiguration" identifier="B485EF86-5ADB-496C-80B6-F6B3AE226DAD-asset"/>
                                 <state key="normal" image="profil"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjR-7e-Q1Y">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjR-7e-Q1Y">
                                 <rect key="frame" x="5" y="378" width="205" height="77"/>
                                 <accessibility key="accessibilityConfiguration" identifier="ECD20037-234E-4CCF-8799-2E84E0149D65-asset"/>
                                 <state key="normal" image="documents"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Is-Ah-FgM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Is-Ah-FgM">
                                 <rect key="frame" x="6" y="940" width="205" height="77"/>
                                 <accessibility key="accessibilityConfiguration" identifier="E16B3B9D-B058-411E-8326-3FD18072B628-asset"/>
                                 <state key="normal" image="déconnexion"/>
@@ -361,6 +361,8 @@
                             <constraint firstItem="MNA-Ad-JVN" firstAttribute="centerX" secondItem="fnZ-uM-eGb" secondAttribute="centerX" id="FOK-Ay-BhN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MNA-Ad-JVN" secondAttribute="trailing" constant="58" id="IkU-UY-hpe"/>
                             <constraint firstItem="MNA-Ad-JVN" firstAttribute="height" secondItem="fnZ-uM-eGb" secondAttribute="height" id="JLf-wP-nr6"/>
+                            <constraint firstItem="1Is-Ah-FgM" firstAttribute="centerY" secondItem="MFM-DU-sYP" secondAttribute="centerY" constant="466.5" id="KSk-YX-FJQ"/>
+                            <constraint firstItem="rjR-7e-Q1Y" firstAttribute="centerY" secondItem="MFM-DU-sYP" secondAttribute="centerY" constant="-95.5" id="Mf3-pf-Jaz"/>
                             <constraint firstItem="liL-JY-ybT" firstAttribute="centerX" secondItem="ZBl-Af-Dzt" secondAttribute="centerX" id="NCn-3P-ZPz"/>
                             <constraint firstItem="liL-JY-ybT" firstAttribute="centerX" secondItem="1Is-Ah-FgM" secondAttribute="centerX" id="Nxt-BM-UeF"/>
                             <constraint firstItem="liL-JY-ybT" firstAttribute="top" secondItem="6Po-OL-Wra" secondAttribute="bottom" id="Tsq-ZQ-eth"/>
@@ -370,6 +372,7 @@
                             <constraint firstItem="MNA-Ad-JVN" firstAttribute="trailing" secondItem="fnZ-uM-eGb" secondAttribute="trailing" id="gB6-3S-sxW"/>
                             <constraint firstItem="MNA-Ad-JVN" firstAttribute="width" secondItem="fnZ-uM-eGb" secondAttribute="height" multiplier="8:1" id="l3B-2b-Kvl"/>
                             <constraint firstItem="iTQ-uv-fCe" firstAttribute="top" secondItem="fnZ-uM-eGb" secondAttribute="bottom" constant="946" id="r5Z-we-GTe"/>
+                            <constraint firstItem="imP-Dx-kOm" firstAttribute="centerY" secondItem="MFM-DU-sYP" secondAttribute="centerY" constant="-229.5" id="t24-t1-awb"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="layer.UIBorderColor">
