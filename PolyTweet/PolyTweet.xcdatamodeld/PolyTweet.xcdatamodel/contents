@@ -14,6 +14,10 @@
     <entity name="Etudiant" representedClassName="Etudiant" parentEntity="User" syncable="YES" codeGenerationType="class">
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="contribue" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
         <attribute name="contenu" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="appartient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CategorieMessage" inverseName="qualifie" inverseEntity="CategorieMessage" syncable="YES"/>
@@ -33,6 +37,7 @@
         <attribute name="mail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="appartient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departement" inverseName="contient" inverseEntity="Departement" syncable="YES"/>
+        <relationship name="contribue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="contient" inverseEntity="Group" syncable="YES"/>
         <relationship name="send" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="sendBy" inverseEntity="Message" syncable="YES"/>
     </entity>
     <elements>
@@ -44,6 +49,7 @@
         <element name="Message" positionX="-684" positionY="4320" width="128" height="103"/>
         <element name="PieceJointe" positionX="-686" positionY="4194" width="128" height="88"/>
         <element name="RespoDepart" positionX="-1188" positionY="4662" width="128" height="45"/>
-        <element name="User" positionX="-1001" positionY="4299" width="128" height="148"/>
+        <element name="User" positionX="-1001" positionY="4299" width="128" height="163"/>
+        <element name="Group" positionX="-999" positionY="4194" width="128" height="73"/>
     </elements>
 </model>

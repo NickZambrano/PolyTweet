@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
 
     var nom : String = "";
     var departements : [Departement] = [];
@@ -23,7 +23,9 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var fname: UITextField!
     @IBOutlet weak var lname: UITextField!
     @IBOutlet weak var pickerDepartement: UITextField!
-    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
        
@@ -32,6 +34,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
+        imagePicker.delegate = self
         let context=appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Departement> = Departement.fetchRequest();
         do{
@@ -99,6 +102,26 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         
     }
 
+    @IBAction func loadImageButtonTapped(_ sender: UIButton) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(imagePicker, animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController,
+                                didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2;
     }
@@ -141,7 +164,10 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             user.password=self.password.text;
             user.mail=self.mail.text;
             user.appartient=departement;
-            let mail : String = self.mail.text!;
+            if let image=self.imageView.image {
+                user.img=UIImageJPEGRepresentation(image,1) as NSData?
+            }
+            
             departement?.addToContient(user);
             do{
                 try context.save();
@@ -152,7 +178,6 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
             let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
             do{
                 let result: [Etudiant] = try context.fetch(request)
-                print(result[0].appartient?.fullName)
             }
             catch let error as NSError{
                 print(error);
