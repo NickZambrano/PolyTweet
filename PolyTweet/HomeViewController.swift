@@ -8,14 +8,15 @@
 
 import UIKit
 import CoreData
-class HomeViewController: CommonViewController {
+class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate {
     
     
     var user:User?=nil;
     
     
+    var messages : [Message] = []
 
-
+    @IBOutlet weak var tableMessage: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var photo: UIImageView!
     
@@ -23,7 +24,21 @@ class HomeViewController: CommonViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let context=appDelegate.persistentContainer.viewContext
+        
+        let request : NSFetchRequest<Message> = Message.fetchRequest();
+        let predicate = NSPredicate(format: "dep == %@",(user?.appartient)!);
+        request.predicate=predicate;
+        do{
+            messages = try context.fetch(request)
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        
         //
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
@@ -46,6 +61,13 @@ class HomeViewController: CommonViewController {
             message.sendBy=user
             message.dep=user?.appartient
         }
+        do{
+            try context.save();
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        
     }
     // Do any additional setup after loading the view, typically from a nib.
     //Calls this function when the tap is recognized.
@@ -66,6 +88,15 @@ class HomeViewController: CommonViewController {
      
      }
      }*/
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.messages.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
+        cell.message.text=self.messages[indexPath.row].contenu
+       // cell.userName.text=self.messages[indexPath.row].sendBy.name
+        return cell
+    }
     
 }
 

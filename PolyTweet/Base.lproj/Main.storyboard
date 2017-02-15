@@ -398,7 +398,7 @@
                                 <rect key="frame" x="242" y="20" width="506" height="966"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="v95-Bo-WRw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" rowHeight="94" id="v95-Bo-WRw" customClass="MessageTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="506" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v95-Bo-WRw" id="caU-zy-hIP">
@@ -431,7 +431,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dt-eV-XSJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dt-eV-XSJ">
                                                     <rect key="frame" x="90" y="8" width="389" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -440,6 +440,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="message" destination="9Dt-eV-XSJ" id="n1t-pW-Q3f"/>
+                                            <outlet property="userName" destination="8zi-Je-BuQ" id="fnd-Fs-hof"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -472,7 +476,7 @@
                     <connections>
                         <outlet property="messageField" destination="DJ8-c6-XC8" id="hBg-7w-D6v"/>
                         <outlet property="photo" destination="liL-JY-ybT" id="kce-p3-akL"/>
-                        <outlet property="sendMessage" destination="vST-lx-z2s" id="lXg-wq-jwl"/>
+                        <outlet property="tableMessage" destination="aXh-X0-VyB" id="1ro-nc-J1a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35W-7N-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
