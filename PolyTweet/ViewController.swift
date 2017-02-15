@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class ViewController: UIViewController {
+class ViewController: CommonViewController {
     @IBOutlet weak var username: UITextField!
     var user: User?=nil;
 
@@ -16,91 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var Connexion: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
-        view.addGestureRecognizer(tap)
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        let context=appDelegate.persistentContainer.viewContext
-        let request : NSFetchRequest<Departement> = Departement.fetchRequest();
-        do{
-            let result: [Departement] = try context.fetch(request)
-
-            print(result.count);
-                if(result.count==0){
-                    let ig = Departement(context:context);
-                    ig.name="IG";
-                    ig.fullName="Informatique et Gestion";
-                    let mea = Departement(context:context);
-                    mea.name="MEA";
-                    mea.fullName="Microélectronique et Automatique";
-                    let mat = Departement(context:context);
-                    mat.name="MAT";
-                    mat.fullName="Matériaux";
-
-                    let gba = Departement(context:context);
-                    gba.name="GBA";
-                    gba.fullName="Génie biologique et Agroalimentaire";
-
-                    let ste = Departement(context:context);
-                    ste.name="STE";
-                    ste.fullName="Sciences et Technologies de l'eau";
-
-                    let mi = Departement(context:context);
-                    mi.name="MI";
-                    mi.fullName="Mécanique et Interactions";
-
-                    let msi = Departement(context:context);
-                    msi.name="MSI";
-                    msi.fullName="Mécanique structures industrielles";
-
-                    let se = Departement(context:context);
-                    se.name="SE";
-                    se.fullName="Systèmes embarqués";
-
-                    do{
-                        try context.save();
-                    }
-                    catch let error as NSError{
-                        print(error);
-                    }
-              }
-        }
-        catch let error as NSError{
-            print(error);
-        }
 
     }
     
         // Do any additional setup after loading the view, typically from a nib.
     //Calls this function when the tap is recognized.
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
-    func keyboardWillShow(notification: NSNotification) {
-        
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= 100
-            }
-        
-        
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += 100
-            }
-        
-    }
+
     func deleteAllData(entity: String)
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -160,12 +81,7 @@ class ViewController: UIViewController {
         }
 
     }
-    func alert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

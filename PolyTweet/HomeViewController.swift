@@ -8,32 +8,22 @@
 
 import UIKit
 import CoreData
-class HomeViewController: UIViewController {
+class HomeViewController: CommonViewController {
     
     
     var user:User?=nil;
     
     
-    @IBOutlet weak var departement: UILabel!
-    @IBOutlet weak var info: UILabel!
+
+
+    @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var photo: UIImageView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
-        view.addGestureRecognizer(tap)
 
-        
         //
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
@@ -45,34 +35,22 @@ class HomeViewController: UIViewController {
         
     }
     
+    @IBAction func sendMessage(_ sender: UIButton) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let context=appDelegate.persistentContainer.viewContext
+        let message = Message(context:context);
+        if let contenu=messageField.text{
+            message.contenu=contenu
+            message.sendBy=user
+            message.dep=user?.appartient
+        }
+    }
     // Do any additional setup after loading the view, typically from a nib.
     //Calls this function when the tap is recognized.
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
-    func keyboardWillShow(notification: NSNotification) {
-        
-        if self.view.frame.origin.y == 0{
-            self.view.frame.origin.y -= 100
-        }
-        
-        
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0{
-            self.view.frame.origin.y += 100
-        }
-        
-    }
-    
-    func alert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
-    }
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

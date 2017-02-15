@@ -16,6 +16,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        let context=persistentContainer.viewContext
+        let request : NSFetchRequest<Departement> = Departement.fetchRequest();
+        do{
+            let result: [Departement] = try context.fetch(request)
+            
+            if(result.count==0){
+                let ig = Departement(context:context);
+                ig.name="IG";
+                ig.fullName="Informatique et Gestion";
+                let mea = Departement(context:context);
+                mea.name="MEA";
+                mea.fullName="Microélectronique et Automatique";
+                let mat = Departement(context:context);
+                mat.name="MAT";
+                mat.fullName="Matériaux";
+                
+                let gba = Departement(context:context);
+                gba.name="GBA";
+                gba.fullName="Génie biologique et Agroalimentaire";
+                
+                let ste = Departement(context:context);
+                ste.name="STE";
+                ste.fullName="Sciences et Technologies de l'eau";
+                
+                let mi = Departement(context:context);
+                mi.name="MI";
+                mi.fullName="Mécanique et Interactions";
+                
+                let msi = Departement(context:context);
+                msi.name="MSI";
+                msi.fullName="Mécanique structures industrielles";
+                
+                let se = Departement(context:context);
+                se.name="SE";
+                se.fullName="Systèmes embarqués";
+                
+                do{
+                    try context.save();
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+            }
+        }
+        catch let error as NSError{
+            print(error);
+        }
+
         // Override point for customization after application launch.
         return true
     }
