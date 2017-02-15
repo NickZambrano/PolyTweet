@@ -12,9 +12,16 @@ import CoreData
 class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     var nom : String = "";
-    var departement : [Departement] = [];
+    var departements : [Departement] = [];
     var pickOption : [String : Any] = [:];
     var years : [Int] = [3,4,5];
+    var year : Int?=nil;
+    var departement : Departement?=nil;
+    
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var mail: UITextField!
+    @IBOutlet weak var fname: UITextField!
+    @IBOutlet weak var lname: UITextField!
     @IBOutlet weak var pickerDepartement: UITextField!
     @IBOutlet weak var username: UITextField!
     
@@ -28,8 +35,8 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         let context=appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Departement> = Departement.fetchRequest();
         do{
-           try departement = context.fetch(request)
-             pickOption = ["Departement" : departement, "Année" : ["3","4","5"]] as [String : Any]
+           try departements = context.fetch(request)
+             pickOption = ["Departement" : departements, "Année" : ["3","4","5"]] as [String : Any]
             
         }
         catch let error as NSError{
@@ -81,9 +88,9 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
         pickerDepartement.text = departement[row].fullName
     }*/
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let dep = departement[pickerView.selectedRow(inComponent: 0)].fullName
-        let year = years[pickerView.selectedRow(inComponent: 1)]
-        pickerDepartement.text = dep! + " en " + String(year)+" ème année";
+        departement = departements[pickerView.selectedRow(inComponent: 0)]
+        year = years[pickerView.selectedRow(inComponent: 1)]
+        pickerDepartement.text = (departement?.fullName!)! + " en " + String(describing: year!)+" ème année";
     }
 
     func donePressed(_ sender: UIBarButtonItem) {
@@ -112,13 +119,47 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource, UIPic
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var co : String = "";
         if(component==0){
-            co=departement[row].name!;
+            co=departements[row].name!;
         }
         if(component==1){
             co=String(years[row])+" ème année";
         }
         return co
     }
+    
+    override func prepare (for segue:UIStoryboardSegue, sender : Any?){
+        if segue.identifier=="signIn"{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+                return
+            }
+            let context=appDelegate.persistentContainer.viewContext
+            let user = Etudiant(context: context)
+            user.year=Int16(year!);
+            user.lname=self.lname.text;
+            user.fname=self.fname.text;
+            user.lname=self.lname.text;
+            user.password=self.password.text;
+            user.mail=self.mail.text;
+            user.appartient=departement;
+            let mail : String = self.mail.text!;
+            departement?.addToContient(user);
+            do{
+                try context.save();
+            }
+            catch let error as NSError{
+                print(error);
+            }
+            let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
+            do{
+                let result: [Etudiant] = try context.fetch(request)
+                print(result[0].appartient?.fullName)
+            }
+            catch let error as NSError{
+                print(error);
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

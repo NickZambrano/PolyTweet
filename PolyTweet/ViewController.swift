@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 class ViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
+    var user: User?=nil;
 
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var Connexion: UIButton!
@@ -121,15 +122,38 @@ class ViewController: UIViewController {
     }
     @IBAction func connexion(_ sender: Any) {
         
-        if let user=self.username.text{
+        if let username=self.username.text{
 
             if let pass=self.password.text{
-                if user == "John" && pass == "123" {
-                    
-                    performSegue(withIdentifier: "login", sender: self)
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+                    return
                 }
-            }else{
-                performSegue(withIdentifier: "loginFailed", sender: self)
+                let context=appDelegate.persistentContainer.viewContext
+
+                let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
+                let predicate = NSPredicate(format: "mail == %@",username);
+                request.predicate=predicate;
+                do{
+                    let result: [Etudiant] = try context.fetch(request)
+                    if(result.count>0){
+                        if(result[0].password==pass){
+                            user=result[0];
+                            performSegue(withIdentifier: "login", sender: self)
+
+                        }
+                        else{
+                            self.alert(title:"Erreur", message:"Erreur d'identifiant");
+                        }
+                    }
+                    else{
+                        self.alert(title:"Erreur", message:"Erreur d'identifiant");
+
+                    }
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+
             }
             self.alert(title:"Erreur", message:"Erreur d'identifiant");
 
@@ -146,17 +170,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*override func prepare (for segue:UIStoryboardSegue, sender : Any?){
-        if segue.identifier=="toInscription"{
-            let inscriptionViewController = segue.destination as! InscriptionViewController;
-            if let user=self.username.text{
-                inscriptionViewController.nom=user;
-            }else{
-                inscriptionViewController.nom="";
+    override func prepare (for segue:UIStoryboardSegue, sender : Any?){
+        if segue.identifier=="login"{
+            let homeViewController = segue.destination as! HomeViewController;
+            if let userConnected=user{
+                homeViewController.user=userConnected;
             }
             
         }
-    }*/
+    }
 
 }
 

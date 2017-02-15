@@ -178,6 +178,9 @@
                                 <rect key="frame" x="282" y="893" width="205" height="77"/>
                                 <accessibility key="accessibilityConfiguration" identifier="45CD6E41-0B3D-4E18-8E6D-DD2D0FF66934-asset"/>
                                 <state key="normal" image="valider"/>
+                                <connections>
+                                    <segue destination="S9Y-fR-FQi" kind="presentation" identifier="signIn" id="IY8-hj-EX6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1684835851" green="0.33879953619999997" blue="0.47185611719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -195,6 +198,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fname" destination="whi-ng-JcU" id="AOm-nw-RvO"/>
+                        <outlet property="lname" destination="3aP-VZ-pGw" id="EHv-Y3-YQy"/>
+                        <outlet property="mail" destination="0W8-bQ-7oU" id="RCW-Fh-99B"/>
+                        <outlet property="password" destination="HCY-9n-BLL" id="FyY-Or-Zd0"/>
                         <outlet property="pickerDepartement" destination="vZB-dS-usb" id="g8U-y4-H70"/>
                         <outlet property="username" destination="Avi-fq-aRS" id="mrq-Sg-pi7"/>
                     </connections>
@@ -313,10 +320,10 @@
             </objects>
             <point key="canvasLocation" x="172.65625" y="76.7578125"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="uKy-eY-hjC">
             <objects>
-                <viewController id="sef-9X-dS2" sceneMemberID="viewController">
+                <viewController id="sef-9X-dS2" customClass="HomeViewController" customModule="PolyTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Po-OL-Wra"/>
                         <viewControllerLayoutGuide type="bottom" id="iTQ-uv-fCe"/>
@@ -352,6 +359,9 @@
                                 <rect key="frame" x="6" y="940" width="205" height="77"/>
                                 <accessibility key="accessibilityConfiguration" identifier="E16B3B9D-B058-411E-8326-3FD18072B628-asset"/>
                                 <state key="normal" image="déconnexion"/>
+                                <connections>
+                                    <segue destination="S9Y-fR-FQi" kind="presentation" id="voj-1H-6kz"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVn-fu-M2R">
                                 <rect key="frame" x="29" y="18" width="158" height="158"/>
@@ -363,15 +373,43 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnZ-uM-eGb">
+                                <rect key="frame" x="290" y="28" width="400" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="rMv-oR-nLM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="32"/>
+                                <color key="textColor" red="0.9560704954" green="0.9891954878" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="departement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNA-Ad-JVN">
+                                <rect key="frame" x="290" y="102" width="400" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="m0D-hk-JEL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="32"/>
+                                <color key="textColor" red="0.9560704954" green="0.9891954878" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1684835851" green="0.33879953619999997" blue="0.47185611719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CXq-bL-pfh" firstAttribute="centerX" secondItem="bVn-fu-M2R" secondAttribute="centerX" id="2bW-UN-lRQ"/>
+                            <constraint firstItem="MNA-Ad-JVN" firstAttribute="leading" secondItem="fnZ-uM-eGb" secondAttribute="leading" id="45h-gj-POQ"/>
+                            <constraint firstItem="fnZ-uM-eGb" firstAttribute="top" secondItem="6Po-OL-Wra" secondAttribute="bottom" constant="8" symbolic="YES" id="6ou-xW-6p9"/>
                             <constraint firstItem="X6G-ZU-3JQ" firstAttribute="centerX" secondItem="bVn-fu-M2R" secondAttribute="centerX" id="9ka-HL-6PQ"/>
                             <constraint firstItem="iTQ-uv-fCe" firstAttribute="top" secondItem="l6e-6b-TpK" secondAttribute="bottom" constant="7" id="A7m-kj-bhz"/>
+                            <constraint firstItem="MNA-Ad-JVN" firstAttribute="centerX" secondItem="fnZ-uM-eGb" secondAttribute="centerX" id="FOK-Ay-BhN"/>
                             <constraint firstItem="X6G-ZU-3JQ" firstAttribute="top" secondItem="CXq-bL-pfh" secondAttribute="bottom" constant="57" id="J5g-Wd-Efz"/>
+                            <constraint firstItem="MNA-Ad-JVN" firstAttribute="height" secondItem="fnZ-uM-eGb" secondAttribute="height" id="JLf-wP-nr6"/>
+                            <constraint firstItem="fnZ-uM-eGb" firstAttribute="leading" secondItem="FH4-GG-6cH" secondAttribute="trailing" constant="74" id="Lpp-6t-4zP"/>
                             <constraint firstItem="CXq-bL-pfh" firstAttribute="top" secondItem="bVn-fu-M2R" secondAttribute="bottom" constant="68" id="S73-KF-ren"/>
                             <constraint firstItem="X6G-ZU-3JQ" firstAttribute="top" secondItem="MFM-DU-sYP" secondAttribute="top" constant="378" id="YeQ-ec-h7B"/>
+                            <constraint firstItem="MNA-Ad-JVN" firstAttribute="top" secondItem="fnZ-uM-eGb" secondAttribute="bottom" constant="24" id="ZJF-d6-4tt"/>
+                            <constraint firstItem="MNA-Ad-JVN" firstAttribute="width" secondItem="fnZ-uM-eGb" secondAttribute="width" id="faN-39-nsf"/>
+                            <constraint firstItem="MNA-Ad-JVN" firstAttribute="trailing" secondItem="fnZ-uM-eGb" secondAttribute="trailing" id="gB6-3S-sxW"/>
+                            <constraint firstItem="MNA-Ad-JVN" firstAttribute="width" secondItem="fnZ-uM-eGb" secondAttribute="height" multiplier="8:1" id="l3B-2b-Kvl"/>
+                            <constraint firstItem="iTQ-uv-fCe" firstAttribute="top" secondItem="fnZ-uM-eGb" secondAttribute="bottom" constant="946" id="r5Z-we-GTe"/>
                             <constraint firstItem="l6e-6b-TpK" firstAttribute="centerX" secondItem="bVn-fu-M2R" secondAttribute="centerX" id="uHs-BV-utH"/>
                             <constraint firstItem="l6e-6b-TpK" firstAttribute="leading" secondItem="MFM-DU-sYP" secondAttribute="leadingMargin" constant="-14" id="vzf-4A-Yth"/>
                             <constraint firstItem="l6e-6b-TpK" firstAttribute="centerX" secondItem="FH4-GG-6cH" secondAttribute="centerX" id="wKT-U5-tcg"/>
@@ -385,6 +423,10 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="departement" destination="MNA-Ad-JVN" id="knh-2W-0mw"/>
+                        <outlet property="info" destination="fnZ-uM-eGb" id="Jcq-Um-DqO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35W-7N-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -451,6 +493,23 @@
             </objects>
             <point key="canvasLocation" x="949.80468749999989" y="-24.21875"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="pME-TN-9M9">
+            <objects>
+                <viewController id="eGJ-UE-V6a" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4wG-uL-L3y"/>
+                        <viewControllerLayoutGuide type="bottom" id="ck9-PG-BJu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NVv-vF-2pN">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O8C-1K-2WR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="admin" width="358" height="82"/>
@@ -466,4 +525,7 @@
         <image name="retour" width="92" height="43"/>
         <image name="valider" width="205" height="77"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="voj-1H-6kz"/>
+    </inferredMetricsTieBreakers>
 </document>
