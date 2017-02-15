@@ -16,10 +16,12 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     var messages : [Message] = []
 
+    var groupes : [Group]=[]
     @IBOutlet weak var tableMessage: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var photo: UIImageView!
     
+    @IBOutlet weak var tableGroupes: UITableView!
     
     
     override func viewDidLoad() {
@@ -28,7 +30,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             return
         }
         let context=appDelegate.persistentContainer.viewContext
-        
+        groupes=(user?.contribue)!.allObjects as! [Group];
         let request : NSFetchRequest<Message> = Message.fetchRequest();
         let predicate = NSPredicate(format: "dep == %@",(user?.appartient)!);
         request.predicate=predicate;
@@ -94,26 +96,38 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
      }
      }*/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.messages.count
+        if(tableView == tableGroupes){
+            return self.groupes.count
+        }else{
+            return self.messages.count
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
-        cell.message.text=self.messages[indexPath.row].contenu
-        cell.userName.text=self.messages[indexPath.row].sendBy?.fname
-        if let image=self.messages[indexPath.row].sendBy?.img{
-            cell.profil.image=UIImage(data: image as Data)!
+        if(tableView == tableGroupes){
+            let cell = self.tableGroupes.dequeueReusableCell(withIdentifier: "groupeCell", for: indexPath) as! GroupeTableViewCell
+            cell.buttonGroupe.setTitle(self.groupes[indexPath.row].name, for: .normal)
+            print(cell.buttonGroupe.currentTitle)
+            return cell
         }
-        if let date=self.messages[indexPath.row].date{
-            cell.setTimeStamp(time: date)
+       else{
+            let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
+            cell.message.text=self.messages[indexPath.row].contenu
+            cell.userName.text=self.messages[indexPath.row].sendBy?.fname
+            if let image=self.messages[indexPath.row].sendBy?.img{
+                cell.profil.image=UIImage(data: image as Data)!
+            }
+            if let date=self.messages[indexPath.row].date{
+                cell.setTimeStamp(time: date)
+            }
+            cell.layer.cornerRadius=10
+            return cell
         }
-        cell.layer.cornerRadius=10
-        return cell
-    }
-    
 
-    
+    }
 }
+
+
 

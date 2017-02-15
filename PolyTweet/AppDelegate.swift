@@ -16,13 +16,164 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-        let context=persistentContainer.viewContext
-        let request : NSFetchRequest<Departement> = Departement.fetchRequest();
-        do{
-            let result: [Departement] = try context.fetch(request)
+/*
+        // Initialize Fetch Request
+        var fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Message")
+        
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+        
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest) as! [NSManagedObject]
             
-            if(result.count==0){
+            for item in items {
+                persistentContainer.viewContext.delete(item)
+            }
+            
+            // Save Changes
+            try persistentContainer.viewContext.save()
+            
+        } catch {
+            // Error Handling
+            // ...
+        }
+        fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+        
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest) as! [NSManagedObject]
+            
+            for item in items {
+                persistentContainer.viewContext.delete(item)
+            }
+            
+            // Save Changes
+            try persistentContainer.viewContext.save()
+            
+        } catch {
+            // Error Handling
+            // ...
+        }
+        fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Message")
+        
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+        
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest) as! [NSManagedObject]
+            
+            for item in items {
+                persistentContainer.viewContext.delete(item)
+            }
+            
+            // Save Changes
+            try persistentContainer.viewContext.save()
+            
+        } catch {
+            // Error Handling
+            // ...
+        }
+        fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Group")
+        
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+        
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest) as! [NSManagedObject]
+            
+            for item in items {
+                persistentContainer.viewContext.delete(item)
+            }
+            
+            // Save Changes
+            try persistentContainer.viewContext.save()
+            
+        } catch {
+            // Error Handling
+            // ...
+        }
+        fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Departement")
+        
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+        
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest) as! [NSManagedObject]
+            
+            for item in items {
+                persistentContainer.viewContext.delete(item)
+            }
+            
+            // Save Changes
+            try persistentContainer.viewContext.save()
+            
+        } catch {
+            // Error Handling
+            // ...
+        }
+        fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Years")
+        
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+        
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest) as! [NSManagedObject]
+            
+            for item in items {
+                persistentContainer.viewContext.delete(item)
+            }
+            
+            // Save Changes
+            try persistentContainer.viewContext.save()
+            
+        } catch {
+            // Error Handling
+            // ...
+        }*/
+        let context=persistentContainer.viewContext
+        let requestDep : NSFetchRequest<Departement> = Departement.fetchRequest();
+        let requestGroup : NSFetchRequest<Group> = Group.fetchRequest();
+
+        do{
+            let resultDep: [Departement] = try context.fetch(requestDep)
+            let resultGroup: [Group] = try context.fetch(requestGroup)
+            if(resultGroup.count == 0){
+                
+                let general = Group(context:context);
+                general.name="Général"
+                
+                let troisA = Group(context:context);
+                troisA.name="3ème année"
+                let trois = Years(context:context);
+                trois.numero=3;
+                troisA.annee=trois;
+                trois.addToGroups(troisA);
+                
+                
+                let quatreA = Group(context:context);
+                quatreA.name="4ème année";
+                let quatre = Years(context:context);
+                quatre.numero=4;
+                quatreA.annee=quatre;
+                quatre.addToGroups(quatreA);
+                
+                
+                let cinqA = Group(context:context);
+                cinqA.name="5ème année";
+                let cinq = Years(context:context);
+                cinq.numero=5;
+                cinqA.annee=cinq;
+                cinq.addToGroups(cinqA);
+                do{
+                    try context.save();
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+            }
+            if(resultDep.count==0){
                 let ig = Departement(context:context);
                 ig.name="IG";
                 ig.fullName="Informatique et Gestion";
