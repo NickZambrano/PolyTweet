@@ -212,6 +212,9 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
             }
         }
     }
+    @IBAction override func retour(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
