@@ -108,7 +108,7 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(imagePicker, animated: true, completion: nil)
     }
-    private func imagePickerController(_ picker: UIImagePickerController,
+    func imagePickerController(_ picker: UIImagePickerController,
                                 didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -212,10 +212,10 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
             }
         }
     }
-    
     @IBAction override func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
