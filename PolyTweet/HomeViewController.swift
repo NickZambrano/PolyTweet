@@ -11,7 +11,7 @@ import CoreData
 class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate{
     
     
-    var user:User?=SingleUser.getUser();
+    var user:User?=nil;
     
     
     var messages : [Message] = []
@@ -24,6 +24,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     @IBOutlet weak var tableGroupes: UITableView!
     
+    @IBOutlet weak var username: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
+        user=SingleUser.getUser();
         let context=appDelegate.persistentContainer.viewContext
 
         let requestGroupeGeneral : NSFetchRequest<Group> = Group.fetchRequest();
@@ -49,10 +51,13 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         loadMessage()
 
         //
+        self.username.text="@"+(user?.fname)!+(user?.lname)!;
+        self.username.textAlignment = .center
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
+            print("hello")
         }
         self.tableGroupes.allowsSelection = true
         
@@ -170,6 +175,9 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             cell.userName.text=self.messages[indexPath.section].sendBy?.fname
             if let image=self.messages[indexPath.section].sendBy?.img{
                 cell.profil.image=UIImage(data: image as Data)!
+                cell.profil.layer.cornerRadius = cell.profil.layer.frame.size.width / 2;
+                cell.profil.clipsToBounds = true;
+
             }
             if let date=self.messages[indexPath.section].date{
                 cell.setTimeStamp(time: date)
@@ -183,6 +191,9 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     // MARK: - Table View delegate methods
     
 
+    @IBAction func disconnect(_ sender: Any) {
+        SingleUser.destroy();
+    }
     
     // Set the spacing between sections
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
