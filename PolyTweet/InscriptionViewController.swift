@@ -86,6 +86,8 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
             // Do any additional setup after loading the view, typically from a nib.
 
         // Do any additional setup after loading the view, typically from a nib.
+        
+
     }
     /*func pickerView(_ pickerView: UIPickerView,didSelectRow row: Int, inComponent component: Int) {
         pickerDepartement.text = departement[row].fullName

@@ -78,7 +78,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inscription" translatesAutoresizingMaskIntoConstraints="NO" id="VPw-Ut-387">
-                                <rect key="frame" x="130.5" y="100" width="507" height="100"/>
+                                <rect key="frame" x="131" y="100" width="507" height="100"/>
                                 <accessibility key="accessibilityConfiguration" identifier="82CA04D2-6FC5-40CA-A6A7-BE7D417679DC-asset"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="507" id="LR0-IS-v89"/>
@@ -93,28 +93,22 @@
                                     <segue destination="NRv-J6-wUX" kind="presentation" identifier="signIn" id="mSq-nQ-jtj"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5fV-Fj-yeF">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="5fV-Fj-yeF">
                                 <rect key="frame" x="205" y="493" width="358" height="123"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LrS-v5-hiv">
-                                        <rect key="frame" x="154" y="0.0" width="50" height="82"/>
+                                        <rect key="frame" x="138" y="0.0" width="82" height="59"/>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="83r-mF-OoU">
-                                        <rect key="frame" x="110" y="82" width="138" height="41"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1z-T8-YsA">
-                                                <rect key="frame" x="0.0" y="0.0" width="138" height="41"/>
-                                                <color key="backgroundColor" red="0.9560704954" green="0.9891954878" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="27"/>
-                                                <state key="normal" title="Add image">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="loadImageButtonTapped:" destination="R8e-Tr-Dfx" eventType="touchUpInside" id="G7I-GP-T8L"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1z-T8-YsA">
+                                        <rect key="frame" x="76.5" y="70" width="205" height="53"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="05A860A0-E5C4-45EF-B955-A983655B09C8-asset"/>
+                                        <state key="normal" image="addimage">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loadImageButtonTapped:" destination="R8e-Tr-Dfx" eventType="touchUpInside" id="G7I-GP-T8L"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -222,12 +216,25 @@
                                             <constraint firstAttribute="width" secondItem="XQr-aN-HKh" secondAttribute="height" multiplier="5:7" id="rKn-C1-XVN"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuE-mB-TKb">
+                                        <rect key="frame" x="162" y="154" width="22" height="22"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="D09C1E30-3624-4354-9DF1-248A1F0D3118-asset"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="jno-RP-sIe"/>
+                                            <constraint firstAttribute="height" constant="22" id="ygN-lt-5sq"/>
+                                        </constraints>
+                                        <state key="normal" image="cell_elements_slash_contact_add"/>
+                                        <connections>
+                                            <action selector="chooseImage:" destination="I8B-Xo-0ft" eventType="touchUpInside" id="2BF-c9-q5O"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" identifier="82CBED7F-306F-40EB-AF99-0E7680BB28AA-asset"/>
                                 <constraints>
                                     <constraint firstItem="XQr-aN-HKh" firstAttribute="centerX" secondItem="aPb-Lc-gkB" secondAttribute="centerX" constant="-3" id="3pX-bC-7S1"/>
                                     <constraint firstItem="XQr-aN-HKh" firstAttribute="centerY" secondItem="aPb-Lc-gkB" secondAttribute="centerY" multiplier="0.75" id="IPj-Gz-fsS"/>
+                                    <constraint firstAttribute="trailing" secondItem="iuE-mB-TKb" secondAttribute="trailing" constant="38" id="Ju5-j5-8Ba"/>
                                     <constraint firstItem="XQr-aN-HKh" firstAttribute="top" secondItem="3Fr-I3-cwe" secondAttribute="bottom" constant="27" id="K2t-1E-qbA"/>
                                     <constraint firstItem="mEZ-bm-RSU" firstAttribute="top" secondItem="aPb-Lc-gkB" secondAttribute="top" constant="30" id="M5Z-Oy-t4y"/>
                                     <constraint firstAttribute="width" constant="222" id="Pbr-7Z-3Tb"/>
@@ -238,6 +245,7 @@
                                     <constraint firstItem="dnW-ik-K2n" firstAttribute="centerX" secondItem="aPb-Lc-gkB" secondAttribute="centerX" constant="-3" id="hI6-Xx-2I7"/>
                                     <constraint firstItem="dnW-ik-K2n" firstAttribute="centerY" secondItem="aPb-Lc-gkB" secondAttribute="centerY" multiplier="1.3" id="skm-ar-GqE"/>
                                     <constraint firstItem="VZn-ZR-P7t" firstAttribute="leading" secondItem="aPb-Lc-gkB" secondAttribute="leading" constant="3" id="tit-eW-dJ1"/>
+                                    <constraint firstItem="3Fr-I3-cwe" firstAttribute="top" secondItem="iuE-mB-TKb" secondAttribute="bottom" constant="15" id="zve-zM-PJQ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -738,8 +746,10 @@
     </scenes>
     <resources>
         <image name="accueil" width="205" height="77"/>
+        <image name="addimage" width="205" height="77"/>
         <image name="admin" width="358" height="82"/>
         <image name="awesome" width="358" height="82"/>
+        <image name="cell_elements_slash_contact_add" width="22" height="22"/>
         <image name="connexion" width="205" height="77"/>
         <image name="déconnexion" width="205" height="77"/>
         <image name="documents" width="205" height="77"/>

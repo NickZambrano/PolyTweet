@@ -14,6 +14,7 @@ class ProfileViewController : CommonViewController {
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var photo: UIImageView!
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,30 @@ class ProfileViewController : CommonViewController {
         }
 
     }
+    @IBAction func chooseImage(_ sender: UIButton) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(imagePicker, animated: true, completion: nil)
+    }
 
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            photo.contentMode = .scaleAspectFit
+            photo.image = pickedImage
+            user?.img=UIImageJPEGRepresentation(pickedImage,1) as NSData?
+            
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction override func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
