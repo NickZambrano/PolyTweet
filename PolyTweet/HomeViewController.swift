@@ -11,7 +11,7 @@ import CoreData
 class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate{
     
     
-    var user:User?=nil;
+    var user:User?=SingleUser.getUser();
     
     
     var messages : [Message] = []
@@ -27,6 +27,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
