@@ -11,7 +11,7 @@ import CoreData
 class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate{
     
     
-    var user:User?=nil;
+    var user:User?=SingleUser.getUser();
     
     
     var messages : [Message] = []
