@@ -20,6 +20,8 @@
 		B821E8E41E4DB9560030D669 /* PolyTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8E31E4DB9560030D669 /* PolyTweetUITests.swift */; };
 		B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */; };
 		B83536EC1E5DE03D00657628 /* SingleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83536EB1E5DE03D00657628 /* SingleUser.swift */; };
+		B83536EE1E5DFA1500657628 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */; };
+		B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83536EF1E5DFDB500657628 /* CoreDataManager.swift */; };
 		B844235D1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B844235E1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B8FEB12B1E5278FF00618FA4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */; };
@@ -64,6 +66,8 @@
 		B821E8E51E4DB9560030D669 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		B83536EB1E5DE03D00657628 /* SingleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleUser.swift; path = ../SingleUser.swift; sourceTree = "<group>"; };
+		B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = ../ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		B83536EF1E5DFDB500657628 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = ../CoreDataManager.swift; sourceTree = "<group>"; };
 		B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 		B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		B821E8BF1E4DB9560030D669 /* PolyTweet */ = {
 			isa = PBXGroup;
 			children = (
+				B83536EF1E5DFDB500657628 /* CoreDataManager.swift */,
+				B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */,
 				B83536EB1E5DE03D00657628 /* SingleUser.swift */,
 				B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */,
 				B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */,
@@ -293,10 +299,12 @@
 			files = (
 				B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */,
 				504750681E5DE94E008B87C0 /* ProfileViewController.swift in Sources */,
+				B83536EE1E5DFA1500657628 /* ResetPasswordViewController.swift in Sources */,
 				B821E8C91E4DB9560030D669 /* PolyTweet.xcdatamodeld in Sources */,
 				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
 				B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */,
 				B83536EC1E5DE03D00657628 /* SingleUser.swift in Sources */,
+				B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */,
 				B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */,
 				B8FEB12D1E5454D400618FA4 /* CommonViewController.swift in Sources */,
 				B8FEB12F1E545D2B00618FA4 /* MessageTableViewCell.swift in Sources */,
