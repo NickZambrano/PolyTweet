@@ -278,7 +278,7 @@
                                         </constraints>
                                         <state key="normal" image="cell_elements_slash_contact_add"/>
                                         <connections>
-                                            <action selector="chooseImage:" destination="I8B-Xo-0ft" eventType="touchUpInside" id="2BF-c9-q5O"/>
+                                            <action selector="loadImageButtonTapped:" destination="I8B-Xo-0ft" eventType="touchUpInside" id="plv-Dy-EmL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -313,7 +313,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="photo" destination="mEZ-bm-RSU" id="hJ4-0a-mVb"/>
+                        <outlet property="photo" destination="mEZ-bm-RSU" id="A6k-4s-5wC"/>
                         <outlet property="username" destination="3Fr-I3-cwe" id="M9M-EA-FQb"/>
                     </connections>
                 </viewController>
@@ -616,7 +616,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="222" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7bi-us-V9i" id="mhF-46-Bjt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="222" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="222" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZK-q2-fUV">
@@ -693,7 +693,7 @@
                                         <rect key="frame" x="0.0" y="28" width="506" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" layoutMarginsFollowReadableWidth="YES" tableViewCell="rUI-XT-QRF" id="T3f-Xb-aq1">
-                                            <rect key="frame" x="0.0" y="0.0" width="506" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="506" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T4X-5a-gY1">

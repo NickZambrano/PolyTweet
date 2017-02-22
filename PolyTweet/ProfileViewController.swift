@@ -8,12 +8,13 @@
 
 import UIKit
 import CoreData
-class ProfileViewController : CommonViewController, UIImagePickerControllerDelegate {
+class ProfileViewController : CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var user:User?=nil;
     
     @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var photo: UIImageView!
+    
+    @IBOutlet var photo: UIImageView!
     let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -26,9 +27,10 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
         }
-
+        imagePicker.delegate = self
     }
-    @IBAction func chooseImage(_ sender: UIButton) {
+
+    @IBAction func loadImageButtonTapped(_ sender: UIButton) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
