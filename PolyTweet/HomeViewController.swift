@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate {
+class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate{
     
     
     var user:User?=nil;
@@ -54,6 +54,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             photo.image=UIImage(data: image as Data)!
         }
         self.tableGroupes.allowsSelection = true
+        
+
 
         
     }
@@ -76,6 +78,10 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             messages.append(message)
             messageField.text=""
             self.tableMessage.reloadData()
+            if (self.tableMessage.contentSize.height > self.tableMessage.frame.size.height){
+                let offset = CGPoint(x:0,y:self.tableMessage.contentSize.height-self.tableMessage.frame.size.height)
+                self.tableMessage.setContentOffset(offset, animated: false)
+            }
         }
         catch let error as NSError{
             print(error);
@@ -106,18 +112,21 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         if(tableView == tableGroupes){
             return self.groupes.count
         }else{
-            return self.messages.count
+            return 1
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+        if(tableView == tableGroupes){
+            return 1
+        }else{
+            return self.messages.count
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(tableView == tableGroupes){
-
+            
                 groupSelected=self.groupes[indexPath.row]
                 loadMessage()
-
         }
         
     }
@@ -135,7 +144,12 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         catch let error as NSError{
             print(error);
         }
+
         self.tableMessage.reloadData()
+        if (self.tableMessage.contentSize.height > self.tableMessage.frame.size.height){
+            let offset = CGPoint(x:0,y:self.tableMessage.contentSize.height-self.tableMessage.frame.size.height)
+            self.tableMessage.setContentOffset(offset, animated: false)
+        }
     }
     
     
@@ -151,12 +165,12 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
        else{
             let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
-            cell.message.text=self.messages[indexPath.row].contenu
-            cell.userName.text=self.messages[indexPath.row].sendBy?.fname
-            if let image=self.messages[indexPath.row].sendBy?.img{
+            cell.message.text=self.messages[indexPath.section].contenu
+            cell.userName.text=self.messages[indexPath.section].sendBy?.fname
+            if let image=self.messages[indexPath.section].sendBy?.img{
                 cell.profil.image=UIImage(data: image as Data)!
             }
-            if let date=self.messages[indexPath.row].date{
+            if let date=self.messages[indexPath.section].date{
                 cell.setTimeStamp(time: date)
             }
             cell.layer.cornerRadius=10
@@ -164,6 +178,23 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
 
     }
+    
+    // MARK: - Table View delegate methods
+    
+
+    
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
 }
 
 
