@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class ProfileViewController : CommonViewController {
+class ProfileViewController : CommonViewController, UIImagePickerControllerDelegate {
     
     var user:User?=nil;
     
@@ -42,6 +42,7 @@ class ProfileViewController : CommonViewController {
             photo.contentMode = .scaleAspectFit
             photo.image = pickedImage
             user?.img=UIImageJPEGRepresentation(pickedImage,1) as NSData?
+            CoreDataManager.save();
             
         }
         
