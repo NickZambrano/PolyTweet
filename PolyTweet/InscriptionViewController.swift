@@ -163,7 +163,7 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
             user.password=self.password.text;
             user.mail=self.mail.text;
             user.appartient=departement;
-            
+            user.img=UIImageJPEGRepresentation(imageView.image!,1) as NSData?
             let requestYear : NSFetchRequest<Years> = Years.fetchRequest();
             let predicateYear = NSPredicate(format: "numero = %d",year!);
             requestYear.predicate=predicateYear;
