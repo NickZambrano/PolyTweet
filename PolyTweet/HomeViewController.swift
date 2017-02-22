@@ -57,7 +57,6 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         self.photo.clipsToBounds = true;
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
-            print("hello")
         }
         self.tableGroupes.allowsSelection = true
         
