@@ -59,6 +59,9 @@ class ViewController: CommonViewController {
                     if(result.count>0){
                         if(result[0].password==pass){
                             user=result[0];
+                            UserDefaults.standardUserDefaults.setValue(user, forKey: "defaultUser")
+                            
+                            UserDefaults.standard.synchronize()
                             performSegue(withIdentifier: "login", sender: self)
 
                         }
@@ -85,6 +88,13 @@ class ViewController: CommonViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func alreadyConnected(){
+        if let token =   UserDefaults.standard.value(forKey: "defaultUser") as? NSString {
+            // Token stored in NSUserDefaults.
+        } else {
+            // Have to login
+        }
     }
     override func prepare (for segue:UIStoryboardSegue, sender : Any?){
         if segue.identifier=="login"{
