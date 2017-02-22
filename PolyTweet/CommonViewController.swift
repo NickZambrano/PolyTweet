@@ -11,12 +11,12 @@ import CoreData
 class CommonViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CommonViewController.dismissKeyboard))
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CommonViewController.dismissKeyboard))
         
         NotificationCenter.default.addObserver(self, selector: #selector(CommonViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(CommonViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        view.addGestureRecognizer(tap)*/
+        //view.addGestureRecognizer(tap)
 
         
     }
@@ -26,11 +26,20 @@ class CommonViewController : UIViewController {
     }
     func keyboardWillShow(notification: NSNotification) {
         
-        if self.view.frame.origin.y == 0{
-            self.view.frame.origin.y -= 150
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
         }
         
-        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     
     func alert(title: String, message: String) {
@@ -40,12 +49,7 @@ class CommonViewController : UIViewController {
         present(alert, animated: true)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0{
-            self.view.frame.origin.y += 150
-        }
-        
-    }
+
     
     @IBAction func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
