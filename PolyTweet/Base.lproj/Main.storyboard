@@ -140,6 +140,54 @@
             </objects>
             <point key="canvasLocation" x="1855.46875" y="-193.359375"/>
         </scene>
+        <!--Reset Password View Controller-->
+        <scene sceneID="MD6-06-CHN">
+            <objects>
+                <viewController id="6D6-HI-hkM" customClass="ResetPasswordViewController" customModule="PolyTweet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3kK-ic-AhZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fr0-H0-KlL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PkK-Ak-Fgw">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ancien mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEj-fL-abF">
+                                <rect key="frame" x="78" y="83" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nouveau mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eQp-aE-yjV">
+                                <rect key="frame" x="60" y="149" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1q-5M-qyX">
+                                <rect key="frame" x="202" y="219" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Valider"/>
+                                <connections>
+                                    <action selector="valider:" destination="6D6-HI-hkM" eventType="touchUpInside" id="Wzu-Rr-yPw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="450" height="300"/>
+                    <connections>
+                        <outlet property="newPassword" destination="eQp-aE-yjV" id="ofJ-61-XGx"/>
+                        <outlet property="oldPassword" destination="aEj-fL-abF" id="THe-Sm-VGF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sSl-Zy-7uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1774" y="832"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="rok-KM-cmD">
             <objects>
@@ -197,6 +245,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="205" height="77"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ECD20037-234E-4CCF-8799-2E84E0149D65-asset"/>
                                                 <state key="normal" image="mdp"/>
+                                                <connections>
+                                                    <segue destination="6D6-HI-hkM" kind="popoverPresentation" popoverAnchorView="3EH-v6-fIx" id="3Xc-rG-VQ3">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lV6-yT-u4J">
                                                 <rect key="frame" x="0.0" y="117" width="205" height="77"/>
