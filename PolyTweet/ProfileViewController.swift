@@ -43,6 +43,7 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photo.contentMode = .scaleAspectFit
             photo.image = pickedImage
+            photo.contentMode = .scaleAspectFill
             user?.img=UIImageJPEGRepresentation(pickedImage,1) as NSData?
             CoreDataManager.save();
             
