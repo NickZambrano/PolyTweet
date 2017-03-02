@@ -12,6 +12,7 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
     
     var user:User?=nil;
     
+    
     @IBOutlet weak var username: UILabel!
     
     @IBOutlet var photo: UIImageView!
@@ -36,6 +37,7 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(imagePicker, animated: true, completion: nil)
     }
+    
 
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject])

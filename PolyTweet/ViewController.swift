@@ -49,10 +49,29 @@ class ViewController: CommonViewController {
                             self.alert(title:"Erreur", message:"Erreur d'identifiant");
                         }
                     }
-                    else{
-                        self.alert(title:"Erreur", message:"Erreur d'identifiant");
 
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+                
+                let requestProf : NSFetchRequest<Enseignant> = Enseignant.fetchRequest();
+                let predicateProf = NSPredicate(format: "mail == %@",username);
+                requestProf.predicate=predicateProf;
+                do{
+                    let result: [Enseignant] = try context.fetch(requestProf)
+                    if(result.count>0){
+                        if(result[0].password==pass){
+                            user=result[0];
+                            SingleUser.setUser(userToSet: user!);
+                            performSegue(withIdentifier: "login", sender: self)
+                            
+                        }
+                        else{
+                            self.alert(title:"Erreur", message:"Erreur d'identifiant prof");
+                        }
                     }
+
                 }
                 catch let error as NSError{
                     print(error);

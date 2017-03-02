@@ -187,6 +187,15 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
 
     }
     
+    //Permet de changer (mettre a jour le changement d'image de profil
+    @IBAction func unwindToThisView(segue: UIStoryboardSegue) {
+        let newController = segue.source as! ProfileViewController
+        photo.image = newController.photo.image
+        tableMessage.reloadData()
+    }
+
+    
+    
     // MARK: - Table View delegate methods
     
 
