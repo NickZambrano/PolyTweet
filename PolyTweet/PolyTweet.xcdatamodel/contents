@@ -67,6 +67,6 @@
         <element name="PieceJointe" positionX="-684" positionY="4077" width="128" height="88"/>
         <element name="User" positionX="-983" positionY="4281" width="128" height="163"/>
         <element name="Years" positionX="-812" positionY="4622" width="128" height="88"/>
-        <element name="Administration" positionX="-1035" positionY="4610" width="128" height="43"/>
+        <element name="Administration" positionX="-1017" positionY="4574" width="128" height="43"/>
     </elements>
 </model>
