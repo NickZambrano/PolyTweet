@@ -176,6 +176,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
                 cell.profil.image=UIImage(data: image as Data)!
                 cell.profil.layer.cornerRadius = cell.profil.layer.frame.size.width / 2;
                 cell.profil.clipsToBounds = true;
+                cell.profil.contentMode = .scaleAspectFill
 
             }
             if let date=self.messages[indexPath.section].date{
@@ -191,6 +192,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     @IBAction func unwindToThisView(segue: UIStoryboardSegue) {
         let newController = segue.source as! ProfileViewController
         photo.image = newController.photo.image
+        photo.contentMode = .scaleAspectFill
         tableMessage.reloadData()
     }
 
