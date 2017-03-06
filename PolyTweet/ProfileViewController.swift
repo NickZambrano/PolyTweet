@@ -16,7 +16,8 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var username: UILabel!
     
     @IBOutlet var photo: UIImageView!
-    let imagePicker = UIImagePickerController()
+    @IBOutlet var statusUser: UILabel!
+    let imagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +29,50 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
         }
-        imagePicker.delegate = self
+        imagePickerController.delegate = self
+        if (user as? Etudiant) != nil {
+            statusUser.text="Etudiant";
+        }
+        if (user as? Administration) != nil {
+            statusUser.text="Administration";
+        }
+        if (user as? Enseignant) != nil {
+            statusUser.text="Enseignant";
+        }
+        
     }
 
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePicker, animated: true, completion: nil)
+        imagePickerController.allowsEditing = false
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(imagePickerController, animated: true, completion: nil)
+        
+        /*let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.imagePickerController.sourceType = .camera
+                self.present(self.imagePickerController, animated: true, completion: nil)
+            }else{
+                print("Camera not available")
+            }
+            
+            
+        }))
+        
+        actionSheet.popoverPresentationController?.sourceView = photo
+        
+        
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            self.imagePickerController.sourceType = .photoLibrary
+            self.present(self.imagePickerController, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)*/
     }
     
 
@@ -47,6 +84,7 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
             photo.image = pickedImage
             photo.contentMode = .scaleAspectFill
             user?.img=UIImageJPEGRepresentation(pickedImage,1) as NSData?
+            //picker.dismiss(animated: true, completion: nil)
             CoreDataManager.save();
             
         }
@@ -62,4 +100,6 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
     @IBAction override func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+
 }

@@ -25,6 +25,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     @IBOutlet weak var tableGroupes: UITableView!
     
     @IBOutlet weak var username: UILabel!
+    @IBOutlet var userStatus: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,17 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         //
         self.username.text="@"+(user?.fname)!+(user?.lname)!;
         self.username.textAlignment = .center
+        
+        if (user as? Etudiant) != nil {
+            userStatus.text="Etudiant";
+        }
+        if (user as? Administration) != nil {
+            userStatus.text="Administration";
+        }
+        if (user as? Enseignant) != nil {
+            userStatus.text="Enseignant";
+        }
+        
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
         if let image=user?.img {
