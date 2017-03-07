@@ -341,61 +341,6 @@
             </objects>
             <point key="canvasLocation" x="172.65625" y="76.7578125"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Eul-Gb-qOV">
-            <objects>
-                <viewController id="Nw1-aZ-QAd" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3Y4-xJ-p0J"/>
-                        <viewControllerLayoutGuide type="bottom" id="FNI-n5-Eua"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="33u-E0-VjR">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="hb4-FC-MqC">
-                                <rect key="frame" x="205" y="319" width="358" height="386"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOJ-Qd-mRl">
-                                        <rect key="frame" x="0.0" y="0.0" width="358" height="82"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="DBFAF8F9-5C20-4624-A63B-9A7DBD5764FD-asset"/>
-                                        <state key="normal" image="etudiant"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0II-2N-mrm">
-                                        <rect key="frame" x="0.0" y="152" width="358" height="82"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="94A4FDA7-9834-4C08-85C4-CBD327FA12BB-asset"/>
-                                        <state key="normal" image="awesome"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFE-Gd-MoI">
-                                        <rect key="frame" x="0.0" y="304" width="358" height="82"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="C25F8416-A6A2-4BDD-BC91-938ADCFCC9E2-asset"/>
-                                        <state key="normal" image="admin"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-lK-52X">
-                                <rect key="frame" x="32" y="30" width="92" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="BEED80D8-B620-456C-8029-6EEA34C9DC19-asset"/>
-                                <state key="normal" image="retour"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.1684835851" green="0.33879953619999997" blue="0.47185611719999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="hb4-FC-MqC" firstAttribute="centerX" secondItem="33u-E0-VjR" secondAttribute="centerX" id="uA8-dR-DoM"/>
-                            <constraint firstItem="hb4-FC-MqC" firstAttribute="centerY" secondItem="33u-E0-VjR" secondAttribute="centerY" id="zhv-UK-8tG"/>
-                        </constraints>
-                    </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <real key="value" value="8"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b3O-GN-TXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="827" y="-1419"/>
-        </scene>
         <!--Common View Controller-->
         <scene sceneID="PU2-W8-185">
             <objects>
