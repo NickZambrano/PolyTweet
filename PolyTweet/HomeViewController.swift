@@ -18,6 +18,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     var groupSelected : Group?=nil;
 
     var groupes : [Group]=[]
+    
     @IBOutlet weak var tableMessage: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var photo: UIImageView!
@@ -72,10 +73,9 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
         self.tableGroupes.allowsSelection = true
         
-
-
         
     }
+    
     
     @IBAction func sendMessage(_ sender: UIButton) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
@@ -199,16 +199,13 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
 
     }
-    
-    //Permet de changer (mettre a jour le changement d'image de profil
-    @IBAction func unwindToThisView(segue: UIStoryboardSegue) {
-        let newController = segue.source as! ProfileViewController
+
+    @IBAction func unwindtoHome(segue: UIStoryboardSegue) {
+        let newController = segue.source as! PopUpViewController
         photo.image = newController.photo.image
         photo.contentMode = .scaleAspectFill
         tableMessage.reloadData()
     }
-
-    
     
     // MARK: - Table View delegate methods
     
@@ -230,6 +227,3 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     }
     
 }
-
-
-

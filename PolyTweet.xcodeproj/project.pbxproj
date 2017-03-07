@@ -10,6 +10,7 @@
 		503B3A951E6853D3001D5608 /* InscriptionEnseignantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */; };
 		503B3A991E686274001D5608 /* PolyTweet.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */; };
 		503B3A9D1E686F0F001D5608 /* InscriptionAdministrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */; };
+		5042CE021E6EA7C500965A2A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5042CE011E6EA7C500965A2A /* PopUpViewController.swift */; };
 		504750681E5DE94E008B87C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504750671E5DE94E008B87C0 /* ProfileViewController.swift */; };
 		6C3806F50CC2B56F805F8A45 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */; };
@@ -53,6 +54,7 @@
 		503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InscriptionEnseignantViewController.swift; sourceTree = "<group>"; };
 		503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PolyTweet.xcdatamodel; sourceTree = "<group>"; };
 		503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InscriptionAdministrationViewController.swift; path = ../InscriptionAdministrationViewController.swift; sourceTree = "<group>"; };
+		5042CE011E6EA7C500965A2A /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		504750671E5DE94E008B87C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = ../GroupTableViewCell.swift; sourceTree = "<group>"; };
 		B821E8BD1E4DB9560030D669 /* PolyTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,7 @@
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
 				B821E8C21E4DB9560030D669 /* ViewController.swift */,
 				B821E8C41E4DB9560030D669 /* Main.storyboard */,
+				5042CE011E6EA7C500965A2A /* PopUpViewController.swift */,
 				503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */,
 				504750671E5DE94E008B87C0 /* ProfileViewController.swift */,
 				B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */,
@@ -310,6 +313,7 @@
 				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
 				B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */,
 				B83536EC1E5DE03D00657628 /* SingleUser.swift in Sources */,
+				5042CE021E6EA7C500965A2A /* PopUpViewController.swift in Sources */,
 				B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */,
 				B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */,
 				503B3A951E6853D3001D5608 /* InscriptionEnseignantViewController.swift in Sources */,
