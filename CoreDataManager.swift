@@ -2,8 +2,8 @@
 //  NSManagedObjectExtension.swift
 //  FlowBook
 //
-//  Created by Benjamin Afonso on 12/02/2017.
-//  Copyright © 2017 Benjamin Afonso. All rights reserved.
+//  Created by Nicolas Zambrano on 12/02/2017.
+//  Copyright © 2017 Nicolas Zambrano. All rights reserved.
 //
 
 import CoreData
