@@ -50,7 +50,7 @@ class ViewController: CommonViewController {
                         }
                     }
 
-                }
+                } 
                 catch let error as NSError{
                     print(error);
                 }
