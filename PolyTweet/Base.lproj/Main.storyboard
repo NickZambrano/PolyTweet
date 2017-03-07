@@ -1123,20 +1123,11 @@
                 <viewController id="gYy-Lo-yg3" customClass="PopUpViewController" customModule="PolyTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="hbm-IA-lo4">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IRw-cn-2ae">
                             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUq-KZ-zcb">
-                                    <rect key="frame" x="0.0" y="4" width="768" height="1016"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <connections>
-                                        <action selector="dismissPopUp:" destination="gYy-Lo-yg3" eventType="touchUpInside" id="YaH-wM-vOu"/>
-                                        <segue destination="IDU-46-81B" kind="unwind" unwindAction="unwindtoHomeWithSegue:" id="MKc-By-GbW"/>
-                                    </connections>
-                                </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRB-ya-kLe">
                                     <rect key="frame" x="124" y="240" width="521" height="545"/>
                                     <subviews>
@@ -1165,43 +1156,58 @@
                                             <color key="textColor" red="0.90521615743637085" green="0.92540532350540161" blue="0.9378470778465271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vN-cq-u0F">
-                                            <rect key="frame" x="325" y="490" width="155" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vN-cq-u0F">
+                                            <rect key="frame" x="343" y="487" width="119" height="49"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="155" id="g7W-rU-A76"/>
+                                                <constraint firstAttribute="width" constant="119" id="DWI-vU-uJA"/>
+                                                <constraint firstAttribute="height" constant="49" id="jPD-Bf-axh"/>
                                             </constraints>
-                                            <state key="normal" title="Changer mot de passe"/>
+                                            <state key="normal" image="change_mdp"/>
                                             <connections>
                                                 <segue destination="6D6-HI-hkM" kind="popoverPresentation" popoverAnchorView="6vN-cq-u0F" id="wMY-1x-Xvk">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7G-iQ-r3l">
-                                            <rect key="frame" x="351" y="442" width="103" height="30"/>
-                                            <state key="normal" title="Changer photo"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7G-iQ-r3l">
+                                            <rect key="frame" x="343" y="427" width="119" height="49"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="119" id="jk6-ia-Yf7"/>
+                                                <constraint firstAttribute="height" constant="49" id="oqK-ND-FKd"/>
+                                            </constraints>
+                                            <state key="normal" image="change_photo"/>
                                             <connections>
                                                 <action selector="loadImageButtonTapped:" destination="gYy-Lo-yg3" eventType="touchUpInside" id="H92-Gm-yyX"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUq-KZ-zcb">
+                                            <rect key="frame" x="-125" y="-239" width="769" height="1025"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="dismissPopUp:" destination="gYy-Lo-yg3" eventType="touchUpInside" id="YaH-wM-vOu"/>
+                                                <segue destination="IDU-46-81B" kind="unwind" unwindAction="unwindtoHomeWithSegue:" id="MKc-By-GbW"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="6vN-cq-u0F" secondAttribute="trailing" constant="41" id="0L3-1x-Q4G"/>
-                                        <constraint firstItem="6vN-cq-u0F" firstAttribute="top" secondItem="F7G-iQ-r3l" secondAttribute="bottom" constant="18" id="2Hf-9L-eyU"/>
-                                        <constraint firstAttribute="trailing" secondItem="F7G-iQ-r3l" secondAttribute="trailing" constant="67" id="BJz-CR-w5a"/>
+                                        <constraint firstAttribute="bottom" secondItem="SUq-KZ-zcb" secondAttribute="bottom" constant="-241" id="7Md-dI-ccw"/>
                                         <constraint firstItem="9cR-ws-dFg" firstAttribute="leading" secondItem="fRB-ya-kLe" secondAttribute="leading" constant="8" id="BuK-SW-fNu"/>
+                                        <constraint firstAttribute="bottom" secondItem="6vN-cq-u0F" secondAttribute="bottom" constant="9" id="Cbg-mp-W0W"/>
                                         <constraint firstItem="fck-i4-DwA" firstAttribute="top" secondItem="fRB-ya-kLe" secondAttribute="top" id="JuF-tV-aeQ"/>
+                                        <constraint firstItem="F7G-iQ-r3l" firstAttribute="top" secondItem="fck-i4-DwA" secondAttribute="bottom" constant="9" id="LYP-Y3-4vc"/>
                                         <constraint firstItem="Sm7-m7-jRi" firstAttribute="top" secondItem="fck-i4-DwA" secondAttribute="bottom" constant="16" id="PJd-Dn-baS"/>
-                                        <constraint firstItem="F7G-iQ-r3l" firstAttribute="top" secondItem="fck-i4-DwA" secondAttribute="bottom" constant="24" id="YQM-84-SIb"/>
                                         <constraint firstAttribute="width" constant="521" id="ey7-PY-nHF"/>
-                                        <constraint firstItem="6vN-cq-u0F" firstAttribute="leading" secondItem="9cR-ws-dFg" secondAttribute="trailing" constant="14" id="feI-EJ-ea9"/>
                                         <constraint firstAttribute="height" constant="545" id="gvi-Js-ICb"/>
+                                        <constraint firstAttribute="trailing" secondItem="F7G-iQ-r3l" secondAttribute="trailing" constant="59" id="o0r-cR-P4V"/>
                                         <constraint firstItem="fck-i4-DwA" firstAttribute="leading" secondItem="fRB-ya-kLe" secondAttribute="leading" id="oHz-K7-PJo"/>
+                                        <constraint firstAttribute="trailing" secondItem="6vN-cq-u0F" secondAttribute="trailing" constant="59" id="pLg-CE-iwC"/>
                                         <constraint firstItem="Sm7-m7-jRi" firstAttribute="leading" secondItem="fRB-ya-kLe" secondAttribute="leading" constant="8" id="qbB-c3-1Jr"/>
                                         <constraint firstAttribute="trailing" secondItem="fck-i4-DwA" secondAttribute="trailing" id="qk4-Jx-XuH"/>
                                         <constraint firstItem="9cR-ws-dFg" firstAttribute="top" secondItem="Sm7-m7-jRi" secondAttribute="bottom" constant="36" id="sjQ-nF-ThE"/>
-                                        <constraint firstItem="F7G-iQ-r3l" firstAttribute="leading" secondItem="Sm7-m7-jRi" secondAttribute="trailing" constant="47" id="wki-Fy-qpL"/>
+                                        <constraint firstItem="SUq-KZ-zcb" firstAttribute="leading" secondItem="fRB-ya-kLe" secondAttribute="leading" constant="-125" id="uYa-tz-Iep"/>
+                                        <constraint firstItem="SUq-KZ-zcb" firstAttribute="top" secondItem="fRB-ya-kLe" secondAttribute="top" constant="-239" id="v25-R1-yga"/>
+                                        <constraint firstAttribute="trailing" secondItem="SUq-KZ-zcb" secondAttribute="trailing" constant="-123" id="xhM-29-jbJ"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -1228,6 +1234,8 @@
         <image name="addimage" width="205" height="77"/>
         <image name="admin" width="358" height="82"/>
         <image name="awesome" width="358" height="82"/>
+        <image name="change_mdp" width="202" height="75"/>
+        <image name="change_photo" width="202" height="75"/>
         <image name="connexion" width="205" height="77"/>
         <image name="déconnexion" width="205" height="77"/>
         <image name="documents" width="205" height="77"/>
