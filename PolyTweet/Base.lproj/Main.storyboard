@@ -439,7 +439,7 @@
                                 <rect key="frame" x="281" y="528" width="205" height="147"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="heO-A7-uqa">
-                                        <rect key="frame" x="62" y="0.0" width="82" height="59"/>
+                                        <rect key="frame" x="61.5" y="0.0" width="82" height="59"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGl-sb-DSn">
                                         <rect key="frame" x="0.0" y="70" width="205" height="77"/>
