@@ -292,6 +292,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Error Handling
             // ...
         }
+        
+        fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Enseignant")
+        
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+        
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest) as! [NSManagedObject]
+            
+            for item in items {
+                persistentContainer.viewContext.delete(item)
+            }
+            
+            // Save Changes
+            try persistentContainer.viewContext.save()
+            
+        } catch {
+            // Error Handling
+            // ...
+        }
+        
+        fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        // Configure Fetch Request
+        fetchRequest.includesPropertyValues = false
+        
+        do {
+            let items = try persistentContainer.viewContext.fetch(fetchRequest) as! [NSManagedObject]
+            
+            for item in items {
+                persistentContainer.viewContext.delete(item)
+            }
+            
+            // Save Changes
+            try persistentContainer.viewContext.save()
+            
+        } catch {
+            // Error Handling
+            // ...
+        }
     }
 
 }

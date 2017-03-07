@@ -18,6 +18,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     var groupSelected : Group?=nil;
 
     var groupes : [Group]=[]
+    
     @IBOutlet weak var tableMessage: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var photo: UIImageView!
@@ -25,6 +26,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     @IBOutlet weak var tableGroupes: UITableView!
     
     @IBOutlet weak var username: UILabel!
+    @IBOutlet var userStatus: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,17 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         //
         self.username.text="@"+(user?.fname)!+(user?.lname)!;
         self.username.textAlignment = .center
+        
+        if (user as? Etudiant) != nil {
+            userStatus.text="Etudiant";
+        }
+        if (user as? Administration) != nil {
+            userStatus.text="Administration";
+        }
+        if (user as? Enseignant) != nil {
+            userStatus.text="Enseignant";
+        }
+        
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
         if let image=user?.img {
@@ -60,10 +73,9 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
         self.tableGroupes.allowsSelection = true
         
-
-
         
     }
+    
     
     @IBAction func sendMessage(_ sender: UIButton) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
@@ -176,6 +188,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
                 cell.profil.image=UIImage(data: image as Data)!
                 cell.profil.layer.cornerRadius = cell.profil.layer.frame.size.width / 2;
                 cell.profil.clipsToBounds = true;
+                cell.profil.contentMode = .scaleAspectFill
 
             }
             if let date=self.messages[indexPath.section].date{
@@ -185,6 +198,13 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             return cell
         }
 
+    }
+
+    @IBAction func unwindtoHome(segue: UIStoryboardSegue) {
+        let newController = segue.source as! PopUpViewController
+        photo.image = newController.photo.image
+        photo.contentMode = .scaleAspectFill
+        tableMessage.reloadData()
     }
     
     // MARK: - Table View delegate methods
@@ -207,6 +227,3 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     }
     
 }
-
-
-

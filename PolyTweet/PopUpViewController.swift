@@ -1,14 +1,14 @@
 //
-//  ProfileViewController.swift
+//  PopUpViewController.swift
 //  PolyTweet
 //
-//  Created by Nicolas zambrano on 15/02/2017.
+//  Created by QC on 07/03/2017.
 //  Copyright © 2017 Nicolas zambrano. All rights reserved.
 //
 
 import UIKit
-import CoreData
-class ProfileViewController : CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+class PopUpViewController: CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var user:User?=nil;
     
@@ -24,7 +24,6 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
         user=SingleUser.getUser();
         username.text="@"+(user?.fname)!+(user?.lname)!;
         username.textAlignment = .center;
-        self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
@@ -41,41 +40,16 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
         }
         
     }
-
+    
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
         imagePickerController.allowsEditing = false
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(imagePickerController, animated: true, completion: nil)
-        
-        /*let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
-        
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                self.imagePickerController.sourceType = .camera
-                self.present(self.imagePickerController, animated: true, completion: nil)
-            }else{
-                print("Camera not available")
-            }
-            
-            
-        }))
-        
-        actionSheet.popoverPresentationController?.sourceView = photo
-        
-        
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
-            self.imagePickerController.sourceType = .photoLibrary
-            self.present(self.imagePickerController, animated: true, completion: nil)
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(actionSheet, animated: true, completion: nil)*/
+
     }
     
-
+    
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
@@ -91,15 +65,17 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
         
         dismiss(animated: true, completion: nil)
     }
-
+    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction override func retour(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    @IBAction func dismissPopUp(_ sender: UIButton) {
+        
+    }
 }

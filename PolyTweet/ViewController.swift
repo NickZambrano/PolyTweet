@@ -49,10 +49,54 @@ class ViewController: CommonViewController {
                             self.alert(title:"Erreur", message:"Erreur d'identifiant");
                         }
                     }
-                    else{
-                        self.alert(title:"Erreur", message:"Erreur d'identifiant");
 
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+                
+                let requestAdmin : NSFetchRequest<Administration> = Administration.fetchRequest();
+                let predicateAdmin = NSPredicate(format: "mail == %@",username);
+                requestAdmin.predicate=predicateAdmin;
+                do{
+                    let result: [Administration] = try context.fetch(requestAdmin)
+                    if(result.count>0){
+                        if(result[0].password==pass){
+                            user=result[0];
+                            SingleUser.setUser(userToSet: user!);
+                            performSegue(withIdentifier: "login", sender: self)
+                            self.alert(title:"Erreur", message:" d'identifiant Administration");
+                            
+                        }
+                        else{
+                            self.alert(title:"Erreur", message:"Erreur d'identifiant Administration");
+                        }
+                    }else{
+                        print("Not found");
                     }
+                    
+                }
+                catch let error as NSError{
+                    print(error);
+                }
+                
+                let requestProf : NSFetchRequest<Enseignant> = Enseignant.fetchRequest();
+                let predicateProf = NSPredicate(format: "mail == %@",username);
+                requestProf.predicate=predicateProf;
+                do{
+                    let result: [Enseignant] = try context.fetch(requestProf)
+                    if(result.count>0){
+                        if(result[0].password==pass){
+                            user=result[0];
+                            SingleUser.setUser(userToSet: user!);
+                            performSegue(withIdentifier: "login", sender: self)
+                            
+                        }
+                        else{
+                            self.alert(title:"Erreur", message:"Erreur d'identifiant Enseignant");
+                        }
+                    }
+
                 }
                 catch let error as NSError{
                     print(error);
