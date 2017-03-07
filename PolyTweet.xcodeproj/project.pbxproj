@@ -15,6 +15,7 @@
 		6C3806F50CC2B56F805F8A45 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */; };
 		B81C4EC81E6F27AE000397F3 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */; };
+		B81C4ECA1E6F28C4000397F3 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */; };
 		B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8C01E4DB9560030D669 /* AppDelegate.swift */; };
 		B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8C21E4DB9560030D669 /* ViewController.swift */; };
 		B821E8C61E4DB9560030D669 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B821E8C41E4DB9560030D669 /* Main.storyboard */; };
@@ -28,7 +29,6 @@
 		B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83536EF1E5DFDB500657628 /* CoreDataManager.swift */; };
 		B844235D1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B844235E1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
-		B8455DDD1E6EDE9800B91ACF /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8455DDC1E6EDE9800B91ACF /* AdminViewController.swift */; };
 		B8FEB12B1E5278FF00618FA4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */; };
 		B8FEB12D1E5454D400618FA4 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */; };
 		B8FEB12F1E545D2B00618FA4 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */; };
@@ -60,6 +60,7 @@
 		504750671E5DE94E008B87C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = ../GroupTableViewCell.swift; sourceTree = "<group>"; };
 		B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		B821E8BD1E4DB9560030D669 /* PolyTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B821E8C01E4DB9560030D669 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B821E8C21E4DB9560030D669 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		B83536EB1E5DE03D00657628 /* SingleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleUser.swift; path = ../SingleUser.swift; sourceTree = "<group>"; };
 		B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = ../ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B83536EF1E5DFDB500657628 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = ../CoreDataManager.swift; sourceTree = "<group>"; };
-		B8455DDC1E6EDE9800B91ACF /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminViewController.swift; path = ../../../AdminViewController.swift; sourceTree = "<group>"; };
 		B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 		B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */,
 				5042CE011E6EA7C500965A2A /* PopUpViewController.swift */,
 				503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */,
-				B8455DDC1E6EDE9800B91ACF /* AdminViewController.swift */,
+				B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */,
 				504750671E5DE94E008B87C0 /* ProfileViewController.swift */,
 				B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */,
 				503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */,
@@ -314,13 +314,13 @@
 			files = (
 				503B3A991E686274001D5608 /* PolyTweet.xcdatamodel in Sources */,
 				B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */,
-				B8455DDD1E6EDE9800B91ACF /* AdminViewController.swift in Sources */,
 				504750681E5DE94E008B87C0 /* ProfileViewController.swift in Sources */,
 				B83536EE1E5DFA1500657628 /* ResetPasswordViewController.swift in Sources */,
 				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
 				B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */,
 				B83536EC1E5DE03D00657628 /* SingleUser.swift in Sources */,
 				5042CE021E6EA7C500965A2A /* PopUpViewController.swift in Sources */,
+				B81C4ECA1E6F28C4000397F3 /* AdminViewController.swift in Sources */,
 				B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */,
 				B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */,
 				B81C4EC81E6F27AE000397F3 /* UserTableViewCell.swift in Sources */,
