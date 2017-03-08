@@ -128,6 +128,13 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = self.tableUsers.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
+        
+        if let image=self.users[indexPath.row].img{
+            cell.photo.image=UIImage(data: image as Data)!
+            cell.photo.layer.cornerRadius = cell.photo.layer.frame.size.width / 2;
+            cell.photo.clipsToBounds = true;
+            cell.photo.contentMode = .scaleAspectFill
+        }
             cell.fname.text=self.users[indexPath.row].fname
             cell.lname.text=self.users[indexPath.row].lname
             cell.mail.text=self.users[indexPath.row].mail
@@ -139,12 +146,73 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
                 cell.unsetResponsable.isHidden=true;
                 cell.setResponsable.isHidden=true;
         }
+            cell.layer.cornerRadius=10
+
             return cell
 
         
     }
     
+    func getContext(errorMsg: String, userInfoMsg: String = "could not retrieve data context") -> NSManagedObjectContext?{
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            self.alert(title: errorMsg, message: userInfoMsg)
+            return nil
+        }
+        return appDelegate.persistentContainer.viewContext
+    }
     
+    func delete(userWithIndex index: Int) -> Bool{
+        guard let context = self.getContext(errorMsg: "Could not delete user") else {return false}
+        let user = self.users[index]
+        context.delete(user)
+        do{
+            try context.save()
+            self.users.remove(at: index)
+            return true
+        }
+        catch let error as NSError{
+            self.alert(WithTitle: "error")
+            return false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle==UITableViewCellEditingStyle.delete){
+            self.tableUsers.beginUpdates()
+            if self.delete(userWithIndex: indexPath.row){
+                self.tableUsers.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            }
+            self.tableUsers.endUpdates()
+        }
+    }
+    
+    func alert(WithTitle title: String, andMessage msg: String = "") {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(cancelAction)
+        present(alert, animated:true)
+    }
+    
+    @IBAction override func retour(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+
 }
 
 

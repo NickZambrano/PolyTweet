@@ -19,6 +19,7 @@ class UserTableViewCell : UITableViewCell{
     @IBOutlet weak var lname: UILabel!
     @IBOutlet weak var mail: UILabel!
     @IBOutlet weak var fname: UILabel!
+    @IBOutlet weak var photo: UIImageView!
     
     @IBAction func unsetResponsable(_ sender: Any) {
         if let enseignant = self.user as? Enseignant{
