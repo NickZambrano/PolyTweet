@@ -50,10 +50,10 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
      }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.users.count
+            return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
+            return self.users.count
 
     }
 
@@ -129,17 +129,17 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = self.tableUsers.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
         
-        if let image=self.users[indexPath.row].img{
+        if let image=self.users[indexPath.section].img{
             cell.photo.image=UIImage(data: image as Data)!
             cell.photo.layer.cornerRadius = cell.photo.layer.frame.size.width / 2;
             cell.photo.clipsToBounds = true;
             cell.photo.contentMode = .scaleAspectFill
         }
-            cell.fname.text=self.users[indexPath.row].fname
-            cell.lname.text=self.users[indexPath.row].lname
-            cell.mail.text=self.users[indexPath.row].mail
-            cell.user=self.users[indexPath.row]
-            if let userEnseignant=self.users[indexPath.row] as? Enseignant {
+            cell.fname.text=self.users[indexPath.section].fname
+            cell.lname.text=self.users[indexPath.section].lname
+            cell.mail.text=self.users[indexPath.section].mail
+            cell.user=self.users[indexPath.section]
+            if let userEnseignant=self.users[indexPath.section] as? Enseignant {
                 cell.unsetResponsable.isHidden = !(userEnseignant.respoDepartement);
                 cell.setResponsable.isHidden=(userEnseignant.respoDepartement);
             }else{
