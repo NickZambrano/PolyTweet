@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import SwipeCellKit
-class AdminViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate{
+class AdminViewController: CommonViewController, UITableViewDataSource, UITableViewDelegate,SwipeTableViewCellDelegate{
     
     
     var user:User?=nil;
@@ -170,27 +170,46 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
         return appDelegate.persistentContainer.viewContext
     }
 
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
+
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else {
-            print("Bonjour");
-            return nil;
+        switch orientation{
+        case .right :
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+                let user = self.users[indexPath.section]
+                CoreDataManager.context.delete(user)
+                CoreDataManager.save()
+                self.users.remove(at: indexPath.section)
+                self.tableUsers.reloadData()
+            }
+            
+            // customize the action appearance
+            deleteAction.image = UIImage(named: "delete")
+            
+            return [deleteAction]
+            
+        
+        
+        case .left :
+            let respoAction = SwipeAction(style: .default, title: "Responsable") { action, indexPath in
+                if let enseignant = self.users[indexPath.section] as? Enseignant{
+                    print("hey")
+                    enseignant.respoDepartement = !(enseignant.respoDepartement);
+                    CoreDataManager.save();
+                    self.tableUsers.reloadData()
+                    
+                }
+            }
+            
+            // customize the action appearance
+            respoAction.image = UIImage(named: "modify")
+
+            
+            return [respoAction]
         }
+
         
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            // handle action by updating model with deletion
-            print("Hello");
-        }
-        
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "delete")
-        
-        return [deleteAction]
+
     }
     
     func alert(WithTitle title: String, andMessage msg: String = "") {

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class UserTableViewCell : UITableViewCell{
+class UserTableViewCell : SwipeTableViewCell{
     
 
     var user : User? = nil;
@@ -18,14 +19,6 @@ class UserTableViewCell : UITableViewCell{
     @IBOutlet weak var mail: UILabel!
     @IBOutlet weak var fname: UILabel!
     @IBOutlet weak var photo: UIImageView!
-    var delegate : AdminViewController?=nil;
-    @IBAction func respoButton(_ sender: Any) {
-        if let enseignant = self.user as? Enseignant{
-            enseignant.respoDepartement = !(enseignant.respoDepartement);
-            CoreDataManager.save();
-
-        }
-    }
 
 
     override func awakeFromNib() {
