@@ -176,6 +176,7 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
     
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        print(orientation);
         guard orientation == .right else {
             print("Bonjour");
             return nil;
