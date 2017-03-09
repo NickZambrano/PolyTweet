@@ -13,26 +13,20 @@ class UserTableViewCell : UITableViewCell{
 
     var user : User? = nil;
 
-    @IBOutlet weak var unsetResponsable: UIButton!
-    
     @IBOutlet weak var setResponsable: UIButton!
     @IBOutlet weak var lname: UILabel!
     @IBOutlet weak var mail: UILabel!
     @IBOutlet weak var fname: UILabel!
     @IBOutlet weak var photo: UIImageView!
-    
-    @IBAction func unsetResponsable(_ sender: Any) {
+    var delegate : AdminViewController?=nil;
+    @IBAction func respoButton(_ sender: Any) {
         if let enseignant = self.user as? Enseignant{
-            enseignant.respoDepartement=false;
+            enseignant.respoDepartement = !(enseignant.respoDepartement);
             CoreDataManager.save();
+
         }
     }
-    @IBAction func setResponsable(_ sender: Any) {
-        if let enseignant = self.user as? Enseignant{
-            enseignant.respoDepartement=true;
-            CoreDataManager.save();
-        }
-    }
+
 
     override func awakeFromNib() {
     }

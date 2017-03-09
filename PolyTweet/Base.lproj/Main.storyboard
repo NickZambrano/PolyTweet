@@ -775,7 +775,7 @@
                                         <rect key="frame" x="0.0" y="28" width="529" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="08T-nn-QQ1" id="7WG-7p-XYs">
-                                            <rect key="frame" x="0.0" y="0.0" width="526" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="529" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Fnamefe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyt-FZ-ojh">
@@ -806,19 +806,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blP-PW-bf6">
-                                                    <rect key="frame" x="441" y="5" width="97" height="35"/>
+                                                    <rect key="frame" x="432" y="5" width="97" height="35"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <state key="normal" title="Responsable"/>
                                                     <connections>
-                                                        <action selector="unsetResponsable:" destination="08T-nn-QQ1" eventType="touchUpInside" id="7jC-u2-zSV"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BR9-iP-wG5">
-                                                    <rect key="frame" x="405" y="5" width="133" height="35"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                    <state key="normal" title="Non responsable"/>
-                                                    <connections>
-                                                        <action selector="setResponsable:" destination="08T-nn-QQ1" eventType="touchUpInside" id="2SN-wU-b0Q"/>
+                                                        <action selector="respoButton:" destination="08T-nn-QQ1" eventType="touchUpInside" id="t9C-3Z-Z0Z"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DRT-fA-5pW">
@@ -829,14 +821,12 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="BR9-iP-wG5" firstAttribute="centerY" secondItem="7WG-7p-XYs" secondAttribute="centerY" id="1yV-ng-weR"/>
                                                 <constraint firstItem="Cdl-7m-5SX" firstAttribute="leading" secondItem="DY8-WC-2Xw" secondAttribute="trailing" constant="41" id="3kP-vo-1GQ"/>
                                                 <constraint firstItem="DY8-WC-2Xw" firstAttribute="leading" secondItem="pyt-FZ-ojh" secondAttribute="trailing" constant="30" id="4PH-ra-dWP"/>
                                                 <constraint firstItem="blP-PW-bf6" firstAttribute="centerY" secondItem="7WG-7p-XYs" secondAttribute="centerY" id="7LT-K1-71S"/>
                                                 <constraint firstItem="Cdl-7m-5SX" firstAttribute="top" secondItem="7WG-7p-XYs" secondAttribute="topMargin" constant="3" id="9ei-7O-iAu"/>
                                                 <constraint firstItem="pyt-FZ-ojh" firstAttribute="leading" secondItem="DRT-fA-5pW" secondAttribute="trailing" constant="24" id="JTk-eF-hQf"/>
                                                 <constraint firstItem="DRT-fA-5pW" firstAttribute="top" secondItem="7WG-7p-XYs" secondAttribute="top" id="RwY-od-xEB"/>
-                                                <constraint firstAttribute="trailing" secondItem="BR9-iP-wG5" secondAttribute="trailing" id="ZJU-aJ-vD2"/>
                                                 <constraint firstItem="pyt-FZ-ojh" firstAttribute="top" secondItem="7WG-7p-XYs" secondAttribute="topMargin" constant="3" id="dnB-JJ-Ln6"/>
                                                 <constraint firstItem="DRT-fA-5pW" firstAttribute="leading" secondItem="7WG-7p-XYs" secondAttribute="leading" constant="8" id="eVU-Gd-Pcb"/>
                                                 <constraint firstItem="DRT-fA-5pW" firstAttribute="centerY" secondItem="7WG-7p-XYs" secondAttribute="centerY" id="nSM-5n-Brd"/>
@@ -851,7 +841,6 @@
                                             <outlet property="mail" destination="Cdl-7m-5SX" id="Ane-mF-Acx"/>
                                             <outlet property="photo" destination="DRT-fA-5pW" id="ARg-g6-GHu"/>
                                             <outlet property="setResponsable" destination="blP-PW-bf6" id="WC3-oi-K18"/>
-                                            <outlet property="unsetResponsable" destination="BR9-iP-wG5" id="D40-dt-MkP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1139,6 +1128,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="adminButton" destination="r5O-O7-PgZ" id="3cE-zf-lAd"/>
                         <outlet property="messageField" destination="dm7-lz-VHF" id="946-yU-ntq"/>
                         <outlet property="photo" destination="Hnx-dy-6Hc" id="hVt-Pj-GTc"/>
                         <outlet property="tableGroupes" destination="CKC-Gc-tTI" id="T9Q-cE-AJC"/>

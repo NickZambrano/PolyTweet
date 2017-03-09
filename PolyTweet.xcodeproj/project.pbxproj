@@ -31,6 +31,8 @@
 		B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83536EF1E5DFDB500657628 /* CoreDataManager.swift */; };
 		B844235D1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B844235E1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
+		B8CCCBB71E715FA100510B85 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CCCBB61E715FA100510B85 /* SwipeCellKit.framework */; };
+		B8CCCBB81E715FA100510B85 /* SwipeCellKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8CCCBB61E715FA100510B85 /* SwipeCellKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B8FEB12B1E5278FF00618FA4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */; };
 		B8FEB12D1E5454D400618FA4 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */; };
 		B8FEB12F1E545D2B00618FA4 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */; };
@@ -60,6 +62,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B8CCCBB81E715FA100510B85 /* SwipeCellKit.framework in Embed Frameworks */,
 				50F5724C1E714BC900F3B678 /* JTAppleCalendar.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -95,6 +98,7 @@
 		B83536EB1E5DE03D00657628 /* SingleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleUser.swift; path = ../SingleUser.swift; sourceTree = "<group>"; };
 		B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = ../ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B83536EF1E5DFDB500657628 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = ../CoreDataManager.swift; sourceTree = "<group>"; };
+		B8CCCBB61E715FA100510B85 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwipeCellKit.framework; sourceTree = "<group>"; };
 		B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 		B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CCCBB71E715FA100510B85 /* SwipeCellKit.framework in Frameworks */,
 				50F5724B1E714BC900F3B678 /* JTAppleCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +134,7 @@
 		B821E8B41E4DB9560030D669 = {
 			isa = PBXGroup;
 			children = (
+				B8CCCBB61E715FA100510B85 /* SwipeCellKit.framework */,
 				50F5724A1E714BC900F3B678 /* JTAppleCalendar.framework */,
 				B821E8BF1E4DB9560030D669 /* PolyTweet */,
 				B821E8D71E4DB9560030D669 /* PolyTweetTests */,
