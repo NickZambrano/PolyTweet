@@ -65,10 +65,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-<<<<<<< HEAD
 				506A27951E71583B0097FED6 /* JTAppleCalendar.framework in Embed Frameworks */,
-=======
->>>>>>> a670b34a314e08a2ca017b24d180fe0f8636c929
 				B8CCCBB81E715FA100510B85 /* SwipeCellKit.framework in Embed Frameworks */,
 				50F5724C1E714BC900F3B678 /* JTAppleCalendar.framework in Embed Frameworks */,
 			);
@@ -119,10 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				506A27941E71583A0097FED6 /* JTAppleCalendar.framework in Frameworks */,
-=======
->>>>>>> a670b34a314e08a2ca017b24d180fe0f8636c929
 				B8CCCBB71E715FA100510B85 /* SwipeCellKit.framework in Frameworks */,
 				50F5724B1E714BC900F3B678 /* JTAppleCalendar.framework in Frameworks */,
 			);
