@@ -11,7 +11,7 @@ import JTAppleCalendar
 
 class CalendarViewController: CommonViewController {
     
-    @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var calendarView: CalendarView!
     
     let white = UIColor(colorWithHexValue: 0xECEAED)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
@@ -60,6 +60,11 @@ class CalendarViewController: CommonViewController {
             myCustomCell.selectedView.isHidden = true
         }
     }
+    
+    @IBAction override func retour(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
 }
 
@@ -114,4 +119,6 @@ extension UIColor {
             alpha: alpha
         )
     }
+    
+
 }
