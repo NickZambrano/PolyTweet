@@ -12,6 +12,8 @@
 		503B3A9D1E686F0F001D5608 /* InscriptionAdministrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */; };
 		5042CE021E6EA7C500965A2A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5042CE011E6EA7C500965A2A /* PopUpViewController.swift */; };
 		504750681E5DE94E008B87C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504750671E5DE94E008B87C0 /* ProfileViewController.swift */; };
+		50F5724B1E714BC900F3B678 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F5724A1E714BC900F3B678 /* JTAppleCalendar.framework */; };
+		50F5724C1E714BC900F3B678 /* JTAppleCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50F5724A1E714BC900F3B678 /* JTAppleCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C3806F50CC2B56F805F8A45 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */; };
 		B81C4EC81E6F27AE000397F3 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */; };
@@ -51,6 +53,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		50F5724D1E714BC900F3B678 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				50F5724C1E714BC900F3B678 /* JTAppleCalendar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InscriptionEnseignantViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +74,7 @@
 		503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InscriptionAdministrationViewController.swift; path = ../InscriptionAdministrationViewController.swift; sourceTree = "<group>"; };
 		5042CE011E6EA7C500965A2A /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		504750671E5DE94E008B87C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		50F5724A1E714BC900F3B678 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JTAppleCalendar.framework; sourceTree = "<group>"; };
 		B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = ../GroupTableViewCell.swift; sourceTree = "<group>"; };
 		B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F5724B1E714BC900F3B678 /* JTAppleCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +129,7 @@
 		B821E8B41E4DB9560030D669 = {
 			isa = PBXGroup;
 			children = (
+				50F5724A1E714BC900F3B678 /* JTAppleCalendar.framework */,
 				B821E8BF1E4DB9560030D669 /* PolyTweet */,
 				B821E8D71E4DB9560030D669 /* PolyTweetTests */,
 				B821E8E21E4DB9560030D669 /* PolyTweetUITests */,
@@ -185,6 +204,7 @@
 				B821E8B91E4DB9560030D669 /* Sources */,
 				B821E8BA1E4DB9560030D669 /* Frameworks */,
 				B821E8BB1E4DB9560030D669 /* Resources */,
+				50F5724D1E714BC900F3B678 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -485,6 +505,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HJN3KXCKE4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PolyTweet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zambrano.PolyTweet;
@@ -499,6 +523,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HJN3KXCKE4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PolyTweet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
