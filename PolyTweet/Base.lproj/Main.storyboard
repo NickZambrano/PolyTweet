@@ -848,9 +848,7 @@
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                     <state key="normal" title="Responsable"/>
                                                     <connections>
-
                                                         <action selector="respoButton:" destination="08T-nn-QQ1" eventType="touchUpInside" id="t9C-3Z-Z0Z"/>
-
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DRT-fA-5pW">
