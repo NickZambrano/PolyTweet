@@ -28,6 +28,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     @IBOutlet weak var username: UILabel!
     @IBOutlet var userStatus: UILabel!
     
+    @IBOutlet weak var adminButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,12 +58,15 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         self.username.textAlignment = .center
         
         if (user as? Etudiant) != nil {
+            adminButton.isHidden=true;
             userStatus.text="Etudiant";
         }
         if (user as? Administration) != nil {
+            adminButton.isHidden=false;
             userStatus.text="Administration";
         }
-        if (user as? Enseignant) != nil {
+        if let enseignant=user as? Enseignant {
+            adminButton.isHidden=enseignant.respoDepartement;
             userStatus.text="Enseignant";
         }
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwipeCellKit
 class AdminViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate{
     
     
@@ -134,16 +135,23 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
             cell.photo.layer.cornerRadius = cell.photo.layer.frame.size.width / 2;
             cell.photo.clipsToBounds = true;
             cell.photo.contentMode = .scaleAspectFill
+        }else{
+            cell.photo.image=nil;
         }
             cell.fname.text=self.users[indexPath.section].fname
             cell.lname.text=self.users[indexPath.section].lname
             cell.mail.text=self.users[indexPath.section].mail
             cell.user=self.users[indexPath.section]
-            if let userEnseignant=self.users[indexPath.section] as? Enseignant {
-                cell.unsetResponsable.isHidden = !(userEnseignant.respoDepartement);
-                cell.setResponsable.isHidden=(userEnseignant.respoDepartement);
+            cell.delegate = self
+        if let userEnseignant=self.users[indexPath.section] as? Enseignant {
+                cell.setResponsable.isHidden=false;
+                if(userEnseignant.respoDepartement){
+                    cell.setResponsable.setTitle("Responsable", for: .normal);
+                }else{
+                    cell.setResponsable.setTitle("Non Responsable", for: .normal)
+                }
+
             }else{
-                cell.unsetResponsable.isHidden=true;
                 cell.setResponsable.isHidden=true;
         }
         
@@ -161,34 +169,28 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
         }
         return appDelegate.persistentContainer.viewContext
     }
-    
-    func delete(userWithIndex index: Int) -> Bool{
-        guard let context = self.getContext(errorMsg: "Could not delete user") else {return false}
-        let user = self.users[index]
-        context.delete(user)
-        do{
-            try context.save()
-            self.users.remove(at: index)
-            return true
-        }
-        catch let error as NSError{
-            self.alert(WithTitle: "error")
-            return false
-        }
-    }
+
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle==UITableViewCellEditingStyle.delete){
-            self.tableUsers.beginUpdates()
-            if self.delete(userWithIndex: indexPath.row){
-                self.tableUsers.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            }
-            self.tableUsers.endUpdates()
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else {
+            print("Bonjour");
+            return nil;
         }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+            print("Hello");
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction]
     }
     
     func alert(WithTitle title: String, andMessage msg: String = "") {
