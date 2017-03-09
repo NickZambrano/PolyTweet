@@ -73,17 +73,17 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
         
-        let startDate = formatter.date(from: "2000 02 01")! // You can use date generated from a formatter
+        let startDate = formatter.date(from: "2017 01 01")! // You can use date generated from a formatter
         let endDate = formatter.date(from: "2100 02 01")!                                // You can also use dates created from this function
         let calendar = Calendar.current                     // Make sure you set this up to your time zone. We'll just use default here
         
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
-                                                 numberOfRows: 6,
+                                                 numberOfRows: 5,
                                                  calendar: calendar,
                                                  generateInDates: .forAllMonths,
                                                  generateOutDates: .tillEndOfGrid,
-                                                 firstDayOfWeek: .sunday)
+                                                 firstDayOfWeek: .monday)
         return parameters
     }
     
