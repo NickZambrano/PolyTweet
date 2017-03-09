@@ -9,10 +9,13 @@
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="appartient" inverseEntity="User" syncable="YES"/>
+        <relationship name="enseignants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Enseignant" inverseName="depSecondaires" inverseEntity="Enseignant" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="dep" inverseEntity="Message" syncable="YES"/>
     </entity>
     <entity name="Enseignant" representedClassName="Enseignant" parentEntity="User" syncable="YES" codeGenerationType="class">
         <attribute name="respoDepartement" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="transversal" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="depSecondaires" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Departement" inverseName="enseignants" inverseEntity="Departement" syncable="YES"/>
     </entity>
     <entity name="Etudiant" representedClassName="Etudiant" parentEntity="User" syncable="YES" codeGenerationType="class">
         <relationship name="annee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Years" inverseName="etudiants" inverseEntity="Years" syncable="YES"/>
@@ -58,15 +61,15 @@
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="annee" inverseEntity="Group" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Administration" positionX="-1017" positionY="4574" width="128" height="45"/>
         <element name="CategorieMessage" positionX="-677" positionY="4503" width="128" height="73"/>
-        <element name="Departement" positionX="-1179" positionY="4302" width="128" height="103"/>
-        <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="58"/>
+        <element name="Departement" positionX="-1179" positionY="4302" width="128" height="118"/>
+        <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="88"/>
         <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
         <element name="Group" positionX="-920" positionY="4140" width="128" height="103"/>
         <element name="Message" positionX="-774" positionY="4278" width="128" height="150"/>
         <element name="PieceJointe" positionX="-684" positionY="4077" width="128" height="88"/>
         <element name="User" positionX="-983" positionY="4281" width="128" height="163"/>
         <element name="Years" positionX="-812" positionY="4622" width="128" height="88"/>
-        <element name="Administration" positionX="-1017" positionY="4574" width="128" height="43"/>
     </elements>
 </model>
