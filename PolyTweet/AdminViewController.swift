@@ -154,7 +154,8 @@ class AdminViewController: CommonViewController, UITableViewDataSource,UITableVi
             }else{
                 cell.setResponsable.isHidden=true;
         }
-            cell.layer.cornerRadius=10
+        
+            cell.layer.cornerRadius = 10
 
             return cell
 
