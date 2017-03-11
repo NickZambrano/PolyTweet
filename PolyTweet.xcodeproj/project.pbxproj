@@ -143,6 +143,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50BADEA71E7469E400EAC44D /* Calendrier */ = {
+			isa = PBXGroup;
+			children = (
+				506A27991E715A330097FED6 /* CellView.swift */,
+				506A279A1E715A330097FED6 /* CellView.xib */,
+				50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */,
+				50BADEA01E740CD100EAC44D /* SectionHeaderView.xib */,
+				506A27A11E716B830097FED6 /* CalendarView.swift */,
+				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
+			);
+			name = Calendrier;
+			sourceTree = "<group>";
+		};
 		B821E8B41E4DB9560030D669 = {
 			isa = PBXGroup;
 			children = (
@@ -168,8 +181,7 @@
 		B821E8BF1E4DB9560030D669 /* PolyTweet */ = {
 			isa = PBXGroup;
 			children = (
-				506A27991E715A330097FED6 /* CellView.swift */,
-				506A279A1E715A330097FED6 /* CellView.xib */,
+				50BADEA71E7469E400EAC44D /* Calendrier */,
 				B83536EF1E5DFDB500657628 /* CoreDataManager.swift */,
 				B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */,
 				B83536EB1E5DE03D00657628 /* SingleUser.swift */,
@@ -179,9 +191,6 @@
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
 				B821E8C21E4DB9560030D669 /* ViewController.swift */,
 				B821E8C41E4DB9560030D669 /* Main.storyboard */,
-				50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */,
-				50BADEA01E740CD100EAC44D /* SectionHeaderView.xib */,
-				506A27A11E716B830097FED6 /* CalendarView.swift */,
 				B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */,
 				5042CE011E6EA7C500965A2A /* PopUpViewController.swift */,
 				503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */,
@@ -193,7 +202,6 @@
 				B821E8CC1E4DB9560030D669 /* LaunchScreen.storyboard */,
 				B821E8CF1E4DB9560030D669 /* Info.plist */,
 				503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */,
-				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
 				506A279D1E715C950097FED6 /* CalendarViewController.swift */,
 			);
 			path = PolyTweet;

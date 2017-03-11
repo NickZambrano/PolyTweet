@@ -17,8 +17,8 @@ class CalendarViewController: CommonViewController {
     let monthFormatter = DateFormatter()
     var testCalendar = Calendar.current
     let white = UIColor.white
-    let darkPurple = UIColor.purple
-    let dimPurple = UIColor.orange
+    let darkPurple = UIColor.black
+    let dimPurple = UIColor.brown
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,20 @@ class CalendarViewController: CommonViewController {
         calendarView.registerHeaderView(xibFileNames: ["SectionHeaderView"])
         
         monthFormatter.dateFormat = "MMMM yyyy"
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy MM dd"
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let myDate = formatter.date(from: String(year)+" "+String(month)+" "+String(day))!
+        calendarView.scrollToDate(myDate)
+        calendarView.selectDates([myDate])
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,7 +92,7 @@ class CalendarViewController: CommonViewController {
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, sectionHeaderSizeFor range: (start: Date, end: Date), belongingTo month: Int) -> CGSize {
-        return CGSize(width: 200, height: 50)
+        return CGSize(width: 200, height: 100)
     }
     
     
