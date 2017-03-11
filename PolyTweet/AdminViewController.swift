@@ -191,9 +191,17 @@ class AdminViewController: CommonViewController, UITableViewDataSource, UITableV
         
         
         case .left :
-            let respoAction = SwipeAction(style: .default, title: "Responsable") { action, indexPath in
+            var nombouton: String? = nil
+            if let enseignant = self.users[indexPath.section] as? Enseignant{
+                if enseignant.respoDepartement {
+                    nombouton="Non Responsable"
+                }
+                else {
+                    nombouton="Reponsable"
+                }
+            }
+            let respoAction = SwipeAction(style: .default, title: nombouton) { action, indexPath in
                 if let enseignant = self.users[indexPath.section] as? Enseignant{
-                    print("hey")
                     enseignant.respoDepartement = !(enseignant.respoDepartement);
                     CoreDataManager.save();
                     self.tableUsers.reloadData()
