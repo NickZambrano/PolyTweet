@@ -841,7 +841,7 @@
                                         <rect key="frame" x="0.0" y="28" width="529" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="08T-nn-QQ1" id="7WG-7p-XYs">
-                                            <rect key="frame" x="0.0" y="0.0" width="529" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="529" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Fnamefe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyt-FZ-ojh">
@@ -871,20 +871,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blP-PW-bf6">
-                                                    <rect key="frame" x="432" y="4" width="97" height="35"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                    <state key="normal" title="Responsable"/>
-                                                    <connections>
-                                                        <action selector="respoButton:" destination="08T-nn-QQ1" eventType="touchUpInside" id="t9C-3Z-Z0Z"/>
-                                                    </connections>
-                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DRT-fA-5pW">
                                                     <rect key="frame" x="8" y="0.0" width="43" height="42"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="43" id="Tra-bN-50R"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blP-PW-bf6">
+                                                    <rect key="frame" x="452" y="8" width="69" height="28"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
+                                                    <state key="normal" title="Responsable">
+                                                        <color key="titleColor" red="0.63164260786802029" green="0.63164260786802029" blue="0.63164260786802029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="respoButton:" destination="08T-nn-QQ1" eventType="touchUpInside" id="t9C-3Z-Z0Z"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Cdl-7m-5SX" firstAttribute="leading" secondItem="DY8-WC-2Xw" secondAttribute="trailing" constant="41" id="3kP-vo-1GQ"/>
@@ -892,12 +894,12 @@
                                                 <constraint firstItem="blP-PW-bf6" firstAttribute="centerY" secondItem="7WG-7p-XYs" secondAttribute="centerY" id="7LT-K1-71S"/>
                                                 <constraint firstItem="Cdl-7m-5SX" firstAttribute="top" secondItem="7WG-7p-XYs" secondAttribute="topMargin" constant="3" id="9ei-7O-iAu"/>
                                                 <constraint firstItem="pyt-FZ-ojh" firstAttribute="leading" secondItem="DRT-fA-5pW" secondAttribute="trailing" constant="24" id="JTk-eF-hQf"/>
+                                                <constraint firstAttribute="trailing" secondItem="blP-PW-bf6" secondAttribute="trailing" constant="8" id="Ki5-m0-yKj"/>
                                                 <constraint firstItem="DRT-fA-5pW" firstAttribute="top" secondItem="7WG-7p-XYs" secondAttribute="top" id="RwY-od-xEB"/>
                                                 <constraint firstItem="pyt-FZ-ojh" firstAttribute="top" secondItem="7WG-7p-XYs" secondAttribute="topMargin" constant="3" id="dnB-JJ-Ln6"/>
                                                 <constraint firstItem="DRT-fA-5pW" firstAttribute="leading" secondItem="7WG-7p-XYs" secondAttribute="leading" constant="8" id="eVU-Gd-Pcb"/>
                                                 <constraint firstItem="DRT-fA-5pW" firstAttribute="centerY" secondItem="7WG-7p-XYs" secondAttribute="centerY" id="nSM-5n-Brd"/>
                                                 <constraint firstItem="DY8-WC-2Xw" firstAttribute="top" secondItem="7WG-7p-XYs" secondAttribute="topMargin" constant="3" id="uX1-Bp-5nA"/>
-                                                <constraint firstAttribute="trailing" secondItem="blP-PW-bf6" secondAttribute="trailing" id="wOr-AP-ONe"/>
                                                 <constraint firstItem="pyt-FZ-ojh" firstAttribute="leading" secondItem="DRT-fA-5pW" secondAttribute="trailing" constant="24" id="xwY-IU-doy"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1006,7 +1008,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="222" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7bi-us-V9i" id="mhF-46-Bjt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="222" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="222" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZK-q2-fUV">
@@ -1114,7 +1116,7 @@
                                         <rect key="frame" x="0.0" y="28" width="506" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" layoutMarginsFollowReadableWidth="YES" tableViewCell="rUI-XT-QRF" id="T3f-Xb-aq1">
-                                            <rect key="frame" x="0.0" y="0.0" width="506" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="506" height="93.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T4X-5a-gY1">
