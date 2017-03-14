@@ -13,9 +13,12 @@ class CalendarViewController: CommonViewController {
     
     @IBOutlet weak var calendarView: CalendarView!
     
-    let white = UIColor(colorWithHexValue: 0xECEAED)
-    let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
-    let dimPurple = UIColor(colorWithHexValue: 0x574865)
+    
+    let monthFormatter = DateFormatter()
+    var testCalendar = Calendar.current
+    let white = UIColor.white
+    let darkPurple = UIColor.black
+    let dimPurple = UIColor.brown
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,24 @@ class CalendarViewController: CommonViewController {
         calendarView.delegate = self
         calendarView.registerCellViewXib(file: "CellView") // Registering your cell is manditory
         calendarView.cellInset = CGPoint(x: 0, y: 0)
+        calendarView.layer.cornerRadius = 10
+        calendarView.registerHeaderView(xibFileNames: ["SectionHeaderView"])
+        
+        monthFormatter.dateFormat = "MMMM yyyy"
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy MM dd"
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let myDate = formatter.date(from: String(year)+" "+String(month)+" "+String(day))!
+        calendarView.scrollToDate(myDate)
+        calendarView.selectDates([myDate])
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,6 +82,7 @@ class CalendarViewController: CommonViewController {
         }
     }
     
+    
     @IBAction override func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -69,21 +91,33 @@ class CalendarViewController: CommonViewController {
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
+    func calendar(_ calendar: JTAppleCalendarView, sectionHeaderSizeFor range: (start: Date, end: Date), belongingTo month: Int) -> CGSize {
+        return CGSize(width: 200, height: 100)
+    }
+    
+    
+    // This setups the display of your header
+    func calendar(_ calendar: JTAppleCalendarView, willDisplaySectionHeader header: JTAppleHeaderView, range: (start: Date, end: Date), identifier: String) {
+        let headerCell = (header as? SectionHeaderView)
+        
+        headerCell?.title.text = monthFormatter.string(from: range.start)
+    }
+    
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
         
-        let startDate = formatter.date(from: "2000 02 01")! // You can use date generated from a formatter
+        let startDate = formatter.date(from: "2017 01 01")! // You can use date generated from a formatter
         let endDate = formatter.date(from: "2100 02 01")!                                // You can also use dates created from this function
         let calendar = Calendar.current                     // Make sure you set this up to your time zone. We'll just use default here
         
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
-                                                 numberOfRows: 6,
+                                                 numberOfRows: 5,
                                                  calendar: calendar,
                                                  generateInDates: .forAllMonths,
                                                  generateOutDates: .tillEndOfGrid,
-                                                 firstDayOfWeek: .sunday)
+                                                 firstDayOfWeek: .monday)
         return parameters
     }
     
@@ -110,15 +144,3 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
 }
 
-extension UIColor {
-    convenience init(colorWithHexValue value: Int, alpha:CGFloat = 1.0){
-        self.init(
-            red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(value & 0x0000FF) / 255.0,
-            alpha: alpha
-        )
-    }
-    
-
-}

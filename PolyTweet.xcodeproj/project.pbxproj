@@ -18,6 +18,8 @@
 		506A279C1E715A330097FED6 /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506A279A1E715A330097FED6 /* CellView.xib */; };
 		506A279E1E715C950097FED6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A279D1E715C950097FED6 /* CalendarViewController.swift */; };
 		506A27A21E716B830097FED6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A27A11E716B830097FED6 /* CalendarView.swift */; };
+		50BADE9F1E740CAD00EAC44D /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */; };
+		50BADEA11E740CD100EAC44D /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50BADEA01E740CD100EAC44D /* SectionHeaderView.xib */; };
 		6C3806F50CC2B56F805F8A45 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */; };
 		B81C4EC81E6F27AE000397F3 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */; };
@@ -86,6 +88,8 @@
 		506A279A1E715A330097FED6 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CellView.xib; path = ../CellView.xib; sourceTree = "<group>"; };
 		506A279D1E715C950097FED6 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		506A27A11E716B830097FED6 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionHeaderView.swift; path = ../SectionHeaderView.swift; sourceTree = "<group>"; };
+		50BADEA01E740CD100EAC44D /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = ../GroupTableViewCell.swift; sourceTree = "<group>"; };
 		B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +143,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50BADEA71E7469E400EAC44D /* Calendrier */ = {
+			isa = PBXGroup;
+			children = (
+				506A27991E715A330097FED6 /* CellView.swift */,
+				506A279A1E715A330097FED6 /* CellView.xib */,
+				50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */,
+				50BADEA01E740CD100EAC44D /* SectionHeaderView.xib */,
+				506A27A11E716B830097FED6 /* CalendarView.swift */,
+				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
+			);
+			name = Calendrier;
+			sourceTree = "<group>";
+		};
 		B821E8B41E4DB9560030D669 = {
 			isa = PBXGroup;
 			children = (
@@ -164,8 +181,7 @@
 		B821E8BF1E4DB9560030D669 /* PolyTweet */ = {
 			isa = PBXGroup;
 			children = (
-				506A27991E715A330097FED6 /* CellView.swift */,
-				506A279A1E715A330097FED6 /* CellView.xib */,
+				50BADEA71E7469E400EAC44D /* Calendrier */,
 				B83536EF1E5DFDB500657628 /* CoreDataManager.swift */,
 				B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */,
 				B83536EB1E5DE03D00657628 /* SingleUser.swift */,
@@ -175,7 +191,6 @@
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
 				B821E8C21E4DB9560030D669 /* ViewController.swift */,
 				B821E8C41E4DB9560030D669 /* Main.storyboard */,
-				506A27A11E716B830097FED6 /* CalendarView.swift */,
 				B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */,
 				5042CE011E6EA7C500965A2A /* PopUpViewController.swift */,
 				503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */,
@@ -187,7 +202,6 @@
 				B821E8CC1E4DB9560030D669 /* LaunchScreen.storyboard */,
 				B821E8CF1E4DB9560030D669 /* Info.plist */,
 				503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */,
-				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
 				506A279D1E715C950097FED6 /* CalendarViewController.swift */,
 			);
 			path = PolyTweet;
@@ -325,6 +339,7 @@
 			files = (
 				506A279C1E715A330097FED6 /* CellView.xib in Resources */,
 				B821E8CE1E4DB9560030D669 /* LaunchScreen.storyboard in Resources */,
+				50BADEA11E740CD100EAC44D /* SectionHeaderView.xib in Resources */,
 				B821E8CB1E4DB9560030D669 /* Assets.xcassets in Resources */,
 				B821E8C61E4DB9560030D669 /* Main.storyboard in Resources */,
 			);
@@ -362,6 +377,7 @@
 				506A27A21E716B830097FED6 /* CalendarView.swift in Sources */,
 				5042CE021E6EA7C500965A2A /* PopUpViewController.swift in Sources */,
 				B81C4ECA1E6F28C4000397F3 /* AdminViewController.swift in Sources */,
+				50BADE9F1E740CAD00EAC44D /* SectionHeaderView.swift in Sources */,
 				B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */,
 				B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */,
 				B81C4EC81E6F27AE000397F3 /* UserTableViewCell.swift in Sources */,

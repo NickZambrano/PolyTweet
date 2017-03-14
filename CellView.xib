@@ -20,15 +20,15 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbe-vC-ZdZ">
                         <rect key="frame" x="25" y="25" width="50" height="50"/>
-                        <color key="backgroundColor" red="0.32924860719999999" green="0.67277139429999999" blue="0.81074005370000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.61439253837889141" green="0.73784871997997359" blue="0.81074005370000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="Mw7-6E-EMn"/>
                             <constraint firstAttribute="width" constant="50" id="ysc-q3-3vI"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnV-BL-QgQ">
-                        <rect key="frame" x="29" y="39.5" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="25.5" y="39.5" width="50.5" height="21.5"/>
+                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
