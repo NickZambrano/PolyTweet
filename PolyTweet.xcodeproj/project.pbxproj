@@ -37,6 +37,7 @@
 		B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83536EF1E5DFDB500657628 /* CoreDataManager.swift */; };
 		B844235D1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B844235E1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
+		B897BE5E1E77F08500681BEA /* GroupPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B897BE5D1E77F08500681BEA /* GroupPopUpViewController.swift */; };
 		B8CCCBB71E715FA100510B85 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CCCBB61E715FA100510B85 /* SwipeCellKit.framework */; };
 		B8CCCBB81E715FA100510B85 /* SwipeCellKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8CCCBB61E715FA100510B85 /* SwipeCellKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B8FEB12B1E5278FF00618FA4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */; };
@@ -110,6 +111,7 @@
 		B83536EB1E5DE03D00657628 /* SingleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleUser.swift; path = ../SingleUser.swift; sourceTree = "<group>"; };
 		B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = ../ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B83536EF1E5DFDB500657628 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = ../CoreDataManager.swift; sourceTree = "<group>"; };
+		B897BE5D1E77F08500681BEA /* GroupPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPopUpViewController.swift; sourceTree = "<group>"; };
 		B8CCCBB61E715FA100510B85 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwipeCellKit.framework; sourceTree = "<group>"; };
 		B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				B821E8CF1E4DB9560030D669 /* Info.plist */,
 				503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */,
 				506A279D1E715C950097FED6 /* CalendarViewController.swift */,
+				B897BE5D1E77F08500681BEA /* GroupPopUpViewController.swift */,
 			);
 			path = PolyTweet;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				504750681E5DE94E008B87C0 /* ProfileViewController.swift in Sources */,
 				B83536EE1E5DFA1500657628 /* ResetPasswordViewController.swift in Sources */,
 				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
+				B897BE5E1E77F08500681BEA /* GroupPopUpViewController.swift in Sources */,
 				B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */,
 				B83536EC1E5DE03D00657628 /* SingleUser.swift in Sources */,
 				506A27A21E716B830097FED6 /* CalendarView.swift in Sources */,

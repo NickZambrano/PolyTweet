@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PolyTweet/HomeViewController.swift"
-            timestampString = "510743411.333726"
+            timestampString = "511183996.756233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "loadMessage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PolyTweet/HomeViewController.swift"
-            timestampString = "510743411.333726"
+            timestampString = "511183996.756233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "loadMessage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -271,6 +271,163 @@
             startingLineNumber = "177"
             endingLineNumber = "177"
             landmarkName = "tableView(_:editActionsForRowAt:for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PolyTweet/GroupPopUpViewController.swift"
+            timestampString = "511182216.897742"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "GroupPopUpViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PolyTweet.GroupPopUpViewController.__ivar_destroyer"
+                  moduleName = "PolyTweet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Zambra/Desktop/Cours/PolyTweet/PolyTweet/GroupPopUpViewController.swift"
+                  timestampString = "511177557.328046"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PolyTweet.GroupPopUpViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; PolyTweet.GroupPopUpViewController"
+                  moduleName = "PolyTweet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Zambra/Desktop/Cours/PolyTweet/PolyTweet/GroupPopUpViewController.swift"
+                  timestampString = "511177557.330948"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PolyTweet.GroupPopUpViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; PolyTweet.GroupPopUpViewController"
+                  moduleName = "PolyTweet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Zambra/Desktop/Cours/PolyTweet/PolyTweet/GroupPopUpViewController.swift"
+                  timestampString = "511177557.333347"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PolyTweet.GroupPopUpViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;PolyTweet.GroupPopUpViewController&gt;"
+                  moduleName = "PolyTweet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Zambra/Desktop/Cours/PolyTweet/PolyTweet/GroupPopUpViewController.swift"
+                  timestampString = "511177557.336073"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PolyTweet.GroupPopUpViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;PolyTweet.GroupPopUpViewController&gt;"
+                  moduleName = "PolyTweet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Zambra/Desktop/Cours/PolyTweet/PolyTweet/GroupPopUpViewController.swift"
+                  timestampString = "511177557.338652"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PolyTweet/GroupPopUpViewController.swift"
+            timestampString = "511185109.909604"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PolyTweet/GroupPopUpViewController.swift"
+            timestampString = "511183590.568131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PolyTweet/GroupPopUpViewController.swift"
+            timestampString = "511183590.568131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "searchAutocompleteEntriesWithSubstring(substring:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PolyTweet/GroupPopUpViewController.swift"
+            timestampString = "511183590.568131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
