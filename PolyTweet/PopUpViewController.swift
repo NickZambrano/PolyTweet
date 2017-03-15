@@ -59,6 +59,7 @@ class PopUpViewController: CommonViewController, UIImagePickerControllerDelegate
             photo.contentMode = .scaleAspectFill
             user?.img=UIImageJPEGRepresentation(pickedImage,1) as NSData?
             //picker.dismiss(animated: true, completion: nil)
+            
             CoreDataManager.save();
             
         }
@@ -76,6 +77,5 @@ class PopUpViewController: CommonViewController, UIImagePickerControllerDelegate
         super.didReceiveMemoryWarning()
     }
     @IBAction func dismissPopUp(_ sender: UIButton) {
-        
     }
 }

@@ -15,6 +15,9 @@ class MessageTableViewCell : UITableViewCell{
     @IBOutlet weak var dateHeure: UILabel!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var profil: UIImageView!
+    @IBOutlet weak var imageMessage: UIImageView!
+    @IBOutlet weak var lien: UIButton!
+    
     override func awakeFromNib() {
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

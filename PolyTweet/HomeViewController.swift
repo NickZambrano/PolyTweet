@@ -19,16 +19,24 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
 
     var groupes : [Group]=[]
     
+    var pieceImage:PieceJointeImage? = nil;
+    var pieceLien:PieceJointeLien? = nil;
+    
+    var lien:String? = nil;
+    
+    
     @IBOutlet weak var tableMessage: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var photo: UIImageView!
     
+    @IBOutlet weak var attachedfile: UIButton!
     @IBOutlet weak var tableGroupes: UITableView!
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet var userStatus: UILabel!
     
     @IBOutlet weak var adminButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,6 +85,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
         self.tableGroupes.allowsSelection = true
         
+        attachedfile.layer.cornerRadius = 5
         
     }
     
@@ -93,6 +102,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             message.date=NSDate()
             message.dep=user?.appartient
             message.groupe=groupSelected
+            message.image = pieceImage
+            message.lien = pieceLien
         }
         do{
             try context.save()
@@ -199,16 +210,78 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
                 cell.setTimeStamp(time: date)
             }
             cell.layer.cornerRadius=10
+            
+            if let pieceImage = self.messages[indexPath.section].image {
+                cell.imageMessage.image = UIImage(data: pieceImage.file as! Data)!
+            }
+            if let pieceLien = self.messages[indexPath.section].lien {
+                cell.lien.setTitle(pieceLien.name,for: .normal)
+                //lien =  String(data: pieceLien.file as! Data, encoding: .utf8)
+                cell.lien.tag = indexPath.section
+                cell.lien.addTarget(self, action: #selector(openLien(sender:)), for: .touchUpInside)
+            }else {
+                cell.lien.isHidden = true
+            }
+            
             return cell
         }
 
     }
+    
+    @IBAction func openLien(sender: UIButton){
+        let link = self.messages[sender.tag].lien
+        print(String(data: link?.file as! Data, encoding: .utf8)!)
+        if let url = NSURL(string: String(data: link?.file as! Data, encoding: .utf8)!){
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
+        }
+        
+    }
+    
 
     @IBAction func unwindtoHome(segue: UIStoryboardSegue) {
         let newController = segue.source as! PopUpViewController
         photo.image = newController.photo.image
         photo.contentMode = .scaleAspectFill
         tableMessage.reloadData()
+    }
+    
+    @IBAction func unwindAttachedFiletoHome(segue: UIStoryboardSegue) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let context=appDelegate.persistentContainer.viewContext
+        let pieceimage = PieceJointeImage(context:context);
+        let piecelien = PieceJointeLien(context:context);
+        
+        let newController = segue.source as! AttachedFilePopUpController
+        pieceimage.file = UIImageJPEGRepresentation(newController.photo.image!,1) as NSData?
+        pieceimage.name = newController.photoTextField.text
+        piecelien.file = newController.lienTextField.text?.data(using: .utf8)! as NSData?
+        piecelien.name = newController.nomLien.text
+        
+        do{
+            try context.save();
+            self.pieceImage = pieceimage
+            self.pieceLien = piecelien
+        
+        }catch let error as NSError{
+            print(error);
+        }
+
+        
+        if pieceImage?.name != nil {
+            print("image not nil")
+        }else {print("image nil")}
+        /*if pieceLien?.name != nil {
+            print("lien not nil")
+        }else {print("lien nil")}
+        */
+
+        
     }
     
     // MARK: - Table View delegate methods

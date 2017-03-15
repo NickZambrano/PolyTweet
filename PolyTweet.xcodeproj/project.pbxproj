@@ -12,6 +12,7 @@
 		503B3A9D1E686F0F001D5608 /* InscriptionAdministrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */; };
 		5042CE021E6EA7C500965A2A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5042CE011E6EA7C500965A2A /* PopUpViewController.swift */; };
 		504750681E5DE94E008B87C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504750671E5DE94E008B87C0 /* ProfileViewController.swift */; };
+		5067E9BA1E77F0FC00DF8E4A /* AttachedFilePopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067E9B91E77F0FC00DF8E4A /* AttachedFilePopUpController.swift */; };
 		506A27941E71583A0097FED6 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A27931E71583A0097FED6 /* JTAppleCalendar.framework */; };
 		506A27951E71583B0097FED6 /* JTAppleCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A27931E71583A0097FED6 /* JTAppleCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		506A279B1E715A330097FED6 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A27991E715A330097FED6 /* CellView.swift */; };
@@ -83,6 +84,7 @@
 		503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InscriptionAdministrationViewController.swift; path = ../InscriptionAdministrationViewController.swift; sourceTree = "<group>"; };
 		5042CE011E6EA7C500965A2A /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		504750671E5DE94E008B87C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		5067E9B91E77F0FC00DF8E4A /* AttachedFilePopUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachedFilePopUpController.swift; sourceTree = "<group>"; };
 		506A27931E71583A0097FED6 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JTAppleCalendar.framework; sourceTree = "<group>"; };
 		506A27991E715A330097FED6 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellView.swift; path = ../CellView.swift; sourceTree = "<group>"; };
 		506A279A1E715A330097FED6 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CellView.xib; path = ../CellView.xib; sourceTree = "<group>"; };
@@ -151,7 +153,6 @@
 				50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */,
 				50BADEA01E740CD100EAC44D /* SectionHeaderView.xib */,
 				506A27A11E716B830097FED6 /* CalendarView.swift */,
-				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
 			);
 			name = Calendrier;
 			sourceTree = "<group>";
@@ -183,6 +184,7 @@
 			children = (
 				50BADEA71E7469E400EAC44D /* Calendrier */,
 				B83536EF1E5DFDB500657628 /* CoreDataManager.swift */,
+				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
 				B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */,
 				B83536EB1E5DE03D00657628 /* SingleUser.swift */,
 				B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */,
@@ -191,6 +193,7 @@
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
 				B821E8C21E4DB9560030D669 /* ViewController.swift */,
 				B821E8C41E4DB9560030D669 /* Main.storyboard */,
+				5067E9B91E77F0FC00DF8E4A /* AttachedFilePopUpController.swift */,
 				B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */,
 				5042CE011E6EA7C500965A2A /* PopUpViewController.swift */,
 				503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */,
@@ -379,6 +382,7 @@
 				B81C4ECA1E6F28C4000397F3 /* AdminViewController.swift in Sources */,
 				50BADE9F1E740CAD00EAC44D /* SectionHeaderView.swift in Sources */,
 				B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */,
+				5067E9BA1E77F0FC00DF8E4A /* AttachedFilePopUpController.swift in Sources */,
 				B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */,
 				B81C4EC81E6F27AE000397F3 /* UserTableViewCell.swift in Sources */,
 				503B3A951E6853D3001D5608 /* InscriptionEnseignantViewController.swift in Sources */,
