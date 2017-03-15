@@ -17,6 +17,7 @@ class MessageTableViewCell : UITableViewCell{
     @IBOutlet weak var profil: UIImageView!
     @IBOutlet weak var imageMessage: UIImageView!
     @IBOutlet weak var lien: UIButton!
+    @IBOutlet weak var imagelien: UIButton!
     
     override func awakeFromNib() {
     }

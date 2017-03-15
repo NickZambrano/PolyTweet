@@ -22,7 +22,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     var pieceImage:PieceJointeImage? = nil;
     var pieceLien:PieceJointeLien? = nil;
     
-    var lien:String? = nil;
+    
+    var indexImage: Int? = nil;
     
     
     @IBOutlet weak var tableMessage: UITableView!
@@ -211,10 +212,14 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             
             if let pieceImage = self.messages[indexPath.section].image {
                 cell.imageMessage.image = UIImage(data: pieceImage.file as! Data)!
+                cell.imageMessage.contentMode = .scaleAspectFill
+                cell.imageMessage.clipsToBounds = true
+                cell.imagelien.tag = indexPath.section
+                cell.imagelien.addTarget(self, action: #selector(showImage(sender:)), for: .touchUpInside)
+                
             }
             if let pieceLien = self.messages[indexPath.section].lien {
                 cell.lien.setTitle(pieceLien.name,for: .normal)
-                //lien =  String(data: pieceLien.file as! Data, encoding: .utf8)
                 cell.lien.tag = indexPath.section
                 cell.lien.addTarget(self, action: #selector(openLien(sender:)), for: .touchUpInside)
             }else {
@@ -228,15 +233,17 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     @IBAction func openLien(sender: UIButton){
         let link = self.messages[sender.tag].lien
-        print(String(data: link?.file as! Data, encoding: .utf8)!)
-        if let url = NSURL(string: String(data: link?.file as! Data, encoding: .utf8)!){
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url as URL)
-            }
-        }
         
+        print(String(data: link?.file as! Data, encoding: .utf8)!)
+        
+        let url = NSURL(string: String(data: link?.file as! Data, encoding: .utf8)!)!
+        UIApplication.shared.openURL(url as URL)
+        
+    }
+    
+    @IBAction func showImage(sender: UIButton){
+        indexImage = sender.tag
+        performSegue(withIdentifier: "showImage", sender: sender)
     }
     
 
@@ -252,33 +259,42 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             return
         }
         let context=appDelegate.persistentContainer.viewContext
-        let pieceimage = PieceJointeImage(context:context);
-        let piecelien = PieceJointeLien(context:context);
-        
         let newController = segue.source as! AttachedFilePopUpController
-        pieceimage.file = UIImageJPEGRepresentation(newController.photo.image!,1) as NSData?
-        pieceimage.name = newController.photoTextField.text
-        piecelien.file = newController.lienTextField.text?.data(using: .utf8)! as NSData?
-        piecelien.name = newController.nomLien.text
         
-        do{
-            try context.save();
-            self.pieceImage = pieceimage
-            self.pieceLien = piecelien
         
-        }catch let error as NSError{
-            print(error);
+        if newController.photo.image != nil {     //On regarde s'il y a une piece jointe image
+            let pieceimage = PieceJointeImage(context:context);
+
+        
+        
+            if newController.photo.image != nil {
+                pieceimage.file = UIImageJPEGRepresentation(newController.photo.image!,1) as NSData?
+                pieceimage.name = newController.photoTextField.text
+            }
+            
+            do{
+                try context.save();
+                self.pieceImage = pieceimage
+
+        
+            }catch let error as NSError{
+                print(error);
+            }
         }
-
         
-        if pieceImage?.name != nil {
-            print("image not nil")
-        }else {print("image nil")}
-        /*if pieceLien?.name != nil {
-            print("lien not nil")
-        }else {print("lien nil")}
-        */
-
+        if newController.lienTextField != nil{ //On regarde s'il y a un lien
+            let piecelien = PieceJointeLien(context:context);
+            piecelien.file = newController.lienTextField.text?.data(using: .utf8)! as NSData?
+            piecelien.name = newController.nomLien.text
+            
+            do{
+                try context.save();
+                self.pieceLien = piecelien
+                
+            }catch let error as NSError{
+                print(error);
+            }
+        }
         
     }
     
@@ -296,6 +312,20 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         
         loadGroupes();
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showImage"){
+            let upcomming: ImagePopUpViewController = segue.destination as! ImagePopUpViewController
+            if let button:UIButton = sender as! UIButton? {
+                indexImage = button.tag
+            }
+            let pieceimage = self.messages[indexImage!].image
+
+            upcomming.image = UIImage(data: pieceimage!.file as! Data)
+            upcomming.desc = pieceimage!.name
+            
+        }
     }
     
     @IBAction func disconnect(_ sender: Any) {

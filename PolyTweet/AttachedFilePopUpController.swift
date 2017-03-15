@@ -51,6 +51,35 @@ class AttachedFilePopUpController: CommonViewController, UIImagePickerController
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func canOpenURL(string: String?) -> Bool {
+        guard let urlString = string else {return false}
+        guard let url = NSURL(string: urlString) else {return false}
+        if !UIApplication.shared.canOpenURL(url as URL) {return false}
+        
+        //
+        let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
+        return predicate.evaluate(with: string)
+    }
+    
+    
+    @IBAction func sendFiles(_ sender: Any) {
+        if lienTextField.text != nil && lienTextField.text != "" {
+            if !canOpenURL(string: lienTextField.text){
+                let alert : UIAlertView = UIAlertView(title: "Erreur", message: "Mauvaise URL",       delegate: nil, cancelButtonTitle: "Retour")
+                
+                alert.show()
+            }
+            else{
+                self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)
+            }
+        }
+        else{
+            self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)
+        }
+
+    }
 
     
     override func didReceiveMemoryWarning() {
