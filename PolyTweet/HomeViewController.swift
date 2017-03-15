@@ -40,25 +40,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
         user=SingleUser.getUser();
-        let context=appDelegate.persistentContainer.viewContext
-
-        let requestGroupeGeneral : NSFetchRequest<Group> = Group.fetchRequest();
-        let nameGroupe : String = "Général"
-        let predicateGroupeGeneral = NSPredicate(format: "name == %@",nameGroupe);
-        requestGroupeGeneral.predicate=predicateGroupeGeneral;
-        do{
-            let groupeSel = try context.fetch(requestGroupeGeneral)
-            print(groupeSel.count)
-            groupSelected=groupeSel[0]
-        }
-        catch let error as NSError{
-                print(error);
-        }
-        groupes=(user?.contribue)!.allObjects as! [Group];
+        loadGroupes()
         loadMessage()
 
         //
@@ -163,10 +146,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         
     }
     func loadMessage(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        let context=appDelegate.persistentContainer.viewContext
+
+        let context=CoreDataManager.context
         let request : NSFetchRequest<Message> = Message.fetchRequest();
         let predicate = NSPredicate(format: "dep == %@ AND groupe == %@",(user?.appartient)!,groupSelected!);
         request.predicate=predicate;
@@ -183,7 +164,24 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             self.tableMessage.setContentOffset(offset, animated: false)
         }
     }
-    
+    func loadGroupes(){
+        let context=CoreDataManager.context
+        
+        let requestGroupeGeneral : NSFetchRequest<Group> = Group.fetchRequest();
+        let nameGroupe : String = "Général"
+        let predicateGroupeGeneral = NSPredicate(format: "name == %@",nameGroupe);
+        requestGroupeGeneral.predicate=predicateGroupeGeneral;
+        do{
+            let groupeSel = try context.fetch(requestGroupeGeneral)
+            print(groupeSel.count)
+            groupSelected=groupeSel[0]
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        groupes=(user?.contribue)!.allObjects as! [Group];
+        tableGroupes.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(tableView == tableGroupes){
@@ -286,7 +284,20 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     // MARK: - Table View delegate methods
     
-
+    @IBAction func unwindtoHomeFomGroupView(segue: UIStoryboardSegue) {
+        let oldController = segue.source as! GroupPopUpViewController
+        let group = Group(context:CoreDataManager.context);
+        group.name=oldController.nameGroup.text;
+        for userToAdd in oldController.usersSelected {
+            userToAdd.addToContribue(group);
+            group.addToContient(userToAdd);
+        }
+        CoreDataManager.save();
+        
+        loadGroupes();
+        
+    }
+    
     @IBAction func disconnect(_ sender: Any) {
         SingleUser.destroy();
     }
