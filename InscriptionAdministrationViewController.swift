@@ -109,7 +109,7 @@ class InscriptionAdministrationViewController: CommonViewController, UIPickerVie
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : AnyObject])
+                               didFinishPickingMediaWithInfo info: [String : Any])
     {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.contentMode = .scaleAspectFit
@@ -174,9 +174,6 @@ class InscriptionAdministrationViewController: CommonViewController, UIPickerVie
                     print(error);
                 }
                 
-            }
-            catch let error as NSError{
-                print(error);
             }
             
             departement?.addToContient(user);

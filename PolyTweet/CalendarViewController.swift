@@ -13,6 +13,7 @@ class CalendarViewController: CommonViewController {
     
     @IBOutlet weak var calendarView: CalendarView!
     
+    @IBOutlet weak var monthLabel: UILabel!
     
     let monthFormatter = DateFormatter()
     var testCalendar = Calendar.current
@@ -31,6 +32,7 @@ class CalendarViewController: CommonViewController {
         calendarView.registerHeaderView(xibFileNames: ["SectionHeaderView"])
         
         monthFormatter.dateFormat = "MMMM yyyy"
+
         
         let date = Date()
         let calendar = Calendar.current
@@ -101,6 +103,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         let headerCell = (header as? SectionHeaderView)
         
         headerCell?.title.text = monthFormatter.string(from: range.start)
+        monthLabel.text = monthFormatter.string(from: range.start)
     }
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
@@ -142,5 +145,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         handleCellSelection(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
     }
+    
+
 }
 

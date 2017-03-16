@@ -111,7 +111,7 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
         present(imagePicker, animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController,
-                                didFinishPickingMediaWithInfo info: [String : AnyObject])
+                                didFinishPickingMediaWithInfo info: [String : Any])
     {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.contentMode = .scaleAspectFit

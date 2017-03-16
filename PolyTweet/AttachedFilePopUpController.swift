@@ -67,9 +67,13 @@ class AttachedFilePopUpController: CommonViewController, UIImagePickerController
     @IBAction func sendFiles(_ sender: Any) {
         if lienTextField.text != nil && lienTextField.text != "" {
             if !canOpenURL(string: lienTextField.text){
-                let alert : UIAlertView = UIAlertView(title: "Erreur", message: "Mauvaise URL",       delegate: nil, cancelButtonTitle: "Retour")
+                /*let alert : UIAlertView = UIAlertView(title: "Erreur", message: "Mauvaise URL",       delegate: nil, cancelButtonTitle: "Retour")
                 
-                alert.show()
+                alert.show()*/
+                let alert = UIAlertController(title: "Erreur", message: "Mauvaise URL", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
             }
             else{
                 self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)

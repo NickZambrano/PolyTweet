@@ -51,7 +51,7 @@ class PopUpViewController: CommonViewController, UIImagePickerControllerDelegate
     
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : AnyObject])
+                               didFinishPickingMediaWithInfo info: [String : Any])
     {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photo.contentMode = .scaleAspectFit

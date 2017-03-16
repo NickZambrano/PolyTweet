@@ -237,7 +237,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         print(String(data: link?.file as! Data, encoding: .utf8)!)
         
         let url = NSURL(string: String(data: link?.file as! Data, encoding: .utf8)!)!
-        UIApplication.shared.openURL(url as URL)
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         
     }
     
