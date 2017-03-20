@@ -10,6 +10,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="appartient" inverseEntity="User" syncable="YES"/>
         <relationship name="enseignants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Enseignant" inverseName="depSecondaires" inverseEntity="Enseignant" syncable="YES"/>
+        <relationship name="info" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Information" inverseName="departement" inverseEntity="Information" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="dep" inverseEntity="Message" syncable="YES"/>
     </entity>
     <entity name="Enseignant" representedClassName="Enseignant" parentEntity="User" syncable="YES" codeGenerationType="class">
@@ -26,6 +27,13 @@
         <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="contribue" inverseEntity="User" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="groupe" inverseEntity="Message" syncable="YES"/>
     </entity>
+    <entity name="Information" representedClassName="Information" syncable="YES" codeGenerationType="class">
+        <attribute name="contenu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titre" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="departement" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departement" inverseName="info" inverseEntity="Departement" syncable="YES"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PieceJointeImage" inverseName="newRelationship" inverseEntity="PieceJointeImage" syncable="YES"/>
+        <relationship name="lien" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PieceJointeLien" inverseName="newRelationship" inverseEntity="PieceJointeLien" syncable="YES"/>
+    </entity>
     <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
         <attribute name="contenu" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -40,11 +48,13 @@
         <attribute name="file" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="imageappartient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Message" inverseName="image" inverseEntity="Message" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Information" inverseName="image" inverseEntity="Information" syncable="YES"/>
     </entity>
     <entity name="PieceJointeLien" representedClassName="PieceJointeLien" syncable="YES" codeGenerationType="class">
         <attribute name="file" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="lienappartient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Message" inverseName="lien" inverseEntity="Message" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Information" inverseName="lien" inverseEntity="Information" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="fname" optional="YES" attributeType="String" syncable="YES"/>
@@ -69,13 +79,14 @@
     <elements>
         <element name="Administration" positionX="-1017" positionY="4574" width="128" height="45"/>
         <element name="CategorieMessage" positionX="-677" positionY="4503" width="128" height="73"/>
-        <element name="Departement" positionX="-1179" positionY="4302" width="128" height="118"/>
+        <element name="Departement" positionX="-1179" positionY="4302" width="128" height="30"/>
         <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="88"/>
         <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
-        <element name="Group" positionX="-920" positionY="4140" width="128" height="103"/>
+        <element name="Group" positionX="-920" positionY="4140" width="128" height="30"/>
+        <element name="Information" positionX="-488" positionY="4443" width="128" height="30"/>
         <element name="Message" positionX="-774" positionY="4278" width="128" height="165"/>
-        <element name="PieceJointeImage" positionX="-684" positionY="4077" width="128" height="30"/>
-        <element name="PieceJointeLien" positionX="-540" positionY="4194" width="128" height="30"/>
+        <element name="PieceJointeImage" positionX="-684" positionY="4077" width="128" height="103"/>
+        <element name="PieceJointeLien" positionX="-540" positionY="4194" width="128" height="103"/>
         <element name="User" positionX="-983" positionY="4281" width="128" height="163"/>
         <element name="Years" positionX="-812" positionY="4622" width="128" height="88"/>
     </elements>
