@@ -42,6 +42,7 @@
 		B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83536EF1E5DFDB500657628 /* CoreDataManager.swift */; };
 		B844235D1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
 		B844235E1E51CA010066985F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
+		B850C03E1E8125B500CEDB83 /* InformationPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B850C03D1E8125B500CEDB83 /* InformationPopupViewController.swift */; };
 		B87759231E807A9E00F85414 /* AddInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87759221E807A9E00F85414 /* AddInfoViewController.swift */; };
 		B897BE5E1E77F08500681BEA /* GroupPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B897BE5D1E77F08500681BEA /* GroupPopUpViewController.swift */; };
 		B8AB87861E808674003D276E /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB87851E808674003D276E /* InformationTableViewCell.swift */; };
@@ -124,6 +125,7 @@
 		B83536EB1E5DE03D00657628 /* SingleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleUser.swift; path = ../SingleUser.swift; sourceTree = "<group>"; };
 		B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = ../ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B83536EF1E5DFDB500657628 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = ../CoreDataManager.swift; sourceTree = "<group>"; };
+		B850C03D1E8125B500CEDB83 /* InformationPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPopupViewController.swift; sourceTree = "<group>"; };
 		B87759221E807A9E00F85414 /* AddInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInfoViewController.swift; sourceTree = "<group>"; };
 		B897BE5D1E77F08500681BEA /* GroupPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPopUpViewController.swift; sourceTree = "<group>"; };
 		B8AB87851E808674003D276E /* InformationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				B87759221E807A9E00F85414 /* AddInfoViewController.swift */,
 				B8AB87851E808674003D276E /* InformationTableViewCell.swift */,
 				B8AB87871E808810003D276E /* InformationViewController.swift */,
+				B850C03D1E8125B500CEDB83 /* InformationPopupViewController.swift */,
 			);
 			path = PolyTweet;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				B83536EE1E5DFA1500657628 /* ResetPasswordViewController.swift in Sources */,
 				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
 				5086FE431E807AC5005328F5 /* datePopUpController.swift in Sources */,
+				B850C03E1E8125B500CEDB83 /* InformationPopupViewController.swift in Sources */,
 				501722011E796A0B0071FC6F /* ImagePopUpViewController.swift in Sources */,
 				B897BE5E1E77F08500681BEA /* GroupPopUpViewController.swift in Sources */,
 				B8AB87861E808674003D276E /* InformationTableViewCell.swift in Sources */,

@@ -13,9 +13,9 @@ class InformationTableViewCell : UITableViewCell{
     
     @IBOutlet weak var titreLabel: UILabel!
     
-    @IBOutlet weak var imageLien: UIButton!
     @IBOutlet weak var imageInformation: UIImageView!
     
+    @IBOutlet weak var contenu: UITextView!
     @IBOutlet weak var lien: UIButton!
     
     override func awakeFromNib() {
