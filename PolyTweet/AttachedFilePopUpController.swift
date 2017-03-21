@@ -27,10 +27,31 @@ class AttachedFilePopUpController: CommonViewController, UIImagePickerController
     }
     
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
-        imagePickerController.allowsEditing = false
+        let actionsheet = UIAlertController(title: "Changer ma photo :", message: nil, preferredStyle: .actionSheet)
+        
+        actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                self.imagePickerController.sourceType = .camera
+                self.present(self.imagePickerController, animated: true, completion: nil)
+            }else{print("Camera non disponible")}
+        }))
+        
+        actionsheet.addAction(UIAlertAction(title: "Bibliothèque Photo", style: .default, handler: {(action:UIAlertAction) in
+            self.imagePickerController.sourceType = .photoLibrary
+            self.present(self.imagePickerController, animated: true, completion: nil)
+        }))
+        
+        
+        if let popoverPresentationController = actionsheet.popoverPresentationController {
+            popoverPresentationController.sourceView = sender
+            popoverPresentationController.sourceRect = sender.bounds
+        }
+        
+        self.present(actionsheet, animated: true, completion: nil)
+        /*imagePickerController.allowsEditing = false
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePickerController, animated: true, completion: nil)
+        present(imagePickerController, animated: true, completion: nil)*/
         
     }
     

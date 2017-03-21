@@ -21,8 +21,12 @@ class ImagePopUpViewController: CommonViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         photo.image = image
         photo.contentMode = .scaleAspectFill
-        photo.clipsToBounds = true
-        legende.text = desc
+        if desc != nil{
+            legende.text = desc
+        }
+        else {
+            self.legende.isHidden = true
+        }
     }
     
     

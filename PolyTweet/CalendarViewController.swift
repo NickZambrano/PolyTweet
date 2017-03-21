@@ -20,6 +20,7 @@ class CalendarViewController: CommonViewController {
     let white = UIColor.white
     let darkPurple = UIColor.black
     let dimPurple = UIColor.brown
+    var selectedDate:CellView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,10 +80,24 @@ class CalendarViewController: CommonViewController {
         if cellState.isSelected {
             myCustomCell.selectedView.layer.cornerRadius =  25
             myCustomCell.selectedView.isHidden = false
+            selectedDate = myCustomCell
         } else {
             myCustomCell.selectedView.isHidden = true
         }
     }
+    
+    
+    /*@IBAction func creerEvenement(_ sender: Any) {
+        performSegue(withIdentifier: "showdatepopup", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showdatepopup" {
+            let upcomming: datePopUpController = segue.destination as! datePopUpController
+            upcomming.date = selectedDate?.dayLabel.text
+            
+        }
+    }*/
     
     
     @IBAction override func retour(_ sender: Any) {

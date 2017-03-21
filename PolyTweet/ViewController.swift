@@ -71,8 +71,6 @@ class ViewController: CommonViewController {
                         else{
                             self.alert(title:"Erreur", message:"Erreur d'identifiant Administration");
                         }
-                    }else{
-                        print("Not found");
                     }
                     
                 }

@@ -174,7 +174,6 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         requestGroupeGeneral.predicate=predicateGroupeGeneral;
         do{
             let groupeSel = try context.fetch(requestGroupeGeneral)
-            print(groupeSel.count)
             groupSelected=groupeSel[0]
         }
         catch let error as NSError{
