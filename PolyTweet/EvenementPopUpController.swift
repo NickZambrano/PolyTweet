@@ -26,7 +26,7 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateStyle = DateFormatter.Style.long
         
         dateLabel.text = dateFormatter.string(from: date!)
         
@@ -67,7 +67,6 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
 
             do{
                 events = try context.fetch(request)
-                print(events[0].detail!)
             }
             catch let error as NSError{
                 print(error);

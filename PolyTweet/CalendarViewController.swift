@@ -13,8 +13,7 @@ import CoreData
 class CalendarViewController: CommonViewController {
     
     @IBOutlet weak var calendarView: CalendarView!
-    
-    @IBOutlet weak var monthLabel: UILabel!
+
     
     let monthFormatter = DateFormatter()
     var testCalendar = Calendar.current
@@ -151,7 +150,6 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         let headerCell = (header as? SectionHeaderView)
         
         headerCell?.title.text = monthFormatter.string(from: range.start)
-        monthLabel.text = monthFormatter.string(from: range.start)
     }
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
