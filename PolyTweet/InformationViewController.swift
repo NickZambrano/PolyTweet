@@ -15,7 +15,8 @@ class InformationViewController: CommonViewController, UITableViewDataSource,UIT
 
     @IBOutlet weak var tableInformations: UITableView!
     var informations:[Information] = [];
-        override func viewDidLoad() {
+    var infoSelected:Information?=nil;
+    override func viewDidLoad() {
             super.viewDidLoad()
             
             user=SingleUser.getUser();
@@ -49,24 +50,41 @@ func loadInformation(){
             cell.titreLabel.text=self.informations[indexPath.section].titre
 
             cell.layer.cornerRadius=10
-            
+        
+            cell.contenu.text=self.informations[indexPath.section].contenu
             if let pieceImage = self.informations[indexPath.section].image {
                 cell.imageInformation.image = UIImage(data: pieceImage.file as! Data)!
                 cell.imageInformation.contentMode = .scaleAspectFill
                 cell.imageInformation.clipsToBounds = true
-                cell.imageLien.tag = indexPath.section
                 
             }
+        cell.imageInformation.layer.cornerRadius=5
             if let pieceLien = self.informations[indexPath.section].lien {
                 cell.lien.setTitle(pieceLien.name,for: .normal)
                 cell.lien.tag = indexPath.section
             }else {
                 cell.lien.isHidden = true
             }
-            
+            cell.accessoryType = .none
             return cell
     
         
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+            infoSelected=self.informations[indexPath.section]
+            performSegue(withIdentifier: "showInfo", sender : self)
+        
+        }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showInfo"){
+            let upcomming: InformationPopupViewController = segue.destination as! InformationPopupViewController
+            upcomming.information=infoSelected;
+            
+        }
+    }
+    
 
 }

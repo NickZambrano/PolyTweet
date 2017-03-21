@@ -17,7 +17,15 @@ class AddInfoViewController : CommonViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var nomLien: UITextField!
     @IBOutlet weak var lienTextField: UITextField!
-    @IBOutlet weak var contenuField: UITextField!
+    @IBOutlet weak var contenuField: UITextView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.imagePickerController.delegate = self
+        self.photo.clipsToBounds = true;
+        user=SingleUser.getUser();
+        
+    }
     
     let imagePickerController = UIImagePickerController()
     @IBAction func loadImageButtonTapped(_ sender: Any) {
@@ -27,17 +35,20 @@ class AddInfoViewController : CommonViewController, UIImagePickerControllerDeleg
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.imagePickerController.delegate = self
-        self.photo.clipsToBounds = true;
-        user=SingleUser.getUser();
 
-    }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any])
+    {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            photo.contentMode = .scaleAspectFit
+            photo.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
     func canOpenURL(string: String?) -> Bool {
         guard let urlString = string else {return false}
         guard let url = NSURL(string: urlString) else {return false}
@@ -120,7 +131,7 @@ class AddInfoViewController : CommonViewController, UIImagePickerControllerDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     @IBAction func dismissPopup(_ sender: Any) {
         dismiss(animated: true, completion: nil)
 
