@@ -33,6 +33,30 @@ class datePopUpController: CommonViewController, UIImagePickerControllerDelegate
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
     }
     
+    
+    override func prepare (for segue:UIStoryboardSegue, sender : Any?){
+        if segue.identifier=="addevent"{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+                return
+            }
+            let context=appDelegate.persistentContainer.viewContext
+            let event = Evenement(context: context)
+            
+            event.titre = titreTextField.text
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            dateFormatter.dateStyle = DateFormatter.Style.medium
+            let date = dateFormatter.date(from: dateTextField.text!)
+            
+            event.date =  date as NSDate?
+            event.detail = descTextField.text
+            
+            print(event.date)
+            
+            CoreDataManager.save()
+        }
+    }
+    
     func datePickerValueChanged(sender:UIDatePicker) {
         
         let dateFormatter = DateFormatter()
@@ -44,6 +68,7 @@ class datePopUpController: CommonViewController, UIImagePickerControllerDelegate
         dateTextField.text = dateFormatter.string(from: sender.date)
         
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

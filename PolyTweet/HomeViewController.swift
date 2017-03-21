@@ -112,17 +112,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*override func prepare (for segue:UIStoryboardSegue, sender : Any?){
-     if segue.identifier=="toInscription"{
-     let inscriptionViewController = segue.destination as! InscriptionViewController;
-     if let user=self.username.text{
-     inscriptionViewController.nom=user;
-     }else{
-     inscriptionViewController.nom="";
-     }
-     
-     }
-     }*/
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == tableGroupes){
@@ -232,9 +222,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     @IBAction func openLien(sender: UIButton){
         let link = self.messages[sender.tag].lien
-        
-        print(String(data: link?.file as! Data, encoding: .utf8)!)
-        
+    
         let url = NSURL(string: String(data: link?.file as! Data, encoding: .utf8)!)!
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         

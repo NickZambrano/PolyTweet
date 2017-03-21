@@ -32,6 +32,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tSW-25-pK9">
+                        <rect key="frame" x="36" y="63" width="28" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="OnV-BL-QgQ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1N1-IN-tV4"/>
@@ -42,9 +47,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="dayLabel" destination="OnV-BL-QgQ" id="6EG-8E-GyQ"/>
+                <outlet property="eventView" destination="tSW-25-pK9" id="DTz-C1-AY2"/>
                 <outlet property="selectedView" destination="Wbe-vC-ZdZ" id="qWK-Jw-TXJ"/>
             </connections>
-            <point key="canvasLocation" x="-52" y="139.5"/>
+            <point key="canvasLocation" x="-52" y="139"/>
         </tableViewCell>
     </objects>
 </document>
