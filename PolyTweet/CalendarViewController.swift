@@ -109,7 +109,7 @@ class CalendarViewController: CommonViewController {
             
             
             if cellState.date.compare((event.date as! Date)) == ComparisonResult.orderedSame{
-                myCustomCell.eventView.layer.cornerRadius = 17
+                myCustomCell.eventView.layer.cornerRadius = 8
                 myCustomCell.eventView.isHidden = false
             } else {
                 myCustomCell.eventView.isHidden = true

@@ -32,16 +32,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tSW-25-pK9">
-                        <rect key="frame" x="36" y="63" width="28" height="28"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSW-25-pK9">
+                        <rect key="frame" x="42" y="61" width="16" height="16"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="4ct-3x-a5a"/>
+                            <constraint firstAttribute="width" constant="16" id="BlZ-F0-1kC"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="OnV-BL-QgQ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1N1-IN-tV4"/>
                     <constraint firstItem="Wbe-vC-ZdZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DRa-ZV-lYz"/>
+                    <constraint firstItem="tSW-25-pK9" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PmI-QC-0fR"/>
                     <constraint firstItem="Wbe-vC-ZdZ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="X02-MQ-uee"/>
+                    <constraint firstItem="tSW-25-pK9" firstAttribute="top" secondItem="OnV-BL-QgQ" secondAttribute="bottom" id="a8r-mj-n86"/>
                     <constraint firstItem="OnV-BL-QgQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nBy-fN-Kdh"/>
                 </constraints>
             </tableViewCellContentView>
