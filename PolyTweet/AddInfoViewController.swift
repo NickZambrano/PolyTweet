@@ -60,74 +60,7 @@ class AddInfoViewController : CommonViewController, UIImagePickerControllerDeleg
         return predicate.evaluate(with: string)
     }
     
-    @IBAction func addInfo(_ sender: Any) {
-        if lienTextField.text != nil && lienTextField.text != "" {
-            if !canOpenURL(string: lienTextField.text){
-                /*let alert : UIAlertView = UIAlertView(title: "Erreur", message: "Mauvaise URL",       delegate: nil, cancelButtonTitle: "Retour")
-                 
-                 alert.show()*/
-                let alert = UIAlertController(title: "Erreur", message: "Mauvaise URL", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                
-            }
-            else{
-                
-                let context=CoreDataManager.context
-                
-                let info=Information(context:context);
-                info.titre=titreField.text;
-                info.contenu=contenuField.text;
-                info.departement=user?.appartient;
-                
-                if self.photo.image != nil {     //On regarde s'il y a une piece jointe image
-                    let pieceimage = PieceJointeImage(context:context);
-                    
-                    
-                    
-                    if self.photo.image != nil {
-                        pieceimage.file = UIImageJPEGRepresentation(self.photo.image!,1) as NSData?
-                        pieceimage.name = self.photoTextField.text
-                    }
-                    info.image=pieceimage
 
-                }
-                
-                if self.lienTextField != nil{ //On regarde s'il y a un lien
-                    let piecelien = PieceJointeLien(context:context);
-                    piecelien.file = self.lienTextField.text?.data(using: .utf8)! as NSData?
-                    piecelien.name = self.nomLien.text
-                    info.lien=piecelien
-                }
-                CoreDataManager.save();
-            }
-        }
-        else{
-            let context=CoreDataManager.context
-            
-            let info=Information(context:context);
-            info.titre=titreField.text;
-            info.contenu=contenuField.text;
-            info.departement=user?.appartient;
-            
-            if self.photo.image != nil {     //On regarde s'il y a une piece jointe image
-                let pieceimage = PieceJointeImage(context:context);
-                
-                
-                
-                if self.photo.image != nil {
-                    pieceimage.file = UIImageJPEGRepresentation(self.photo.image!,1) as NSData?
-                    pieceimage.name = self.photoTextField.text
-                }
-                info.image=pieceimage
-                
-            }
-            
-
-            CoreDataManager.save();
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

@@ -70,6 +70,9 @@ func loadInformation(){
     
         
     }
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -78,6 +81,76 @@ func loadInformation(){
         
         }
 
+    @IBAction func unwindtoHomeFomAddInfoView(segue: UIStoryboardSegue) {
+        let oldController = segue.source as! AddInfoViewController
+        if oldController.lienTextField.text != nil && oldController.lienTextField.text != "" {
+            if !oldController.canOpenURL(string: oldController.lienTextField.text){
+                /*let alert : UIAlertView = UIAlertView(title: "Erreur", message: "Mauvaise URL",       delegate: nil, cancelButtonTitle: "Retour")
+                 
+                 alert.show()*/
+                let alert = UIAlertController(title: "Erreur", message: "Mauvaise URL", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+            else{
+                
+                let context=CoreDataManager.context
+                
+                let info=Information(context:context);
+                info.titre=oldController.titreField.text;
+                info.contenu=oldController.contenuField.text;
+                info.departement=user?.appartient;
+                
+                if oldController.photo.image != nil {     //On regarde s'il y a une piece jointe image
+                    let pieceimage = PieceJointeImage(context:context);
+                    
+                    
+                    
+                    if oldController.photo.image != nil {
+                        pieceimage.file = UIImageJPEGRepresentation(oldController.photo.image!,1) as NSData?
+                        pieceimage.name = oldController.photoTextField.text
+                    }
+                    info.image=pieceimage
+                    
+                }
+                
+                if oldController.lienTextField != nil{ //On regarde s'il y a un lien
+                    let piecelien = PieceJointeLien(context:context);
+                    piecelien.file = oldController.lienTextField.text?.data(using: .utf8)! as NSData?
+                    piecelien.name = oldController.nomLien.text
+                    info.lien=piecelien
+                }
+                CoreDataManager.save();
+            }
+        }
+        else{
+            let context=CoreDataManager.context
+            
+            let info=Information(context:context);
+            info.titre=oldController.titreField.text;
+            info.contenu=oldController.contenuField.text;
+            info.departement=user?.appartient;
+            
+            if oldController.photo.image != nil {     //On regarde s'il y a une piece jointe image
+                let pieceimage = PieceJointeImage(context:context);
+                
+                
+                
+                if oldController.photo.image != nil {
+                    pieceimage.file = UIImageJPEGRepresentation(oldController.photo.image!,1) as NSData?
+                    pieceimage.name = oldController.photoTextField.text
+                }
+                info.image=pieceimage
+                
+            }
+            
+            
+            CoreDataManager.save();
+        }
+        tableInformations.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showInfo"){
             let upcomming: InformationPopupViewController = segue.destination as! InformationPopupViewController

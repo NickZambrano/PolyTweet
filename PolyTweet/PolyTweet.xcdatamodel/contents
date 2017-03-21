@@ -89,6 +89,7 @@
         <element name="Departement" positionX="-1179" positionY="4302" width="128" height="30"/>
         <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="88"/>
         <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
+        <element name="Evenement" positionX="-1163" positionY="4115" width="128" height="103"/>
         <element name="Group" positionX="-920" positionY="4140" width="128" height="30"/>
         <element name="Information" positionX="-488" positionY="4443" width="128" height="30"/>
         <element name="Message" positionX="-774" positionY="4278" width="128" height="165"/>
@@ -96,6 +97,5 @@
         <element name="PieceJointeLien" positionX="-540" positionY="4194" width="128" height="103"/>
         <element name="User" positionX="-983" positionY="4281" width="128" height="178"/>
         <element name="Years" positionX="-812" positionY="4622" width="128" height="88"/>
-        <element name="Evenement" positionX="-1163" positionY="4115" width="128" height="103"/>
     </elements>
 </model>
