@@ -48,10 +48,6 @@ class AttachedFilePopUpController: CommonViewController, UIImagePickerController
         }
         
         self.present(actionsheet, animated: true, completion: nil)
-        /*imagePickerController.allowsEditing = false
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePickerController, animated: true, completion: nil)*/
         
     }
     
@@ -88,9 +84,7 @@ class AttachedFilePopUpController: CommonViewController, UIImagePickerController
     @IBAction func sendFiles(_ sender: Any) {
         if lienTextField.text != nil && lienTextField.text != "" {
             if !canOpenURL(string: lienTextField.text){
-                /*let alert : UIAlertView = UIAlertView(title: "Erreur", message: "Mauvaise URL",       delegate: nil, cancelButtonTitle: "Retour")
-                
-                alert.show()*/
+
                 let alert = UIAlertController(title: "Erreur", message: "Mauvaise URL", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)

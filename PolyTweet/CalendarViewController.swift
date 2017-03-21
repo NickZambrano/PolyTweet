@@ -8,6 +8,7 @@
 
 import UIKit
 import JTAppleCalendar
+import CoreData
 
 class CalendarViewController: CommonViewController {
     
@@ -86,6 +87,38 @@ class CalendarViewController: CommonViewController {
         }
     }
     
+    // Function to handle the events of the calendar
+    func handleEvenement(view: JTAppleDayCellView?, cellState: CellState) {
+        guard let myCustomCell = view as? CellView  else {
+            return
+        }
+        
+        var events : [Evenement] = []
+        
+        let context=CoreDataManager.context
+        let request : NSFetchRequest<Evenement> = Evenement.fetchRequest();
+        do{
+            events = try context.fetch(request)
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        
+        for event in events {
+            
+            
+            if cellState.date.compare((event.date as! Date)) == ComparisonResult.orderedSame{
+                myCustomCell.eventView.layer.cornerRadius = 17
+                myCustomCell.eventView.isHidden = false
+            } else {
+                myCustomCell.eventView.isHidden = true
+            }
+
+        }
+        
+
+    }
+    
     
     /*@IBAction func creerEvenement(_ sender: Any) {
         performSegue(withIdentifier: "showdatepopup", sender: self)
@@ -149,16 +182,19 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         handleCellTextColor(view: cell, cellState: cellState)
         handleCellSelection(view: cell, cellState: cellState)
+        handleEvenement(view: cell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         handleCellSelection(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
+        handleEvenement(view: cell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         handleCellSelection(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
+        handleEvenement(view: cell, cellState: cellState)
     }
     
 
