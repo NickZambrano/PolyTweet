@@ -22,6 +22,7 @@ class CalendarViewController: CommonViewController {
     let darkPurple = UIColor.black
     let dimPurple = UIColor.brown
     var selectedDate:CellView? = nil
+    var seldate: Date? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,22 +116,21 @@ class CalendarViewController: CommonViewController {
             }
 
         }
-        
+    }
+    
+    
+    @IBAction func showEvents(_ sender: Any) {
+        performSegue(withIdentifier: "showeventspopup", sender: self)
+    }
 
-    }
-    
-    
-    /*@IBAction func creerEvenement(_ sender: Any) {
-        performSegue(withIdentifier: "showdatepopup", sender: self)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showdatepopup" {
-            let upcomming: datePopUpController = segue.destination as! datePopUpController
-            upcomming.date = selectedDate?.dayLabel.text
+        if segue.identifier == "showeventspopup" {
+            let upcomming: EvenementPopUpController = segue.destination as! EvenementPopUpController
+            upcomming.date = seldate
             
         }
-    }*/
+    }
     
     
     @IBAction override func retour(_ sender: Any) {
@@ -179,13 +179,14 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         // Setup Cell text
         myCustomCell.dayLabel.text = cellState.text
-        
+
         handleCellTextColor(view: cell, cellState: cellState)
         handleCellSelection(view: cell, cellState: cellState)
         handleEvenement(view: cell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
+        seldate = cellState.date
         handleCellSelection(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
         handleEvenement(view: cell, cellState: cellState)

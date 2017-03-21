@@ -15,7 +15,6 @@ class datePopUpController: CommonViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var descTextField: UITextField!
 
-    var date: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +49,6 @@ class datePopUpController: CommonViewController, UIImagePickerControllerDelegate
             
             event.date =  date as NSDate?
             event.detail = descTextField.text
-            
-            print(event.date)
             
             CoreDataManager.save()
         }

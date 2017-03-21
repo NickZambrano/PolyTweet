@@ -20,7 +20,9 @@
 		506A279C1E715A330097FED6 /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506A279A1E715A330097FED6 /* CellView.xib */; };
 		506A279E1E715C950097FED6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A279D1E715C950097FED6 /* CalendarViewController.swift */; };
 		506A27A21E716B830097FED6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A27A11E716B830097FED6 /* CalendarView.swift */; };
+		5080EB061E8148DE0053F557 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5080EB051E8148DE0053F557 /* EventTableViewCell.swift */; };
 		5086FE431E807AC5005328F5 /* datePopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5086FE421E807AC5005328F5 /* datePopUpController.swift */; };
+		5086FE4B1E813D48005328F5 /* EvenementPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5086FE4A1E813D48005328F5 /* EvenementPopUpController.swift */; };
 		50BADE9F1E740CAD00EAC44D /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */; };
 		50BADEA11E740CD100EAC44D /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50BADEA01E740CD100EAC44D /* SectionHeaderView.xib */; };
 		6C3806F50CC2B56F805F8A45 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05A2D50E6CF412157C1B2D /* CALayer+Extensions.swift */; };
@@ -97,7 +99,9 @@
 		506A279A1E715A330097FED6 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CellView.xib; path = ../CellView.xib; sourceTree = "<group>"; };
 		506A279D1E715C950097FED6 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		506A27A11E716B830097FED6 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		5080EB051E8148DE0053F557 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		5086FE421E807AC5005328F5 /* datePopUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = datePopUpController.swift; sourceTree = "<group>"; };
+		5086FE4A1E813D48005328F5 /* EvenementPopUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvenementPopUpController.swift; sourceTree = "<group>"; };
 		50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionHeaderView.swift; path = ../SectionHeaderView.swift; sourceTree = "<group>"; };
 		50BADEA01E740CD100EAC44D /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = ../GroupTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
 				B821E8C21E4DB9560030D669 /* ViewController.swift */,
 				B821E8C41E4DB9560030D669 /* Main.storyboard */,
+				5080EB051E8148DE0053F557 /* EventTableViewCell.swift */,
+				5086FE4A1E813D48005328F5 /* EvenementPopUpController.swift */,
 				5086FE421E807AC5005328F5 /* datePopUpController.swift */,
 				501722001E796A0B0071FC6F /* ImagePopUpViewController.swift */,
 				5067E9B91E77F0FC00DF8E4A /* AttachedFilePopUpController.swift */,
@@ -399,6 +405,7 @@
 				B897BE5E1E77F08500681BEA /* GroupPopUpViewController.swift in Sources */,
 				B8AB87861E808674003D276E /* InformationTableViewCell.swift in Sources */,
 				B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */,
+				5086FE4B1E813D48005328F5 /* EvenementPopUpController.swift in Sources */,
 				B83536EC1E5DE03D00657628 /* SingleUser.swift in Sources */,
 				506A27A21E716B830097FED6 /* CalendarView.swift in Sources */,
 				5042CE021E6EA7C500965A2A /* PopUpViewController.swift in Sources */,
@@ -407,6 +414,7 @@
 				B83536F01E5DFDB500657628 /* CoreDataManager.swift in Sources */,
 				5067E9BA1E77F0FC00DF8E4A /* AttachedFilePopUpController.swift in Sources */,
 				B821E8F21E4DDA630030D669 /* InscriptionViewController.swift in Sources */,
+				5080EB061E8148DE0053F557 /* EventTableViewCell.swift in Sources */,
 				B81C4EC81E6F27AE000397F3 /* UserTableViewCell.swift in Sources */,
 				503B3A951E6853D3001D5608 /* InscriptionEnseignantViewController.swift in Sources */,
 				B8FEB12D1E5454D400618FA4 /* CommonViewController.swift in Sources */,

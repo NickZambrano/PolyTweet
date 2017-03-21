@@ -64,6 +64,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
         self.photo.clipsToBounds = true;
+        
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
         }
@@ -197,7 +198,6 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             if let date=self.messages[indexPath.section].date{
                 cell.setTimeStamp(time: date)
             }
-            cell.layer.cornerRadius=10
             
             if let pieceImage = self.messages[indexPath.section].image {
                 cell.imageMessage.image = UIImage(data: pieceImage.file as! Data)!
@@ -214,7 +214,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             }else {
                 cell.lien.isHidden = true
             }
-            
+            cell.layer.cornerRadius=10
             return cell
         }
 
