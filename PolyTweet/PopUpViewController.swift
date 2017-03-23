@@ -25,6 +25,7 @@ class PopUpViewController: UIViewController, UIImagePickerControllerDelegate, UI
         username.text="@"+(user?.fname)!+(user?.lname)!;
         username.textAlignment = .center;
         self.photo.clipsToBounds = true;
+        //self.photo.contentMode = .scaleAspectFit
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
         }

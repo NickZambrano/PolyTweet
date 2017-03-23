@@ -134,6 +134,9 @@ class CalendarViewController: CommonViewController {
         performSegue(withIdentifier: "showeventspopup", sender: self)
     }
 
+    @IBAction func addEvent(_ sender: Any) {
+        performSegue(withIdentifier: "addevent", sender: self)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showeventspopup" {
@@ -141,10 +144,15 @@ class CalendarViewController: CommonViewController {
             upcomming.date = seldate
             
         }
+        if segue.identifier == "addevent" {
+            let upcomming: DatePopUpController = segue.destination as! DatePopUpController
+            upcomming.date = seldate
+            
+        }
     }
     
     
-    @IBAction override func retour(_ sender: Any) {
+    @IBAction func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
