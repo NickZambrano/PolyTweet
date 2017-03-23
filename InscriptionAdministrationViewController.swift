@@ -138,7 +138,7 @@ class InscriptionAdministrationViewController: UIViewController, UIPickerViewDat
         dismiss(animated: true, completion: nil)
     }
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2;
+        return 1;
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -168,7 +168,9 @@ class InscriptionAdministrationViewController: UIViewController, UIPickerViewDat
             user.password=self.password.text;
             user.mail=self.mail.text;
             user.appartient=departement;
-            user.img=UIImageJPEGRepresentation(imageView.image!,1) as NSData?
+            if let image=imageView.image{
+                user.img=UIImageJPEGRepresentation(image,1) as NSData?
+            }
             let requestGroup : NSFetchRequest<Group> = Group.fetchRequest();
             
             do{

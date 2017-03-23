@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     var user: User?=nil;
 
@@ -28,16 +28,12 @@ class ViewController: UIViewController {
         if let username=self.username.text{
 
             if let pass=self.password.text{
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-                    return
-                }
-                let context=appDelegate.persistentContainer.viewContext
 
                 let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
                 let predicate = NSPredicate(format: "mail == %@",username);
                 request.predicate=predicate;
                 do{
-                    let result: [Etudiant] = try context.fetch(request)
+                    let result: [Etudiant] = try CoreDataManager.context.fetch(request)
                     if(result.count>0){
                         if(result[0].password==pass){
                             user=result[0];
@@ -59,7 +55,7 @@ class ViewController: UIViewController {
                 let predicateAdmin = NSPredicate(format: "mail == %@",username);
                 requestAdmin.predicate=predicateAdmin;
                 do{
-                    let result: [Administration] = try context.fetch(requestAdmin)
+                    let result: [Administration] = try CoreDataManager.context.fetch(requestAdmin)
                     if(result.count>0){
                         if(result[0].password==pass){
                             user=result[0];
@@ -82,7 +78,7 @@ class ViewController: UIViewController {
                 let predicateProf = NSPredicate(format: "mail == %@",username);
                 requestProf.predicate=predicateProf;
                 do{
-                    let result: [Enseignant] = try context.fetch(requestProf)
+                    let result: [Enseignant] = try CoreDataManager.context.fetch(requestProf)
                     if(result.count>0){
                         if(result[0].password==pass){
                             user=result[0];
@@ -118,9 +114,7 @@ class ViewController: UIViewController {
             // Have to login
         }
     }
-    override func prepare (for segue:UIStoryboardSegue, sender : Any?){
 
-    }
     
 
     

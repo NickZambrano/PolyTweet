@@ -28,7 +28,6 @@ class CommonViewController : UIViewController {
     
     
     func keyboardWillShow(notification: NSNotification) {
-        print(notification)
         if(!notUpKeyboard){
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
@@ -39,6 +38,9 @@ class CommonViewController : UIViewController {
         
     }
     
+    @IBAction func retourLogin(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{

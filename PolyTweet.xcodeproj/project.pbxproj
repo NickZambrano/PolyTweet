@@ -29,7 +29,7 @@
 		B81C4EC81E6F27AE000397F3 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */; };
 		B81C4ECA1E6F28C4000397F3 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */; };
 		B821E8C11E4DB9560030D669 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8C01E4DB9560030D669 /* AppDelegate.swift */; };
-		B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8C21E4DB9560030D669 /* ViewController.swift */; };
+		B821E8C31E4DB9560030D669 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821E8C21E4DB9560030D669 /* LoginViewController.swift */; };
 		B821E8C61E4DB9560030D669 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B821E8C41E4DB9560030D669 /* Main.storyboard */; };
 		B821E8CB1E4DB9560030D669 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B821E8CA1E4DB9560030D669 /* Assets.xcassets */; };
 		B821E8CE1E4DB9560030D669 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B821E8CC1E4DB9560030D669 /* LaunchScreen.storyboard */; };
@@ -108,7 +108,7 @@
 		B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		B821E8BD1E4DB9560030D669 /* PolyTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B821E8C01E4DB9560030D669 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B821E8C21E4DB9560030D669 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B821E8C21E4DB9560030D669 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B821E8C51E4DB9560030D669 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B821E8CA1E4DB9560030D669 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B821E8CD1E4DB9560030D669 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -282,7 +282,7 @@
 				B83536EF1E5DFDB500657628 /* CoreDataManager.swift */,
 				B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */,
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
-				B821E8C21E4DB9560030D669 /* ViewController.swift */,
+				B821E8C21E4DB9560030D669 /* LoginViewController.swift */,
 				B821E8CA1E4DB9560030D669 /* Assets.xcassets */,
 				B821E8CF1E4DB9560030D669 /* Info.plist */,
 				503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */,
@@ -454,7 +454,7 @@
 				503B3A991E686274001D5608 /* PolyTweet.xcdatamodel in Sources */,
 				B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */,
 				B83536EE1E5DFA1500657628 /* ResetPasswordViewController.swift in Sources */,
-				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
+				B821E8C31E4DB9560030D669 /* LoginViewController.swift in Sources */,
 				5086FE431E807AC5005328F5 /* DatePopUpController.swift in Sources */,
 				B850C03E1E8125B500CEDB83 /* InformationPopupViewController.swift in Sources */,
 				501722011E796A0B0071FC6F /* ImagePopUpViewController.swift in Sources */,
