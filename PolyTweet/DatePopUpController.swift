@@ -14,10 +14,17 @@ class DatePopUpController: CommonViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var titreTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var descTextField: UITextField!
+    
+    var date:Date? = nil
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        let datebis = dateFormatter.string(from: date!)
+        print(datebis)
+        dateTextField.text = datebis
 
         
     }
