@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 class CommonViewController : UIViewController {
+    var notUpKeyboard : Bool=false;
     override func viewDidLoad() {
         super.viewDidLoad()
         //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CommonViewController.dismissKeyboard))
@@ -27,11 +28,13 @@ class CommonViewController : UIViewController {
     
     
     func keyboardWillShow(notification: NSNotification) {
-        
+        print(notification)
+        if(!notUpKeyboard){
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
                 self.view.frame.origin.y -= keyboardSize.height
             }
+        }
         }
         
     }

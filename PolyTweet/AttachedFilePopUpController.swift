@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttachedFilePopUpController: CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     
     @IBOutlet var photo: UIImageView!

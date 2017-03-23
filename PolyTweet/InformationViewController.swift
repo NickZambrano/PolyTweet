@@ -9,14 +9,17 @@
 import Foundation
 import UIKit
 import CoreData
-class InformationViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UISearchResultsUpdating{
+class InformationViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
 
     var user:User?=nil;
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchActive : Bool = false
+
+    
     @IBOutlet weak var addInfoButton: UIButton!
     @IBOutlet weak var tableInformations: UITableView!
     var filtredInfo: [Information] = [];
-    var resultSeachController = UISearchController()
     var informations:[Information] = [];
     var infoSelected:Information?=nil;
     override func viewDidLoad() {
@@ -31,18 +34,8 @@ class InformationViewController: UIViewController, UITableViewDataSource,UITable
                addInfoButton.isHidden=true;
             }
         }
-        
-        // l'initialisation de SeachController avec un UISearchController vide
-        self.resultSeachController = UISearchController(searchResultsController: nil)
-        
-        // Paramétrer le SeachController
-        self.resultSeachController.searchResultsUpdater = self
-        self.resultSeachController.dimsBackgroundDuringPresentation = false
-        self.resultSeachController.searchBar.sizeToFit()
-        
-        // Ajout de SeachController au Header du tableView
-        self.tableInformations.tableHeaderView = self.resultSeachController.searchBar
-        
+        searchBar.delegate=self;
+
             loadInformation()
     }
 func loadInformation(){
@@ -65,7 +58,7 @@ func loadInformation(){
             return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        if self.resultSeachController.isActive {
+        if searchActive {
             return self.filtredInfo.count
         } else {
             return self.informations.count
@@ -74,7 +67,7 @@ func loadInformation(){
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var info:[Information]=[];
-            if self.resultSeachController.isActive {
+            if searchActive {
                 info = filtredInfo
             }else{
                 info = informations
@@ -109,7 +102,7 @@ func loadInformation(){
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var info:[Information]=[];
-        if self.resultSeachController.isActive {
+        if searchActive{
             info = filtredInfo
         }else{
             info = informations
@@ -118,18 +111,31 @@ func loadInformation(){
             performSegue(withIdentifier: "showInfo", sender : self)
         
         }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        // Supprimer tous les éléments du filtredTeams
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // Supprimer tous les éléments du filtredInfo
         self.filtredInfo.removeAll(keepingCapacity: false)
-        if (searchController.searchBar.text==""){
+        if (searchText==""){
             self.filtredInfo=informations;
         }else{
         // Créer le Predicate
-        let searchPredicate = NSPredicate(format: "titre CONTAINS[c] %@ AND departement == %@",searchController.searchBar.text!,(user?.appartient)!)
+        let searchPredicate = NSPredicate(format: "titre CONTAINS[c] %@ AND departement == %@",searchText,(user?.appartient)!)
         let request : NSFetchRequest<Information> = Information.fetchRequest();
         request.predicate=searchPredicate;
-        // Créer un NSArray (ce array représente SELF dans le Predicate créé)
         do{
             self.filtredInfo = try CoreDataManager.context.fetch(request)
             
@@ -138,8 +144,6 @@ func loadInformation(){
             print(error);
         }
         }
-        // Nouveau filtredTeams de la requête du Predicate
-        //self.filtredInfo = array as! [Information]
         
         // Actualisation du tableView
         self.tableInformations.reloadData()

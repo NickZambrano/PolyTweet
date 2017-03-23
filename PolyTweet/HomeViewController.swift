@@ -8,20 +8,23 @@
 
 import UIKit
 import CoreData
-class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate{
+class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
     
     
     var user:User?=nil;
     
     
     var messages : [Message] = []
-    var groupSelected : Group?=nil;
+    var filtredMessages: [Message] = []
+    var groupSelected : Group?=nil
 
     var groupes : [Group]=[]
     
     var pieceImage:PieceJointeImage? = nil;
     var pieceLien:PieceJointeLien? = nil;
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchActive : Bool = false
     
     var indexImage: Int? = nil;
     
@@ -40,7 +43,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchBar.delegate=self;
         user=SingleUser.getUser();
         loadGroupes()
         loadMessage()
@@ -120,7 +123,12 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         if(tableView == tableGroupes){
             return 1
         }else{
-            return self.messages.count
+            if searchActive {
+                return self.filtredMessages.count
+            }else{
+                return self.messages.count
+            }
+            
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -177,21 +185,27 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             return cell
         }
        else{
+            var mess:[Message]=[];
+            if searchActive {
+                mess = filtredMessages
+            }else{
+                mess = messages
+            }
             let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
-            cell.message.text=self.messages[indexPath.section].contenu
-            cell.userName.text=self.messages[indexPath.section].sendBy?.fname
-            if let image=self.messages[indexPath.section].sendBy?.img{
+            cell.message.text=mess[indexPath.section].contenu
+            cell.userName.text=mess[indexPath.section].sendBy?.fname
+            if let image=mess[indexPath.section].sendBy?.img{
                 cell.profil.image=UIImage(data: image as Data)!
                 cell.profil.layer.cornerRadius = cell.profil.layer.frame.size.width / 2;
                 cell.profil.clipsToBounds = true;
                 cell.profil.contentMode = .scaleAspectFill
 
             }
-            if let date=self.messages[indexPath.section].date{
+            if let date=mess[indexPath.section].date{
                 cell.setTimeStamp(time: date)
             }
             
-            if let pieceImage = self.messages[indexPath.section].image {
+            if let pieceImage = mess[indexPath.section].image {
                 cell.imageMessage.image = UIImage(data: pieceImage.file as! Data)!
                 cell.imageMessage.contentMode = .scaleAspectFill
                 cell.imageMessage.clipsToBounds = true
@@ -199,7 +213,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
                 cell.imagelien.addTarget(self, action: #selector(showImage(sender:)), for: .touchUpInside)
                 
             }
-            if let pieceLien = self.messages[indexPath.section].lien {
+            if let pieceLien = mess[indexPath.section].lien {
                 cell.lien.setTitle(pieceLien.name,for: .normal)
                 cell.lien.tag = indexPath.section
                 cell.lien.addTarget(self, action: #selector(openLien(sender:)), for: .touchUpInside)
@@ -211,7 +225,48 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
 
     }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+        notUpKeyboard=true;
+    }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+        notUpKeyboard=false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+        notUpKeyboard=false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        // Supprimer tous les éléments du filtredInfo
+        self.filtredMessages.removeAll(keepingCapacity: false)
+        if (searchText==""){
+            self.filtredMessages=messages;
+        }else{
+            // Créer le Predicate
+            let searchPredicate = NSPredicate(format: "contenu CONTAINS[c] %@ AND dep == %@ AND groupe == %@",searchText,(user?.appartient)!,groupSelected!)
+            let request : NSFetchRequest<Message> = Message.fetchRequest();
+            request.predicate=searchPredicate;
+            do{
+                self.filtredMessages = try CoreDataManager.context.fetch(request)
+                
+            }
+            catch let error as NSError{
+                print(error);
+            }
+        }
+        
+        // Actualisation du tableView
+        self.tableMessage.reloadData()
+    }
+
     @IBAction func openLien(sender: UIButton){
         let link = self.messages[sender.tag].lien
     
@@ -234,9 +289,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     }
     
     @IBAction func unwindAttachedFiletoHome(segue: UIStoryboardSegue) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
+
         let newController = segue.source as! AttachedFilePopUpController
         
         
