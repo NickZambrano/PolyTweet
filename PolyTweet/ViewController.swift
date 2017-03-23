@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class ViewController: CommonViewController {
+class ViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     var user: User?=nil;
 
@@ -121,6 +121,14 @@ class ViewController: CommonViewController {
     override func prepare (for segue:UIStoryboardSegue, sender : Any?){
 
     }
+    
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
+    
 
 }
 

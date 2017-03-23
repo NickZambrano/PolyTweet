@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopUpViewController: CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class PopUpViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var user:User?=nil;
     

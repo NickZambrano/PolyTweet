@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import SwipeCellKit
-class GroupPopUpViewController : CommonViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
+class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     
     @IBOutlet weak var textField: UITextField!
     
@@ -136,7 +136,7 @@ class GroupPopUpViewController : CommonViewController, UITableViewDelegate, UITa
     }
     
 
-    @IBAction override func retour(_ sender: Any) {
+    @IBAction func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
