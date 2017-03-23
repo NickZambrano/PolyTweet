@@ -48,7 +48,7 @@ class DatePopUpController: CommonViewController, UIImagePickerControllerDelegate
             dateFormatter.dateStyle = DateFormatter.Style.medium
             let date = dateFormatter.date(from: dateTextField.text!)
             
-            if date?.compare(Date()) == ComparisonResult.orderedAscending {
+            if date?.compare(Date()) == ComparisonResult.orderedAscending && date?.compare(Date()) == ComparisonResult.orderedSame{
                 let alert = UIAlertController(title: "Erreur", message: "Date passée", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
