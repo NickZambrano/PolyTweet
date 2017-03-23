@@ -55,10 +55,11 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
         if (user as? Administration) != nil {
             adminButton.isHidden=false;
+
             userStatus.text="Administration";
         }
         if let enseignant=user as? Enseignant {
-            adminButton.isHidden=enseignant.respoDepartement;
+            adminButton.isHidden = !(enseignant.respoDepartement);
             userStatus.text="Enseignant";
         }
         

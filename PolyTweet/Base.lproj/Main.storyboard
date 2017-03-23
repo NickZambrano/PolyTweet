@@ -1362,6 +1362,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addInfoButton" destination="920-qy-quQ" id="Bcg-tz-Hog"/>
                         <outlet property="tableInformations" destination="bp7-tb-a9i" id="NMf-pF-bxj"/>
                         <segue destination="YlI-LF-Cy0" kind="presentation" identifier="showInfo" modalPresentationStyle="overCurrentContext" id="5fY-dk-Jqc"/>
                     </connections>

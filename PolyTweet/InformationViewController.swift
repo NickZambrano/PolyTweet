@@ -13,6 +13,7 @@ class InformationViewController: CommonViewController, UITableViewDataSource,UIT
 
     var user:User?=nil;
 
+    @IBOutlet weak var addInfoButton: UIButton!
     @IBOutlet weak var tableInformations: UITableView!
     var informations:[Information] = [];
     var infoSelected:Information?=nil;
@@ -20,6 +21,14 @@ class InformationViewController: CommonViewController, UITableViewDataSource,UIT
             super.viewDidLoad()
             
             user=SingleUser.getUser();
+        if (user as? Etudiant) != nil {
+            addInfoButton.isHidden=true;
+        }
+        if let enseignant=user as? Enseignant {
+            if(!enseignant.respoDepartement){
+               addInfoButton.isHidden=true;
+            }
+        }
             loadInformation()
     }
 func loadInformation(){
@@ -47,19 +56,19 @@ func loadInformation(){
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
             let cell = self.tableInformations.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
-            cell.titreLabel.text=self.informations[indexPath.section].titre
+            cell.titreLabel.text=self.informations[self.informations.count-1-indexPath.section].titre
 
             cell.layer.cornerRadius=10
         
-            cell.contenu.text=self.informations[indexPath.section].contenu
-            if let pieceImage = self.informations[indexPath.section].image {
+            cell.contenu.text=self.informations[self.informations.count-1-indexPath.section].contenu
+            if let pieceImage = self.informations[self.informations.count-1-indexPath.section].image {
                 cell.imageInformation.image = UIImage(data: pieceImage.file as! Data)!
                 cell.imageInformation.contentMode = .scaleAspectFill
                 cell.imageInformation.clipsToBounds = true
                 
             }
         cell.imageInformation.layer.cornerRadius=5
-            if let pieceLien = self.informations[indexPath.section].lien {
+            if let pieceLien = self.informations[self.informations.count-1-indexPath.section].lien {
                 cell.lien.setTitle(pieceLien.name,for: .normal)
                 cell.lien.tag = indexPath.section
             }else {
@@ -76,7 +85,7 @@ func loadInformation(){
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-            infoSelected=self.informations[indexPath.section]
+            infoSelected=self.informations[self.informations.count-1-indexPath.section]
             performSegue(withIdentifier: "showInfo", sender : self)
         
         }
@@ -146,9 +155,9 @@ func loadInformation(){
             }
             
             
-            CoreDataManager.save();
+            CoreDataManager.save()
         }
-        tableInformations.reloadData()
+        loadInformation()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
