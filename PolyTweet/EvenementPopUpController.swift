@@ -36,18 +36,19 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
     }
     
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.events.count
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
 
 
-    
+
+    /**
+     Fonction qui permet de charger tous les éléments présents dans les CoreData qui correspondent à la date 
+     */
     func loadEvents(){
             
             let context=CoreDataManager.context
@@ -62,7 +63,7 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
             let dateTo = calendar.date(from: components)! // eg. 2016-10-11 00:00:00
         
             // Set predicate as date being today's date
-            let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [date, dateTo])
+            let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [date!, dateTo])
             request.predicate = datePredicate;
 
             do{
@@ -74,7 +75,9 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
             eventTable.reloadData()
     }
     
-    
+    /**
+     Remplissage du tableau avec les évènements chargés
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = self.eventTable.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         
@@ -84,17 +87,6 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
             return cell
         }
     
-    /*// Set the spacing between sections
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
-    }
-    
-    // Make the background color show through
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
-    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

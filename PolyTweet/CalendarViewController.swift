@@ -85,17 +85,27 @@ class CalendarViewController: CommonViewController {
         } else {
             myCustomCell.selectedView.isHidden = true
         }
-    }
-    
-    // Function to handle the events of the calendar
-    func handleEvenement(view: JTAppleDayCellView?, cellState: CellState) {
-        guard let myCustomCell = view as? CellView  else {
-            return
+        if haveEvents(cellState: cellState){
+            myCustomCell.eventView.layer.cornerRadius =  8
+            myCustomCell.eventView.isHidden=false
         }
+        else{
+            myCustomCell.eventView.isHidden=true
+        }
+    }
+
+    
+    //Fonction pour savoir si il y a un évènement sur la cellule
+    func haveEvents(cellState: CellState)->BooleanLiteralType{
+        var result = false
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy MM dd"
+        
+        let cellStateString = formatter.string(from: cellState.date)
         
         var events : [Evenement] = []
         
-        let context=CoreDataManager.context
+        let context = CoreDataManager.context
         let request : NSFetchRequest<Evenement> = Evenement.fetchRequest();
         do{
             events = try context.fetch(request)
@@ -105,16 +115,18 @@ class CalendarViewController: CommonViewController {
         }
         
         for event in events {
+            let delta = event.date?.timeIntervalSinceNow
             
-            
-            if cellState.date.compare((event.date as! Date)) == ComparisonResult.orderedSame{
-                myCustomCell.eventView.layer.cornerRadius = 8
-                myCustomCell.eventView.isHidden = false
-            } else {
-                myCustomCell.eventView.isHidden = true
+            if let delta = delta {
+                let date = Date(timeIntervalSinceNow: delta)
+                let dateEventString = formatter.string(from: date)
+                if cellState.dateBelongsTo == .thisMonth && dateEventString == cellStateString{
+                    result = true
+                }
             }
-
+            
         }
+        return result
     }
     
     
@@ -180,20 +192,17 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
 
         handleCellTextColor(view: cell, cellState: cellState)
         handleCellSelection(view: cell, cellState: cellState)
-        handleEvenement(view: cell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         seldate = cellState.date
         handleCellSelection(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
-        handleEvenement(view: cell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         handleCellSelection(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
-        handleEvenement(view: cell, cellState: cellState)
     }
     
 

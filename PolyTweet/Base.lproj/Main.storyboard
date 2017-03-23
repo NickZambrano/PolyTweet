@@ -350,7 +350,7 @@
         <!--Date Pop Up Controller-->
         <scene sceneID="Udu-9M-hxp">
             <objects>
-                <viewController id="QZb-Ku-kZZ" customClass="datePopUpController" customModule="PolyTweet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QZb-Ku-kZZ" customClass="DatePopUpController" customModule="PolyTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vJj-m8-KSY"/>
                         <viewControllerLayoutGuide type="bottom" id="rNK-7e-XMN"/>

@@ -12,7 +12,7 @@
         <relationship name="enseignants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Enseignant" inverseName="depSecondaires" inverseEntity="Enseignant" syncable="YES"/>
         <relationship name="info" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Information" inverseName="departement" inverseEntity="Information" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="dep" inverseEntity="Message" syncable="YES"/>
-        <relationship name="possede" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Evenement" inverseName="appartient" inverseEntity="Evenement" syncable="YES"/>
+        <relationship name="possede" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Evenement" inverseName="appartient" inverseEntity="Evenement" syncable="YES"/>
     </entity>
     <entity name="Enseignant" representedClassName="Enseignant" parentEntity="User" syncable="YES" codeGenerationType="class">
         <attribute name="respoDepartement" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -26,7 +26,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titre" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="appartient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departement" inverseName="possede" inverseEntity="Departement" syncable="YES"/>
+        <relationship name="appartient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Departement" inverseName="possede" inverseEntity="Departement" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>

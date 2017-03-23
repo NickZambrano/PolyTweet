@@ -14,19 +14,19 @@ class InformationPopupViewController: CommonViewController, UIImagePickerControl
     var information : Information?=nil;
     
     @IBOutlet weak var titre: UILabel!
-    
     @IBOutlet weak var contenu: UITextView!
-    
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var legende: UILabel!
-    
     @IBOutlet weak var pieceJointeLabel: UILabel!
     @IBOutlet weak var lien: UIButton!
+    
     override func viewDidLoad() {
         self.titre.text=information?.titre
         self.contenu.text=information?.contenu
+        
         if let photoInfo=information?.image {
             photo.image=UIImage(data: photoInfo.file as! Data)
+            
             if  photoInfo.name != nil {
                 legende.text=photoInfo.name;
             }else{
@@ -36,6 +36,7 @@ class InformationPopupViewController: CommonViewController, UIImagePickerControl
             photo.isHidden=true;
             legende.isHidden=true;
         }
+        
         if let lienInfo=information?.lien{
             if(lienInfo.name != ""){
                 lien.setTitle(lienInfo.name,for: .normal)
@@ -44,19 +45,25 @@ class InformationPopupViewController: CommonViewController, UIImagePickerControl
                 pieceJointeLabel.isHidden=true;
                 lien.isHidden=true;
             }
-            
-        }else {
+        }else{
             pieceJointeLabel.isHidden=true;
             lien.isHidden=true;
         }
     }
     
+    /**
+     Fonction qui ouvre le lien présent dans l'information
+     */
     @IBAction func openLien(sender: UIButton){
         
         let url = NSURL(string: String(data: information?.lien?.file as! Data, encoding: .utf8)!)!
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         
     }
+    
+    /**
+        envoi des informations necessaire pour afficher l'image dans le popup
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showImage"){
             let upcomming: ImagePopUpViewController = segue.destination as! ImagePopUpViewController

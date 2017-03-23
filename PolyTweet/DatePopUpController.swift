@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class datePopUpController: CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class DatePopUpController: CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var titreTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
