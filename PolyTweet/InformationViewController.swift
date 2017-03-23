@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 import CoreData
-class InformationViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate{
+class InformationViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UISearchResultsUpdating{
 
     var user:User?=nil;
 
     @IBOutlet weak var addInfoButton: UIButton!
     @IBOutlet weak var tableInformations: UITableView!
+    var filtredInfo: [Information] = [];
+    var resultSeachController = UISearchController()
     var informations:[Information] = [];
     var infoSelected:Information?=nil;
     override func viewDidLoad() {
@@ -29,6 +31,18 @@ class InformationViewController: CommonViewController, UITableViewDataSource,UIT
                addInfoButton.isHidden=true;
             }
         }
+        
+        // l'initialisation de SeachController avec un UISearchController vide
+        self.resultSeachController = UISearchController(searchResultsController: nil)
+        
+        // Paramétrer le SeachController
+        self.resultSeachController.searchResultsUpdater = self
+        self.resultSeachController.dimsBackgroundDuringPresentation = false
+        self.resultSeachController.searchBar.sizeToFit()
+        
+        // Ajout de SeachController au Header du tableView
+        self.tableInformations.tableHeaderView = self.resultSeachController.searchBar
+        
             loadInformation()
     }
 func loadInformation(){
@@ -51,24 +65,34 @@ func loadInformation(){
             return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
+        if self.resultSeachController.isActive {
+            return self.filtredInfo.count
+        } else {
             return self.informations.count
+        }
+
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        var info:[Information]=[];
+            if self.resultSeachController.isActive {
+                info = filtredInfo
+            }else{
+                info = informations
+            }
             let cell = self.tableInformations.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
-            cell.titreLabel.text=self.informations[self.informations.count-1-indexPath.section].titre
+            cell.titreLabel.text=info[info.count-1-indexPath.section].titre
 
             cell.layer.cornerRadius=10
         
-            cell.contenu.text=self.informations[self.informations.count-1-indexPath.section].contenu
-            if let pieceImage = self.informations[self.informations.count-1-indexPath.section].image {
+            cell.contenu.text=info[info.count-1-indexPath.section].contenu
+            if let pieceImage = info[info.count-1-indexPath.section].image {
                 cell.imageInformation.image = UIImage(data: pieceImage.file as! Data)!
                 cell.imageInformation.contentMode = .scaleAspectFill
                 cell.imageInformation.clipsToBounds = true
                 
             }
         cell.imageInformation.layer.cornerRadius=5
-            if let pieceLien = self.informations[self.informations.count-1-indexPath.section].lien {
+            if let pieceLien = info[info.count-1-indexPath.section].lien {
                 cell.lien.setTitle(pieceLien.name,for: .normal)
                 cell.lien.tag = indexPath.section
             }else {
@@ -84,11 +108,43 @@ func loadInformation(){
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-            infoSelected=self.informations[self.informations.count-1-indexPath.section]
+        var info:[Information]=[];
+        if self.resultSeachController.isActive {
+            info = filtredInfo
+        }else{
+            info = informations
+        }
+            infoSelected=info[info.count-1-indexPath.section]
             performSegue(withIdentifier: "showInfo", sender : self)
         
         }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        // Supprimer tous les éléments du filtredTeams
+        self.filtredInfo.removeAll(keepingCapacity: false)
+        if (searchController.searchBar.text==""){
+            self.filtredInfo=informations;
+        }else{
+        // Créer le Predicate
+        let searchPredicate = NSPredicate(format: "titre CONTAINS[c] %@ AND departement == %@",searchController.searchBar.text!,(user?.appartient)!)
+        let request : NSFetchRequest<Information> = Information.fetchRequest();
+        request.predicate=searchPredicate;
+        // Créer un NSArray (ce array représente SELF dans le Predicate créé)
+        do{
+            self.filtredInfo = try CoreDataManager.context.fetch(request)
+            
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        }
+        // Nouveau filtredTeams de la requête du Predicate
+        //self.filtredInfo = array as! [Information]
+        
+        // Actualisation du tableView
+        self.tableInformations.reloadData()
+        
+    }
 
     @IBAction func unwindtoHomeFomAddInfoView(segue: UIStoryboardSegue) {
         let oldController = segue.source as! AddInfoViewController

@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class AddInfoViewController : CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class AddInfoViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
       var user:User?=nil;
     
     @IBOutlet weak var titreField: UITextField!
