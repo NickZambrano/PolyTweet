@@ -12,6 +12,7 @@
         <relationship name="enseignants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Enseignant" inverseName="depSecondaires" inverseEntity="Enseignant" syncable="YES"/>
         <relationship name="info" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Information" inverseName="departement" inverseEntity="Information" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="dep" inverseEntity="Message" syncable="YES"/>
+        <relationship name="possede" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Evenement" inverseName="appartient" inverseEntity="Evenement" syncable="YES"/>
     </entity>
     <entity name="Enseignant" representedClassName="Enseignant" parentEntity="User" syncable="YES" codeGenerationType="class">
         <attribute name="respoDepartement" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -25,7 +26,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titre" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="possede" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="participe" inverseEntity="User" syncable="YES"/>
+        <relationship name="appartient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departement" inverseName="possede" inverseEntity="Departement" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -70,7 +71,6 @@
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="appartient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Departement" inverseName="contient" inverseEntity="Departement" syncable="YES"/>
         <relationship name="contribue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="contient" inverseEntity="Group" syncable="YES"/>
-        <relationship name="participe" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Evenement" inverseName="possede" inverseEntity="Evenement" syncable="YES"/>
         <relationship name="send" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="sendBy" inverseEntity="Message" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -84,9 +84,9 @@
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="annee" inverseEntity="Group" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Administration" positionX="-1017" positionY="4574" width="128" height="43"/>
+        <element name="Administration" positionX="-1017" positionY="4574" width="128" height="45"/>
         <element name="CategorieMessage" positionX="-677" positionY="4503" width="128" height="73"/>
-        <element name="Departement" positionX="-1179" positionY="4302" width="128" height="30"/>
+        <element name="Departement" positionX="-1244" positionY="4308" width="128" height="148"/>
         <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="88"/>
         <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
         <element name="Evenement" positionX="-1163" positionY="4115" width="128" height="103"/>
@@ -95,7 +95,7 @@
         <element name="Message" positionX="-774" positionY="4278" width="128" height="165"/>
         <element name="PieceJointeImage" positionX="-684" positionY="4077" width="128" height="103"/>
         <element name="PieceJointeLien" positionX="-540" positionY="4194" width="128" height="103"/>
-        <element name="User" positionX="-983" positionY="4281" width="128" height="178"/>
+        <element name="User" positionX="-983" positionY="4281" width="128" height="163"/>
         <element name="Years" positionX="-812" positionY="4622" width="128" height="88"/>
     </elements>
 </model>
