@@ -386,13 +386,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dR3-6D-Iqg">
-                                        <rect key="frame" x="175.5" y="328" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <segue destination="7B4-gO-7fS" kind="presentation" identifier="addevent" id="aVf-Rf-Zj7"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUg-Re-9OF">
                                         <rect key="frame" x="76" y="54" width="273" height="30"/>
                                         <constraints>
@@ -420,17 +413,28 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dR3-6D-Iqg">
+                                        <rect key="frame" x="78" y="329" width="204" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="204" id="B5I-Iq-xA2"/>
+                                            <constraint firstAttribute="height" constant="33" id="Jp7-e4-E4d"/>
+                                        </constraints>
+                                        <state key="normal" image="add_event-1"/>
+                                        <connections>
+                                            <segue destination="7B4-gO-7fS" kind="presentation" identifier="addevent" id="aVf-Rf-Zj7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.82550761421319796" green="0.82550761421319796" blue="0.82550761421319796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="gDs-0c-5ec" firstAttribute="trailing" secondItem="oUg-Re-9OF" secondAttribute="trailing" id="1hO-dE-2cd"/>
                                     <constraint firstItem="gDs-0c-5ec" firstAttribute="leading" secondItem="e5w-iG-YLy" secondAttribute="leading" id="2is-cO-1Go"/>
-                                    <constraint firstItem="dR3-6D-Iqg" firstAttribute="top" secondItem="gDs-0c-5ec" secondAttribute="bottom" constant="38" id="3LN-Fd-Lah"/>
+                                    <constraint firstItem="dR3-6D-Iqg" firstAttribute="top" secondItem="gDs-0c-5ec" secondAttribute="bottom" constant="39" id="3LN-Fd-Lah"/>
                                     <constraint firstAttribute="bottom" secondItem="Yj2-Mw-vyA" secondAttribute="bottom" constant="135" id="42K-cR-y2h"/>
                                     <constraint firstItem="gsd-nr-My2" firstAttribute="centerY" secondItem="oUg-Re-9OF" secondAttribute="centerY" id="5f8-r4-OUc"/>
                                     <constraint firstItem="Yj2-Mw-vyA" firstAttribute="top" secondItem="e5w-iG-YLy" secondAttribute="bottom" constant="54" id="7RL-ko-j0m"/>
                                     <constraint firstItem="oUg-Re-9OF" firstAttribute="leading" secondItem="e5w-iG-YLy" secondAttribute="leading" id="9Z0-hV-Fyu"/>
-                                    <constraint firstItem="dR3-6D-Iqg" firstAttribute="centerX" secondItem="sxO-WF-rav" secondAttribute="centerX" id="Cuu-eZ-bcy"/>
+                                    <constraint firstItem="dR3-6D-Iqg" firstAttribute="centerX" secondItem="sxO-WF-rav" secondAttribute="centerX" constant="-19" id="Cuu-eZ-bcy"/>
                                     <constraint firstItem="e5w-iG-YLy" firstAttribute="top" secondItem="oUg-Re-9OF" secondAttribute="bottom" constant="54" id="DPU-2z-6Ab"/>
                                     <constraint firstAttribute="trailing" secondItem="oUg-Re-9OF" secondAttribute="trailing" constant="11" id="RWq-SF-xGL"/>
                                     <constraint firstItem="sxO-WF-rav" firstAttribute="top" secondItem="jhz-Tx-eem" secondAttribute="top" constant="14" id="UFP-d6-wa5"/>
@@ -466,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghl-la-JeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1673" y="-299"/>
+            <point key="canvasLocation" x="-1673.4375" y="-299.4140625"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="FRD-cq-0zS">
@@ -2493,12 +2497,12 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDR-At-53g">
-                                            <rect key="frame" x="295" y="643" width="178" height="52"/>
+                                            <rect key="frame" x="295" y="643" width="178" height="68"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="178" id="csm-O2-3Ir"/>
-                                                <constraint firstAttribute="height" constant="52" id="grW-8I-Plb"/>
+                                                <constraint firstAttribute="height" constant="68" id="grW-8I-Plb"/>
                                             </constraints>
-                                            <state key="normal" image="joindre_message">
+                                            <state key="normal" image="add_info">
                                                 <color key="titleColor" red="0.30671365820000002" green="0.38982214079999999" blue="0.72822810910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
@@ -2639,6 +2643,8 @@
         <image name="Rectangle-1" width="418" height="138"/>
         <image name="addInfo" width="205" height="77"/>
         <image name="add_event" width="205" height="77"/>
+        <image name="add_event-1" width="290" height="47"/>
+        <image name="add_info" width="205" height="77"/>
         <image name="addimage" width="205" height="77"/>
         <image name="admin" width="358" height="82"/>
         <image name="ajouter_groupe" width="290" height="47"/>
@@ -2670,8 +2676,8 @@
         <image name="valider" width="205" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aDJ-Mz-Suc"/>
         <segue reference="OPJ-nJ-TZW"/>
-        <segue reference="JQz-tb-73J"/>
+        <segue reference="aDJ-Mz-Suc"/>
+        <segue reference="aVf-Rf-Zj7"/>
     </inferredMetricsTieBreakers>
 </document>
