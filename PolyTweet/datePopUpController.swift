@@ -29,12 +29,25 @@ class datePopUpController: CommonViewController, UIImagePickerControllerDelegate
         
         sender.inputView = datePickerView
         
+        
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
     }
     
     
     override func prepare (for segue:UIStoryboardSegue, sender : Any?){
         if segue.identifier=="addevent"{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            dateFormatter.dateStyle = DateFormatter.Style.medium
+            let date = dateFormatter.date(from: dateTextField.text!)
+            
+            if date?.compare(Date()) == ComparisonResult.orderedAscending {
+                let alert = UIAlertController(title: "Erreur", message: "Date passée", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            else{
+            
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
                 return
             }
@@ -42,15 +55,13 @@ class datePopUpController: CommonViewController, UIImagePickerControllerDelegate
             let event = Evenement(context: context)
             
             event.titre = titreTextField.text
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM-dd-yyyy"
-            dateFormatter.dateStyle = DateFormatter.Style.medium
-            let date = dateFormatter.date(from: dateTextField.text!)
+            
             
             event.date =  date as NSDate?
             event.detail = descTextField.text
             
             CoreDataManager.save()
+            }
         }
     }
     
