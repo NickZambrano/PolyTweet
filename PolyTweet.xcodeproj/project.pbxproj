@@ -12,7 +12,6 @@
 		503B3A991E686274001D5608 /* PolyTweet.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */; };
 		503B3A9D1E686F0F001D5608 /* InscriptionAdministrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */; };
 		5042CE021E6EA7C500965A2A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5042CE011E6EA7C500965A2A /* PopUpViewController.swift */; };
-		504750681E5DE94E008B87C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504750671E5DE94E008B87C0 /* ProfileViewController.swift */; };
 		5067E9BA1E77F0FC00DF8E4A /* AttachedFilePopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067E9B91E77F0FC00DF8E4A /* AttachedFilePopUpController.swift */; };
 		506A27941E71583A0097FED6 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A27931E71583A0097FED6 /* JTAppleCalendar.framework */; };
 		506A27951E71583B0097FED6 /* JTAppleCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A27931E71583A0097FED6 /* JTAppleCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -93,7 +92,6 @@
 		503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PolyTweet.xcdatamodel; sourceTree = "<group>"; };
 		503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InscriptionAdministrationViewController.swift; path = ../InscriptionAdministrationViewController.swift; sourceTree = "<group>"; };
 		5042CE011E6EA7C500965A2A /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
-		504750671E5DE94E008B87C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5067E9B91E77F0FC00DF8E4A /* AttachedFilePopUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachedFilePopUpController.swift; sourceTree = "<group>"; };
 		506A27931E71583A0097FED6 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JTAppleCalendar.framework; sourceTree = "<group>"; };
 		506A27991E715A330097FED6 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellView.swift; path = ../CellView.swift; sourceTree = "<group>"; };
@@ -166,6 +164,8 @@
 		50BADEA71E7469E400EAC44D /* Calendrier */ = {
 			isa = PBXGroup;
 			children = (
+				50DBD93D1E843E34008452BB /* Evenement */,
+				506A279D1E715C950097FED6 /* CalendarViewController.swift */,
 				506A27991E715A330097FED6 /* CellView.swift */,
 				506A279A1E715A330097FED6 /* CellView.xib */,
 				50BADE9E1E740CAD00EAC44D /* SectionHeaderView.swift */,
@@ -173,6 +173,75 @@
 				506A27A11E716B830097FED6 /* CalendarView.swift */,
 			);
 			name = Calendrier;
+			sourceTree = "<group>";
+		};
+		50DBD9391E843CF9008452BB /* Inscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */,
+				B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */,
+				503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */,
+			);
+			name = Inscriptions;
+			sourceTree = "<group>";
+		};
+		50DBD93A1E843D30008452BB /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				B897BE5D1E77F08500681BEA /* GroupPopUpViewController.swift */,
+				B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */,
+				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
+				B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */,
+			);
+			name = HomePage;
+			sourceTree = "<group>";
+		};
+		50DBD93B1E843D4A008452BB /* Profil */ = {
+			isa = PBXGroup;
+			children = (
+				B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */,
+				5042CE011E6EA7C500965A2A /* PopUpViewController.swift */,
+			);
+			name = Profil;
+			sourceTree = "<group>";
+		};
+		50DBD93C1E843D74008452BB /* Informations */ = {
+			isa = PBXGroup;
+			children = (
+				B87759221E807A9E00F85414 /* AddInfoViewController.swift */,
+				B8AB87851E808674003D276E /* InformationTableViewCell.swift */,
+				B8AB87871E808810003D276E /* InformationViewController.swift */,
+				B850C03D1E8125B500CEDB83 /* InformationPopupViewController.swift */,
+			);
+			name = Informations;
+			sourceTree = "<group>";
+		};
+		50DBD93D1E843E34008452BB /* Evenement */ = {
+			isa = PBXGroup;
+			children = (
+				5086FE421E807AC5005328F5 /* DatePopUpController.swift */,
+				5086FE4A1E813D48005328F5 /* EvenementPopUpController.swift */,
+				5080EB051E8148DE0053F557 /* EventTableViewCell.swift */,
+			);
+			name = Evenement;
+			sourceTree = "<group>";
+		};
+		50DBD93E1E843E6F008452BB /* Admin Panel */ = {
+			isa = PBXGroup;
+			children = (
+				B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */,
+				B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */,
+			);
+			name = "Admin Panel";
+			sourceTree = "<group>";
+		};
+		50DBD93F1E843EEF008452BB /* Pieces Jointes */ = {
+			isa = PBXGroup;
+			children = (
+				501722001E796A0B0071FC6F /* ImagePopUpViewController.swift */,
+				5067E9B91E77F0FC00DF8E4A /* AttachedFilePopUpController.swift */,
+			);
+			name = "Pieces Jointes";
 			sourceTree = "<group>";
 		};
 		B821E8B41E4DB9560030D669 = {
@@ -200,39 +269,23 @@
 		B821E8BF1E4DB9560030D669 /* PolyTweet */ = {
 			isa = PBXGroup;
 			children = (
+				50DBD9391E843CF9008452BB /* Inscriptions */,
 				50BADEA71E7469E400EAC44D /* Calendrier */,
-				B83536EF1E5DFDB500657628 /* CoreDataManager.swift */,
-				B8FEB12E1E545D2B00618FA4 /* MessageTableViewCell.swift */,
-				B83536ED1E5DFA1500657628 /* ResetPasswordViewController.swift */,
+				50DBD93C1E843D74008452BB /* Informations */,
+				50DBD93A1E843D30008452BB /* HomePage */,
+				50DBD93B1E843D4A008452BB /* Profil */,
+				50DBD93E1E843E6F008452BB /* Admin Panel */,
+				50DBD93F1E843EEF008452BB /* Pieces Jointes */,
+				B821E8C41E4DB9560030D669 /* Main.storyboard */,
+				B821E8CC1E4DB9560030D669 /* LaunchScreen.storyboard */,
 				B83536EB1E5DE03D00657628 /* SingleUser.swift */,
-				B814BCDF1E54BB5700DA3153 /* GroupTableViewCell.swift */,
+				B83536EF1E5DFDB500657628 /* CoreDataManager.swift */,
 				B8FEB12C1E5454D400618FA4 /* CommonViewController.swift */,
-				B8FEB12A1E5278FF00618FA4 /* HomeViewController.swift */,
 				B821E8C01E4DB9560030D669 /* AppDelegate.swift */,
 				B821E8C21E4DB9560030D669 /* ViewController.swift */,
-				B821E8C41E4DB9560030D669 /* Main.storyboard */,
-				5080EB051E8148DE0053F557 /* EventTableViewCell.swift */,
-				5086FE4A1E813D48005328F5 /* EvenementPopUpController.swift */,
-				5086FE421E807AC5005328F5 /* DatePopUpController.swift */,
-				501722001E796A0B0071FC6F /* ImagePopUpViewController.swift */,
-				5067E9B91E77F0FC00DF8E4A /* AttachedFilePopUpController.swift */,
-				B81C4EC71E6F27AE000397F3 /* UserTableViewCell.swift */,
-				5042CE011E6EA7C500965A2A /* PopUpViewController.swift */,
-				503B3A941E6853D3001D5608 /* InscriptionEnseignantViewController.swift */,
-				B81C4EC91E6F28C4000397F3 /* AdminViewController.swift */,
-				504750671E5DE94E008B87C0 /* ProfileViewController.swift */,
-				B821E8F11E4DDA630030D669 /* InscriptionViewController.swift */,
-				503B3A9C1E686F0F001D5608 /* InscriptionAdministrationViewController.swift */,
 				B821E8CA1E4DB9560030D669 /* Assets.xcassets */,
-				B821E8CC1E4DB9560030D669 /* LaunchScreen.storyboard */,
 				B821E8CF1E4DB9560030D669 /* Info.plist */,
 				503B3A981E686274001D5608 /* PolyTweet.xcdatamodel */,
-				506A279D1E715C950097FED6 /* CalendarViewController.swift */,
-				B897BE5D1E77F08500681BEA /* GroupPopUpViewController.swift */,
-				B87759221E807A9E00F85414 /* AddInfoViewController.swift */,
-				B8AB87851E808674003D276E /* InformationTableViewCell.swift */,
-				B8AB87871E808810003D276E /* InformationViewController.swift */,
-				B850C03D1E8125B500CEDB83 /* InformationPopupViewController.swift */,
 			);
 			path = PolyTweet;
 			sourceTree = "<group>";
@@ -400,7 +453,6 @@
 				506A279E1E715C950097FED6 /* CalendarViewController.swift in Sources */,
 				503B3A991E686274001D5608 /* PolyTweet.xcdatamodel in Sources */,
 				B814BCE01E54BB5700DA3153 /* GroupTableViewCell.swift in Sources */,
-				504750681E5DE94E008B87C0 /* ProfileViewController.swift in Sources */,
 				B83536EE1E5DFA1500657628 /* ResetPasswordViewController.swift in Sources */,
 				B821E8C31E4DB9560030D669 /* ViewController.swift in Sources */,
 				5086FE431E807AC5005328F5 /* DatePopUpController.swift in Sources */,
