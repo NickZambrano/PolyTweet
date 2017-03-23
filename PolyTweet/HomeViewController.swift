@@ -51,16 +51,16 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         
         if (user as? Etudiant) != nil {
             adminButton.isHidden=true;
-            userStatus.text="Etudiant";
+            userStatus.text="Etudiant "+(user?.appartient?.name)!;
         }
         if (user as? Administration) != nil {
             adminButton.isHidden=false;
 
-            userStatus.text="Administration";
+            userStatus.text="Administration "+(user?.appartient?.name)!;
         }
         if let enseignant=user as? Enseignant {
             adminButton.isHidden = !(enseignant.respoDepartement);
-            userStatus.text="Enseignant";
+            userStatus.text="Enseignant "+(user?.appartient?.name)!;
         }
         
         self.photo.layer.cornerRadius = self.photo.frame.size.width / 2;
