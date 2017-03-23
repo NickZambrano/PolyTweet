@@ -97,7 +97,7 @@ class ProfileViewController : CommonViewController, UIImagePickerControllerDeleg
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction override func retour(_ sender: Any) {
+    @IBAction func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
