@@ -160,15 +160,14 @@ func loadInformation(){
             }
             else{
                 
-                let context=CoreDataManager.context
                 
-                let info=Information(context:context);
+                let info=Information(context: CoreDataManager.context);
                 info.titre=oldController.titreField.text;
                 info.contenu=oldController.contenuField.text;
                 info.departement=user?.appartient;
                 
                 if oldController.photo.image != nil {     //On regarde s'il y a une piece jointe image
-                    let pieceimage = PieceJointeImage(context:context);
+                    let pieceimage = PieceJointeImage(context: CoreDataManager.context);
                     
                     
                     
@@ -181,7 +180,7 @@ func loadInformation(){
                 }
                 
                 if oldController.lienTextField != nil{ //On regarde s'il y a un lien
-                    let piecelien = PieceJointeLien(context:context);
+                    let piecelien = PieceJointeLien(context:CoreDataManager.context);
                     piecelien.file = oldController.lienTextField.text?.data(using: .utf8)! as NSData?
                     piecelien.name = oldController.nomLien.text
                     info.lien=piecelien
@@ -190,15 +189,14 @@ func loadInformation(){
             }
         }
         else{
-            let context=CoreDataManager.context
             
-            let info=Information(context:context);
+            let info=Information(context: CoreDataManager.context);
             info.titre=oldController.titreField.text;
             info.contenu=oldController.contenuField.text;
             info.departement=user?.appartient;
             
             if oldController.photo.image != nil {     //On regarde s'il y a une piece jointe image
-                let pieceimage = PieceJointeImage(context:context);
+                let pieceimage = PieceJointeImage(context: CoreDataManager.context);
                 
                 
                 

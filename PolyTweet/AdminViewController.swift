@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import SwipeCellKit
-class AdminViewController: CommonViewController, UITableViewDataSource, UITableViewDelegate,SwipeTableViewCellDelegate{
+class AdminViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,SwipeTableViewCellDelegate{
     
     
     var user:User?=nil;
@@ -59,15 +59,11 @@ class AdminViewController: CommonViewController, UITableViewDataSource, UITableV
     }
 
     func loadUsers(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        let context=appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<User> = User.fetchRequest();
         let predicate = NSPredicate(format: "appartient == %@",(user?.appartient)!);
         request.predicate=predicate;
         do{
-            users = try context.fetch(request)
+            users = try CoreDataManager.context.fetch(request)
 
         }
         catch let error as NSError{
@@ -91,15 +87,12 @@ class AdminViewController: CommonViewController, UITableViewDataSource, UITableV
     
 
     func loadEtudiants(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        let context=appDelegate.persistentContainer.viewContext
+
         let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
         let predicate = NSPredicate(format: "appartient == %@",(user?.appartient)!);
         request.predicate=predicate;
         do{
-            users = try context.fetch(request)
+            users = try CoreDataManager.context.fetch(request)
             
         }
         catch let error as NSError{
@@ -109,15 +102,12 @@ class AdminViewController: CommonViewController, UITableViewDataSource, UITableV
         self.tableUsers.reloadData()
     }
     func loadProfesseur(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        let context=appDelegate.persistentContainer.viewContext
+
         let request : NSFetchRequest<Enseignant> = Enseignant.fetchRequest();
         let predicate = NSPredicate(format: "appartient == %@",(user?.appartient)!);
         request.predicate=predicate;
         do{
-            users = try context.fetch(request)
+            users = try CoreDataManager.context.fetch(request)
             
         }
         catch let error as NSError{
@@ -227,7 +217,7 @@ class AdminViewController: CommonViewController, UITableViewDataSource, UITableV
         present(alert, animated:true)
     }
     
-    @IBAction override func retour(_ sender: Any) {
+    @IBAction func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     

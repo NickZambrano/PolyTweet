@@ -77,11 +77,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     
     @IBAction func sendMessage(_ sender: UIButton) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        let context=appDelegate.persistentContainer.viewContext
-        let message = Message(context:context);
+
+        let message = Message(context: CoreDataManager.context);
         if let contenu=messageField.text{
             message.contenu=contenu
             message.sendBy=user
@@ -91,19 +88,15 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             message.image = pieceImage
             message.lien = pieceLien
         }
-        do{
-            try context.save()
-            messages.append(message)
-            messageField.text=""
-            self.tableMessage.reloadData()
-            if (self.tableMessage.contentSize.height > self.tableMessage.frame.size.height){
-                let offset = CGPoint(x:0,y:self.tableMessage.contentSize.height-self.tableMessage.frame.size.height)
-                self.tableMessage.setContentOffset(offset, animated: false)
-            }
+        CoreDataManager.save()
+        messages.append(message)
+        messageField.text=""
+        self.tableMessage.reloadData()
+        if (self.tableMessage.contentSize.height > self.tableMessage.frame.size.height){
+            let offset = CGPoint(x:0,y:self.tableMessage.contentSize.height-self.tableMessage.frame.size.height)
+            self.tableMessage.setContentOffset(offset, animated: false)
         }
-        catch let error as NSError{
-            print(error);
-        }
+
         
     }
     // Do any additional setup after loading the view, typically from a nib.
@@ -140,12 +133,11 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     }
     func loadMessage(){
 
-        let context=CoreDataManager.context
         let request : NSFetchRequest<Message> = Message.fetchRequest();
         let predicate = NSPredicate(format: "dep == %@ AND groupe == %@",(user?.appartient)!,groupSelected!);
         request.predicate=predicate;
         do{
-            messages = try context.fetch(request)
+            messages = try CoreDataManager.context.fetch(request)
         }
         catch let error as NSError{
             print(error);
@@ -158,14 +150,13 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
     }
     func loadGroupes(){
-        let context=CoreDataManager.context
         
         let requestGroupeGeneral : NSFetchRequest<Group> = Group.fetchRequest();
         let nameGroupe : String = "Général"
         let predicateGroupeGeneral = NSPredicate(format: "name == %@",nameGroupe);
         requestGroupeGeneral.predicate=predicateGroupeGeneral;
         do{
-            let groupeSel = try context.fetch(requestGroupeGeneral)
+            let groupeSel = try CoreDataManager.context.fetch(requestGroupeGeneral)
             groupSelected=groupeSel[0]
         }
         catch let error as NSError{
@@ -246,12 +237,11 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
-        let context=appDelegate.persistentContainer.viewContext
         let newController = segue.source as! AttachedFilePopUpController
         
         
         if newController.photo.image != nil {     //On regarde s'il y a une piece jointe image
-            let pieceimage = PieceJointeImage(context:context);
+            let pieceimage = PieceJointeImage(context:CoreDataManager.context);
 
         
         
@@ -261,7 +251,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             }
             
             do{
-                try context.save();
+                try CoreDataManager.context.save();
                 self.pieceImage = pieceimage
 
         
@@ -271,12 +261,12 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
         
         if newController.lienTextField != nil{ //On regarde s'il y a un lien
-            let piecelien = PieceJointeLien(context:context);
+            let piecelien = PieceJointeLien(context:CoreDataManager.context);
             piecelien.file = newController.lienTextField.text?.data(using: .utf8)! as NSData?
             piecelien.name = newController.nomLien.text
             
             do{
-                try context.save();
+                try CoreDataManager.context.save();
                 self.pieceLien = piecelien
                 
             }catch let error as NSError{

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
+class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
 
     var nom : String = "";
     var departements : [Departement] = [];
@@ -31,14 +31,11 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
        
         super.viewDidLoad()
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
         imagePicker.delegate = self
-        let context=appDelegate.persistentContainer.viewContext
+
         let request : NSFetchRequest<Departement> = Departement.fetchRequest();
         do{
-           try departements = context.fetch(request)
+           try departements = CoreDataManager.context.fetch(request)
              pickOption = ["Departement" : departements, "Année" : ["3","4","5"]] as [String : Any]
             
         }
@@ -178,11 +175,7 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
     
     override func prepare (for segue:UIStoryboardSegue, sender : Any?){
         if segue.identifier=="signIn"{
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-                return
-            }
-            let context=appDelegate.persistentContainer.viewContext
-            let user = Etudiant(context: context)
+            let user = Etudiant(context: CoreDataManager.context)
             user.lname=self.lname.text;
             user.fname=self.fname.text;
             user.lname=self.lname.text;
@@ -196,14 +189,14 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
             let requestGroup : NSFetchRequest<Group> = Group.fetchRequest();
 
             do{
-                let year = try context.fetch(requestYear)
+                let year = try CoreDataManager.context.fetch(requestYear)
                 print(year.count)
                 user.annee=year[0]
                 
                 let predicateGroup = NSPredicate(format:"annee = %@",year[0])
                 requestGroup.predicate=predicateGroup;
                 do{
-                    let group = try context.fetch(requestGroup)
+                    let group = try CoreDataManager.context.fetch(requestGroup)
                     user.addToContribue(group[0])
                     group[0].addToContient(user);
                     
@@ -214,7 +207,7 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
                 let predicateGroupGeneral = NSPredicate(format:"name = %@","Général")
                 requestGroup.predicate=predicateGroupGeneral;
                 do{
-                    let group = try context.fetch(requestGroup)
+                    let group = try CoreDataManager.context.fetch(requestGroup)
                     user.addToContribue(group[0])
                     group[0].addToContient(user);
                     
@@ -230,15 +223,10 @@ class InscriptionViewController: CommonViewController, UIPickerViewDataSource,UI
             }
 
             departement?.addToContient(user);
-            do{
-                try context.save();
-            }
-            catch let error as NSError{
-                print(error);
-            }
+            CoreDataManager.save();
         }
     }
-    @IBAction override func retour(_ sender: Any) {
+    @IBAction func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     

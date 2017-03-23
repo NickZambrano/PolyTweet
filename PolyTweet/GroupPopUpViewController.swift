@@ -46,13 +46,10 @@ class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableV
         return true     // not sure about this - could be false
     }
     func loadUsers(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        let context=appDelegate.persistentContainer.viewContext
+
         let request : NSFetchRequest<User> = User.fetchRequest();
         do{
-            users = try context.fetch(request)
+            users = try CoreDataManager.context.fetch(request)
             
         }
         catch let error as NSError{

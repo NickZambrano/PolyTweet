@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class ResetPasswordViewController : CommonViewController {
+class ResetPasswordViewController : UIViewController {
     
     var user:User?=nil;
     
@@ -23,9 +23,11 @@ class ResetPasswordViewController : CommonViewController {
         if(user?.password == oldPassword.text){
             user?.password=newPassword.text
             CoreDataManager.save();
-
+            dismiss(animated: true, completion: nil)
+        }else {
+            self.alert(title:"Erreur", message:" L'ancien mot de passe n'est pas le bon");
         }
-        dismiss(animated: true, completion: nil)
+        
     }
     
 }

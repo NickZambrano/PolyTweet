@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-class InscriptionAdministrationViewController: CommonViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
+class InscriptionAdministrationViewController: UIViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
     
     var nom : String = "";
     var departements : [Departement] = [];
@@ -31,14 +31,10 @@ class InscriptionAdministrationViewController: CommonViewController, UIPickerVie
         
         super.viewDidLoad()
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
         imagePicker.delegate = self
-        let context=appDelegate.persistentContainer.viewContext
         let request : NSFetchRequest<Departement> = Departement.fetchRequest();
         do{
-            try departements = context.fetch(request)
+            try departements = CoreDataManager.context.fetch(request)
             pickOption = ["Departement" : departements] as [String : Any]
             
         }
@@ -124,10 +120,7 @@ class InscriptionAdministrationViewController: CommonViewController, UIPickerVie
         
         self.present(actionsheet, animated: true, completion: nil)
         
-        /*imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePicker, animated: true, completion: nil)*/
+
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
@@ -168,11 +161,7 @@ class InscriptionAdministrationViewController: CommonViewController, UIPickerVie
     
     override func prepare (for segue:UIStoryboardSegue, sender : Any?){
         if segue.identifier=="signIn"{
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-                return
-            }
-            let context=appDelegate.persistentContainer.viewContext
-            let user = Administration(context: context)
+            let user = Administration(context: CoreDataManager.context)
             user.lname=self.lname.text;
             user.fname=self.fname.text;
             user.lname=self.lname.text;
@@ -187,7 +176,7 @@ class InscriptionAdministrationViewController: CommonViewController, UIPickerVie
                 let predicateGroupGeneral = NSPredicate(format:"name = %@","Général")
                 requestGroup.predicate=predicateGroupGeneral;
                 do{
-                    let group = try context.fetch(requestGroup)
+                    let group = try CoreDataManager.context.fetch(requestGroup)
                     user.addToContribue(group[0])
                     group[0].addToContient(user);
                     
@@ -199,15 +188,10 @@ class InscriptionAdministrationViewController: CommonViewController, UIPickerVie
             }
             
             departement?.addToContient(user);
-            do{
-                try context.save();
-            }
-            catch let error as NSError{
-                print(error);
-            }
+            CoreDataManager.save();
         }
     }
-    @IBAction override func retour(_ sender: Any) {
+    @IBAction func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     

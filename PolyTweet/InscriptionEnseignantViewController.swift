@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-class InscriptionEnseignantViewController: CommonViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
+class InscriptionEnseignantViewController: UIViewController, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDelegate {
     
     var nom : String = "";
     var departements : [Departement] = [];
@@ -168,11 +168,7 @@ class InscriptionEnseignantViewController: CommonViewController, UIPickerViewDat
     
     override func prepare (for segue:UIStoryboardSegue, sender : Any?){
         if segue.identifier=="signIn"{
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-                return
-            }
-            let context=appDelegate.persistentContainer.viewContext
-            let user = Enseignant(context: context)
+            let user = Enseignant(context: CoreDataManager.context)
             user.lname=self.lname.text;
             user.fname=self.fname.text;
             user.lname=self.lname.text;
@@ -187,7 +183,7 @@ class InscriptionEnseignantViewController: CommonViewController, UIPickerViewDat
                 let predicateGroupGeneral = NSPredicate(format:"name = %@","Général")
                 requestGroup.predicate=predicateGroupGeneral;
                 do{
-                    let group = try context.fetch(requestGroup)
+                    let group = try CoreDataManager.context.fetch(requestGroup)
                     user.addToContribue(group[0])
                     group[0].addToContient(user);
                     
@@ -199,15 +195,10 @@ class InscriptionEnseignantViewController: CommonViewController, UIPickerViewDat
             }
             
             departement?.addToContient(user);
-            do{
-                try context.save();
-            }
-            catch let error as NSError{
-                print(error);
-            }
+            CoreDataManager.save();
         }
     }
-    @IBAction override func retour(_ sender: Any) {
+    @IBAction func retour(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     

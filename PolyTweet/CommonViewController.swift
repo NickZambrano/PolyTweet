@@ -24,6 +24,8 @@ class CommonViewController : UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
+    
+    
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -42,17 +44,13 @@ class CommonViewController : UIViewController {
         }
     }
     
+}
+
+extension UIViewController {
     func alert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(cancelAction)
         present(alert, animated: true)
-    }
-    
-
-    
-    @IBAction func retour(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-
     }
 }

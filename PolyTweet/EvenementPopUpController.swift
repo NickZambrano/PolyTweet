@@ -51,7 +51,6 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
      */
     func loadEvents(){
             
-            let context=CoreDataManager.context
             let request : NSFetchRequest<Evenement> = Evenement.fetchRequest();
         
             // Get the current calendar with local time zone
@@ -67,7 +66,7 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
             request.predicate = datePredicate;
 
             do{
-                events = try context.fetch(request)
+                events = try CoreDataManager.context.fetch(request)
             }
             catch let error as NSError{
                 print(error);
