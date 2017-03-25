@@ -160,6 +160,12 @@ class InscriptionAdministrationViewController: UIViewController, UIPickerViewDat
     }
     
     override func prepare (for segue:UIStoryboardSegue, sender : Any?){
+        guard self.lname.text != "" && self.fname.text != "" && self.password.text != "" && self.mail.text != "" && departement != nil else {
+            let alert = UIAlertController(title: "Erreur", message: "Veuillez remplir tous les champs", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        } //On vérifie que les champs sont bien remplis
         if segue.identifier=="signIn"{
             let user = Administration(context: CoreDataManager.context)
             user.lname=self.lname.text;

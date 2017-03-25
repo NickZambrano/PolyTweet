@@ -124,13 +124,8 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImag
         
         self.present(actionsheet, animated: true, completion: nil)
 
-        
-        
-        /*imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePicker, animated: true, completion: nil)*/
     }
+    
     func imagePickerController(_ picker: UIImagePickerController,
                                 didFinishPickingMediaWithInfo info: [String : Any])
     {
@@ -145,6 +140,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImag
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2;
     }
@@ -174,6 +170,13 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImag
     }
     
     override func prepare (for segue:UIStoryboardSegue, sender : Any?){
+        guard self.lname.text != "" && self.fname.text != "" && self.password.text != "" && self.mail.text != "" && departement != nil else {
+            let alert = UIAlertController(title: "Erreur", message: "Veuillez remplir tous les champs", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        } //On vérifie que les champs sont bien remplis
+
         if segue.identifier=="signIn"{
             let user = Etudiant(context: CoreDataManager.context)
             user.lname=self.lname.text;
@@ -190,7 +193,6 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImag
 
             do{
                 let year = try CoreDataManager.context.fetch(requestYear)
-                print(year.count)
                 user.annee=year[0]
                 
                 let predicateGroup = NSPredicate(format:"annee = %@",year[0])
