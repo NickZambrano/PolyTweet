@@ -28,6 +28,8 @@ class MessageTableViewCell : UITableViewCell{
         
         if let time = time {
             let calendar = Calendar.current
+            let day = String(calendar.component(.day, from: time as Date))
+            //let month = calendar.component(.month, from: time as Date)
             let hour = calendar.component(.hour, from: time as Date)
             let minutes = calendar.component(.minute, from: time as Date)
             
@@ -36,7 +38,14 @@ class MessageTableViewCell : UITableViewCell{
             if String(minuteString).characters.count < 2 {
                 minuteString = "0"+minuteString
             }
-            self.dateHeure.text = "\(hour):\(minuteString)"
+            // Permet d'obtenir le mois en lettres
+            var month: String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMMM"
+                return dateFormatter.string(from: time as Date)
+            }
+            
+            self.dateHeure.text = day+" "+month+" \(hour):\(minuteString)"
         }
         
     }

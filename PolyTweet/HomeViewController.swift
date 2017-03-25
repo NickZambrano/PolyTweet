@@ -193,7 +193,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             }
             let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
             cell.message.text=mess[indexPath.section].contenu
-            cell.userName.text=mess[indexPath.section].sendBy?.fname
+            cell.userName.text=(mess[indexPath.section].sendBy?.fname)!+(mess[indexPath.section].sendBy?.lname)!
             if let image=mess[indexPath.section].sendBy?.img{
                 cell.profil.image=UIImage(data: image as Data)!
                 cell.profil.layer.cornerRadius = cell.profil.layer.frame.size.width / 2;
