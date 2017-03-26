@@ -238,6 +238,29 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
 
     }
+
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if(tableView == tableMessage){
+            if(messages[indexPath.section].sendBy==user){
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return false;
+        }
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+                CoreDataManager.context.delete(messages[indexPath.section])
+                CoreDataManager.save()
+                loadMessage()
+                tableView.reloadData()
+        
+        
+        }
+    }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
         notUpKeyboard=true;
