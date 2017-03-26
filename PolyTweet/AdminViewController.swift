@@ -30,25 +30,11 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
       
     }
 
-    // Do any additional setup after loading the view, typically from a nib.
-    //Calls this function when the tap is recognized.
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*override func prepare (for segue:UIStoryboardSegue, sender : Any?){
-     if segue.identifier=="toInscription"{
-     let inscriptionViewController = segue.destination as! InscriptionViewController;
-     if let user=self.username.text{
-     inscriptionViewController.nom=user;
-     }else{
-     inscriptionViewController.nom="";
-     }
-     
-     }
-     }*/
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return 1
@@ -57,7 +43,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
             return self.users.count
 
     }
-
+    //Chargement de tous les utilisateurs qui appartiennent au même departement que l'administrateur
     func loadUsers(){
         let request : NSFetchRequest<User> = User.fetchRequest();
         let predicate = NSPredicate(format: "appartient == %@",(user?.appartient)!);
@@ -85,7 +71,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         loadProfesseur()
     }
     
-
+    //Chargement de tous les étudiants qui appartiennent au même departement que l'administrateur
     func loadEtudiants(){
 
         let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
@@ -101,6 +87,8 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         self.tableUsers.reloadData()
     }
+    //Chargement de tous les enseignants qui appartiennent au même departement que l'administrateur
+
     func loadProfesseur(){
 
         let request : NSFetchRequest<Enseignant> = Enseignant.fetchRequest();
@@ -152,18 +140,10 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    func getContext(errorMsg: String, userInfoMsg: String = "could not retrieve data context") -> NSManagedObjectContext?{
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            self.alert(title: errorMsg, message: userInfoMsg)
-            return nil
-        }
-        return appDelegate.persistentContainer.viewContext
-    }
-
-
-
+    //Fonction permettant de gérer le swype pour le passage en responsable ou la suppression d'utilisateur
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         switch orientation{
+            //si l'orientation est à droite alors on effectue la suppresion de l'utilisateur
         case .right :
             let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
                 let user = self.users[indexPath.section]
@@ -179,8 +159,9 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
             return [deleteAction]
             
         
-        
+        //si l'orientation est à gauche alors on passer l'utilisateur ( s'il est enseignant) responsable de département ou non responsable
         case .left :
+        
             var nombouton: String? = nil
             if let enseignant = self.users[indexPath.section] as? Enseignant{
                 if enseignant.respoDepartement {

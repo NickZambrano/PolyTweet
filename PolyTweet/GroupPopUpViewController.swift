@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import SwipeCellKit
+
+//Gère la création de nouveaux groupes de conversations
 class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     
     @IBOutlet weak var textField: UITextField!
@@ -36,14 +38,14 @@ class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableV
         loadUsers()
         usersSelected.append(SingleUser.getUser()!)
     }
-    
+    //fonction d'autocompletion sur le textfield qui affiche la table view
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         addPersonToGroup.isHidden=true
         autocompleteTableView.isHidden = false
         let substring = (self.textField.text! as NSString).replacingCharacters(in: range, with: string)
         searchAutocompleteEntriesWithSubstring(substring: substring)
-        return true     // not sure about this - could be false
+        return true
     }
     func loadUsers(){
 
@@ -57,10 +59,11 @@ class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableV
         }
         
     }
+    //En fonction de ce que le textfield à récuperer nous affichons les personnes qui on le prénom commençant par ça ou le nom commençant par ça
     func searchAutocompleteEntriesWithSubstring(substring: String)
     {
         autocompleteUrls.removeAll(keepingCapacity: false)
-        
+        //Permettant de chercher d'abord sur le prénom
         for curString in users
         {
             let myString:NSString! = curString.fname!+" "+curString.lname! as NSString
@@ -72,6 +75,7 @@ class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableV
                 autocompleteUrls.append(curString)
             }
         }
+        //Permet de chercher sur le nom
         for curString in users
         {
             let myString:NSString! = curString.lname!+" "+curString.fname! as NSString
@@ -92,6 +96,7 @@ class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //le if permet de différencier les deux tables view de la vue
         if(tableView == autocompleteTableView){
             return autocompleteUrls.count
         }else{
@@ -100,14 +105,15 @@ class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(tableView == autocompleteTableView){
+        //le if permet de différencier les deux tables view de la vue
+        if(tableView == autocompleteTableView){ //instanciation de la table view AutoComplete
             let autoCompleteRowIdentifier = "AutoCompleteRowIdentifier"
             let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier:  autoCompleteRowIdentifier, for: indexPath) as UITableViewCell
             let index = indexPath.row as Int
             cell.textLabel?.text = autocompleteUrls[index].fname!+" "+autocompleteUrls[index].lname!
             cell.accessoryType = .none
             return cell
-        }else{
+        }else{//Instanciation de la table view User Group
             let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "UserGroupRowIdentifier", for: indexPath) as UITableViewCell
             let index = indexPath.row as Int
             cell.textLabel?.text = usersSelected[index].fname!+" "+usersSelected[index].lname!
@@ -115,17 +121,17 @@ class GroupPopUpViewController : UIViewController, UITableViewDelegate, UITableV
             return cell
         }
     }
-    
+    //Permet d'afficher le bouton ajouter une personne une fois qu'on a selectionner une personne de l'autocompletion
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(tableView == autocompleteTableView){
-        let selectedCell : UITableViewCell = tableView.cellForRow(at: indexPath)!
-        textField.text = selectedCell.textLabel!.text
-        autocompleteTableView.isHidden = true
-        addPersonToGroup.isHidden=false
-        userTemp=autocompleteUrls[indexPath.row];
+            let selectedCell : UITableViewCell = tableView.cellForRow(at: indexPath)!
+            textField.text = selectedCell.textLabel!.text
+            autocompleteTableView.isHidden = true
+            addPersonToGroup.isHidden=false
+            userTemp=autocompleteUrls[indexPath.row];
         }
     }
-
+    //Ajoutes la personnes a la liste des personnes du groupes
     @IBAction func addToGroup(_ sender: Any) {
         usersSelected.append(userTemp!);
         textField.text=nil;

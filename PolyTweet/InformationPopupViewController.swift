@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+//Permet d'afficher en détail une seule information
 class InformationPopupViewController: CommonViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var information : Information?=nil;
@@ -19,7 +19,7 @@ class InformationPopupViewController: CommonViewController, UIImagePickerControl
     @IBOutlet weak var legende: UILabel!
     @IBOutlet weak var pieceJointeLabel: UILabel!
     @IBOutlet weak var lien: UIButton!
-    
+    //Chargement de l'information est mise en place dans la vue
     override func viewDidLoad() {
         self.titre.text=information?.titre
         self.contenu.text=information?.contenu
