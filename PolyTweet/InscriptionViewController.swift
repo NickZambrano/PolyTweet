@@ -166,7 +166,25 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImag
             self.present(alert, animated: true, completion: nil)
             return
         } //On vérifie que les champs sont bien remplis
-
+        
+        let request : NSFetchRequest<User> = User.fetchRequest();
+        let predicate = NSPredicate(format: "mail == %@",self.mail.text!);
+        request.predicate=predicate;
+         do{
+            let result: [User] = try CoreDataManager.context.fetch(request)
+            guard result.count==0
+                else{
+                    let alert = UIAlertController(title: "Erreur", message: "Adresse mail déjà utilisé", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    return
+            }
+        }
+        catch let error as NSError{
+            print(error);
+        }
+        
+    
         if segue.identifier=="signIn"{
             let user = Etudiant(context: CoreDataManager.context)
             user.lname=self.lname.text;
