@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+//Page principale de l'application permettant la gestion des messages des groupes et permet d'acceder aux autres fonctionnalité
 class HomeViewController: CommonViewController, UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
     
     
@@ -113,7 +114,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         // Dispose of any resources that can be recreated.
     }
 
-
+    //Charge le nombre de row par table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == tableGroupes){
             return self.groupes.count
@@ -121,10 +122,12 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             return 1
         }
     }
+    //Charge le nombre de section par table
     func numberOfSections(in tableView: UITableView) -> Int {
         if(tableView == tableGroupes){
             return 1
         }else{
+            //si la recherche est active on affiche le nombre de section égal au nombre message filtrée sinon on le nombre de section est égal au nombre de message total
             if searchActive {
                 return self.filtredMessages.count
             }else{
@@ -133,6 +136,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             
         }
     }
+    //Permet la selection d'un groupe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(tableView == tableGroupes){
             
@@ -141,9 +145,11 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
         
     }
+    //Charge les messages du coredata en fonction du groupe selectionné
     func loadMessage(){
 
         let request : NSFetchRequest<Message> = Message.fetchRequest();
+        //Si le groupe selectionné est un groupe interDepartement on ne limite pas les message seulement au departement
         if(groupSelected?.interDepartement)!{
             request.predicate = NSPredicate(format: "groupe == %@",groupSelected!);
         }else{
@@ -157,11 +163,13 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
 
         self.tableMessage.reloadData()
+        //Partie de code permettant de d'afficher toujours les derniers messages en bas de la page.
         if (self.tableMessage.contentSize.height > self.tableMessage.frame.size.height){
             let offset = CGPoint(x:0,y:self.tableMessage.contentSize.height-self.tableMessage.frame.size.height)
             self.tableMessage.setContentOffset(offset, animated: false)
         }
     }
+    //Charge les groupes de l'utilisateur
     func loadGroupes(){
         
         let requestGroupeGeneral : NSFetchRequest<Group> = Group.fetchRequest();
@@ -178,7 +186,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         groupes=(user?.contribue)!.allObjects as! [Group];
         tableGroupes.reloadData()
     }
-    
+    //initialisation de la tableview en fonction de si c'est la table groupe ou la table message
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(tableView == tableGroupes){
             let cell = self.tableGroupes.dequeueReusableCell(withIdentifier: "groupeCell", for: indexPath) as! GroupeTableViewCell
@@ -190,6 +198,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             return cell
         }
        else{
+            //si la recherche est active alors on met les messages filtrés sinon les messages classique
+
             var mess:[Message]=[];
             if searchActive {
                 mess = filtredMessages
@@ -215,7 +225,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             if pieceImage == nil {
                 cell.imagelien.isHidden = true
                 
-            }else {
+            }else { //S'il y a une image, l'afficher
                 cell.imageMessage.image = UIImage(data: pieceImage?.file as! Data)!
                 cell.imageMessage.contentMode = .scaleAspectFill
                 cell.imageMessage.clipsToBounds = true
@@ -223,6 +233,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
                 cell.imagelien.addTarget(self, action: #selector(showImage(sender:)), for: .touchUpInside)
                 cell.imagelien.isHidden = false
             }
+            //S'il y a un lien, l'afficher
             if let pieceLien = mess[indexPath.section].lien {
                 cell.lien.setTitle(pieceLien.name,for: .normal)
                 cell.lien.tag = indexPath.section
@@ -240,7 +251,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
 
     }
 
-    
+    //Fais en sorte que le row peut être supprimable seulement si le message appartient à l'utilisateur et si l'on modifie la tableview tableMessage
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if(tableView == tableMessage){
             var mess:[Message]=[];
@@ -261,6 +272,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
     }
+    //Fonction permettant la suppression du message
     func tableView(_ tableView: UITableView, editActionsForRowAtIndexPath indexPath: IndexPath) -> [AnyObject]? {
 
         let delete = UITableViewRowAction(style: .normal, title: "Supprimer") { action, index in
@@ -304,17 +316,21 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
+        // searchBar() permet de rechercher en fonction des titres les messages dans le coredata en fonction de ce que l'utilisateur tape dans la barre de recherche
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        // Supprimer tous les éléments du filtredInfo
+        // Supprimer tous les éléments du filtredMessages
         self.filtredMessages.removeAll(keepingCapacity: false)
         if (searchText==""){
             self.filtredMessages=messages;
         }else{
-            // Créer le Predicate
-            let searchPredicate = NSPredicate(format: "contenu CONTAINS[c] %@ AND dep == %@ AND groupe == %@",searchText,(user?.appartient)!,groupSelected!)
+            // Créer le Predicate et effectue la requete
             let request : NSFetchRequest<Message> = Message.fetchRequest();
-            request.predicate=searchPredicate;
+            if(groupSelected?.interDepartement)!{
+                request.predicate = NSPredicate(format: "contenu CONTAINS[c] %@ AND groupe == %@",searchText,groupSelected!);
+            }else{
+                request.predicate = NSPredicate(format: "contenu CONTAINS[c] %@ AND dep == %@ AND groupe == %@",searchText,(user?.appartient)!,groupSelected!);
+            }
             do{
                 self.filtredMessages = try CoreDataManager.context.fetch(request)
                 
@@ -327,28 +343,34 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         // Actualisation du tableView
         self.tableMessage.reloadData()
     }
-
+    //Fonction permettant d'ouvrir un lien si le lien est valide
     @IBAction func openLien(sender: UIButton){
-        let link = self.messages[sender.tag].lien
+        var mess:[Message]=[];
+        if searchActive {
+            mess = filtredMessages
+        }else{
+            mess = messages
+        }
+        let link = mess[sender.tag].lien
     
         let url = NSURL(string: String(data: link?.file as! Data, encoding: .utf8)!)!
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         
     }
-    
+    //Permet d'afficher l'image en grand
     @IBAction func showImage(sender: UIButton){
         indexImage = sender.tag
         performSegue(withIdentifier: "showImage", sender: sender)
     }
     
-
+    //Actualise l'image apres un changement d'image
     @IBAction func unwindtoHome(segue: UIStoryboardSegue) {
         let newController = segue.source as! PopUpViewController
         photo.image = newController.photo.image
         photo.contentMode = .scaleAspectFill
         tableMessage.reloadData()
     }
-    
+    //Fonction permettant d'attacher les piece jointes et des les enregistrer
     @IBAction func unwindAttachedFiletoHome(segue: UIStoryboardSegue) {
 
         let newController = segue.source as! AttachedFilePopUpController
@@ -376,8 +398,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         
     }
     
-    // MARK: - Table View delegate methods
-    
+//Permet d'enregistrer le groupe créé
     @IBAction func unwindtoHomeFomGroupView(segue: UIStoryboardSegue) {
         let oldController = segue.source as! GroupPopUpViewController
         let group = Group(context:CoreDataManager.context)
@@ -394,6 +415,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //segue permettant d'afficher l'image en grand
         if (segue.identifier == "showImage"){
             var mess:[Message]=[];
             if searchActive {
@@ -412,7 +434,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             
         }
     }
-    
+    //permet la deconnection de l'utilisateur
     @IBAction func disconnect(_ sender: Any) {
         SingleUser.destroy();
     }

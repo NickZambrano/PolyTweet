@@ -69,7 +69,7 @@ func loadInformation(){
     //construction de la table avec des InformationTableViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var info:[Information]=[];
-        //si la recherche est active alors on met les informations filtré sinon les informations classique
+        //si la recherche est active alors on met les informations filtrées sinon les informations classique
         if searchActive {
             info = filtredInfo
         }else{
