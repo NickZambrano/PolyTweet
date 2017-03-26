@@ -18,8 +18,8 @@ class CalendarViewController: CommonViewController {
     let monthFormatter = DateFormatter()
     var testCalendar = Calendar.current
     let white = UIColor.white
-    let darkPurple = UIColor.black
-    let dimPurple = UIColor.brown
+    let blackColor = UIColor.black
+    let brownColor = UIColor.brown
     var selectedDate:CellView? = nil
     var seldate: Date? = nil
     
@@ -35,10 +35,9 @@ class CalendarViewController: CommonViewController {
         
         monthFormatter.dateFormat = "MMMM yyyy"
 
-        
+        //Actualisation du calendrier sur la date du jour
         let date = Date()
         let calendar = Calendar.current
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
         let year = calendar.component(.year, from: date)
@@ -63,12 +62,12 @@ class CalendarViewController: CommonViewController {
         }
         
         if cellState.isSelected {
-            myCustomCell.dayLabel.textColor = darkPurple
+            myCustomCell.dayLabel.textColor = blackColor
         } else {
             if cellState.dateBelongsTo == .thisMonth {
                 myCustomCell.dayLabel.textColor = white
             } else {
-                myCustomCell.dayLabel.textColor = dimPurple
+                myCustomCell.dayLabel.textColor = brownColor
             }
         }
     }
@@ -85,6 +84,7 @@ class CalendarViewController: CommonViewController {
         } else {
             myCustomCell.selectedView.isHidden = true
         }
+        //Si j'ai un evenement pour cette cellule alors je le notifie avec le eventView
         if haveEvents(cellState: cellState){
             myCustomCell.eventView.layer.cornerRadius =  8
             myCustomCell.eventView.isHidden=false

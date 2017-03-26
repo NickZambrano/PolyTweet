@@ -13,10 +13,8 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
     
     @IBOutlet var photo: UIImageView!
     @IBOutlet weak var photoTextField: UITextField!
-    
     @IBOutlet weak var lienTextField: UITextField!
     @IBOutlet weak var nomLien: UITextField!
-
 
     let imagePickerController = UIImagePickerController()
     
@@ -27,13 +25,15 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
-        let actionsheet = UIAlertController(title: "Changer ma photo :", message: nil, preferredStyle: .actionSheet)
+        let actionsheet = UIAlertController(title: "Ajouter une photo :", message: nil, preferredStyle: .actionSheet)
         
         actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 self.imagePickerController.sourceType = .camera
                 self.present(self.imagePickerController, animated: true, completion: nil)
-            }else{print("Camera non disponible")}
+            }else{
+                print("Camera non disponible")
+            }
         }))
         
         actionsheet.addAction(UIAlertAction(title: "Bibliothèque Photo", style: .default, handler: {(action:UIAlertAction) in
@@ -62,19 +62,17 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
         
         dismiss(animated: true, completion: nil)
     }
-
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
+    //Fonction permettant de vérifier que l'url est valide
     func canOpenURL(string: String?) -> Bool {
         guard let urlString = string else {return false}
         guard let url = NSURL(string: urlString) else {return false}
         if !UIApplication.shared.canOpenURL(url as URL) {return false}
         
-        //
         let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
         let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
         return predicate.evaluate(with: string)
@@ -94,8 +92,14 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
                 self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)
             }
         }
-        else{
+        else if photo != nil {
             self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)
+        }
+        else {
+            let alert = UIAlertController(title: "Erreur", message: "Aucune pièce jointes", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
         }
 
     }

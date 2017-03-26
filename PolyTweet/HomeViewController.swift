@@ -205,19 +205,24 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
                 cell.setTimeStamp(time: date)
             }
             
-            if let pieceImage = mess[indexPath.section].image {
-                cell.imageMessage.image = UIImage(data: pieceImage.file as! Data)!
+            let pieceImage = mess[indexPath.section].image
+            if pieceImage == nil {
+                cell.imagelien.isHidden = true
+                
+            }else {
+                cell.imageMessage.image = UIImage(data: pieceImage?.file as! Data)!
                 cell.imageMessage.contentMode = .scaleAspectFill
                 cell.imageMessage.clipsToBounds = true
                 cell.imagelien.tag = indexPath.section
                 cell.imagelien.addTarget(self, action: #selector(showImage(sender:)), for: .touchUpInside)
-                
+                cell.imagelien.isHidden = false
             }
             if let pieceLien = mess[indexPath.section].lien {
                 cell.lien.setTitle(pieceLien.name,for: .normal)
                 cell.lien.tag = indexPath.section
                 cell.lien.addTarget(self, action: #selector(openLien(sender:)), for: .touchUpInside)
-            }else {
+                cell.lien.isHidden = false
+            }else{
                 cell.lien.isHidden = true
             }
             cell.layer.cornerRadius=10
@@ -296,8 +301,6 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         if newController.photo.image != nil {     //On regarde s'il y a une piece jointe image
             let pieceimage = PieceJointeImage(context:CoreDataManager.context);
 
-        
-        
             if newController.photo.image != nil {
                 pieceimage.file = UIImageJPEGRepresentation(newController.photo.image!,1) as NSData?
                 pieceimage.name = newController.photoTextField.text
@@ -306,14 +309,14 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             do{
                 try CoreDataManager.context.save();
                 self.pieceImage = pieceimage
-
+                
         
             }catch let error as NSError{
                 print(error);
             }
         }
         
-        if newController.lienTextField != nil{ //On regarde s'il y a un lien
+        if newController.lienTextField.text != ""{ //On regarde s'il y a un lien
             let piecelien = PieceJointeLien(context:CoreDataManager.context);
             piecelien.file = newController.lienTextField.text?.data(using: .utf8)! as NSData?
             piecelien.name = newController.nomLien.text

@@ -2,6 +2,8 @@
 //  datePopUpController.swift
 //  PolyTweet
 //
+//  Controller pour l'ajout d'un evenement
+//
 //  Created by QC on 20/03/2017.
 //  Copyright © 2017 Nicolas zambrano. All rights reserved.
 //
@@ -20,15 +22,16 @@ class DatePopUpController: CommonViewController, UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Préremplissage du dateTextField avec la date selectionnée sur le calendrier
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.dateStyle = DateFormatter.Style.medium //Affichage de la date sous la forme : Mer 23, 2017
         let datebis = dateFormatter.string(from: date!)
-        print(datebis)
         dateTextField.text = datebis
 
         
     }
 
+    //Affichage du date picker lorsque l'on clique sur le dateTextField
     @IBAction func dateEditing(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         
@@ -72,6 +75,7 @@ class DatePopUpController: CommonViewController, UIImagePickerControllerDelegate
         }
     }
     
+    //Fonction pour prendre la date du date picker et la mettre dans le textField
     func datePickerValueChanged(sender:UIDatePicker) {
         
         let dateFormatter = DateFormatter()

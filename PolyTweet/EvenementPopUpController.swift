@@ -2,6 +2,8 @@
 //  EvenementPopUpController.swift
 //  PolyTweet
 //
+//  Controller pour l'afichage des evenements pour la date selectionnée
+//
 //  Created by QC on 21/03/2017.
 //  Copyright © 2017 Nicolas zambrano. All rights reserved.
 //
@@ -26,8 +28,8 @@ class EvenementPopUpController: CommonViewController, UIImagePickerControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.dateStyle = DateFormatter.Style.long
         
+        dateFormatter.dateStyle = DateFormatter.Style.long
         dateLabel.text = dateFormatter.string(from: date!)
         
         loadEvents()
