@@ -144,8 +144,11 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     func loadMessage(){
 
         let request : NSFetchRequest<Message> = Message.fetchRequest();
-        let predicate = NSPredicate(format: "dep == %@ AND groupe == %@",(user?.appartient)!,groupSelected!);
-        request.predicate=predicate;
+        if(groupSelected?.interDepartement)!{
+            request.predicate = NSPredicate(format: "groupe == %@",groupSelected!);
+        }else{
+            request.predicate = NSPredicate(format: "dep == %@ AND groupe == %@",(user?.appartient)!,groupSelected!);
+        }
         do{
             messages = try CoreDataManager.context.fetch(request)
         }
@@ -227,6 +230,9 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             }else{
                 cell.lien.isHidden = true
             }
+            if(mess[indexPath.section].lien == nil && mess[indexPath.section].image == nil){
+                cell.pieceJointeLabel.isHidden=true
+            }
             cell.layer.cornerRadius=10
             return cell
         }
@@ -307,15 +313,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
                 pieceimage.file = UIImageJPEGRepresentation(newController.photo.image!,1) as NSData?
                 pieceimage.name = newController.photoTextField.text
             }
-            
-            do{
-                try CoreDataManager.context.save();
+            CoreDataManager.save();
                 self.pieceImage = pieceimage
-                
-        
-            }catch let error as NSError{
-                print(error);
-            }
         }
         
         if newController.lienTextField.text != ""{ //On regarde s'il y a un lien
@@ -323,13 +322,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             piecelien.file = newController.lienTextField.text?.data(using: .utf8)! as NSData?
             piecelien.name = newController.nomLien.text
             
-            do{
-                try CoreDataManager.context.save();
+            CoreDataManager.save();
                 self.pieceLien = piecelien
-                
-            }catch let error as NSError{
-                print(error);
-            }
         }
         
     }
@@ -338,11 +332,12 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     @IBAction func unwindtoHomeFomGroupView(segue: UIStoryboardSegue) {
         let oldController = segue.source as! GroupPopUpViewController
-        let group = Group(context:CoreDataManager.context);
-        group.name=oldController.nameGroup.text;
+        let group = Group(context:CoreDataManager.context)
+        group.name=oldController.nameGroup.text
+        group.interDepartement=true
         for userToAdd in oldController.usersSelected {
-            userToAdd.addToContribue(group);
-            group.addToContient(userToAdd);
+            userToAdd.addToContribue(group)
+            group.addToContient(userToAdd)
         }
         CoreDataManager.save();
         
@@ -352,11 +347,17 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showImage"){
+            var mess:[Message]=[];
+            if searchActive {
+                mess = filtredMessages
+            }else{
+                mess = messages
+            }
             let upcomming: ImagePopUpViewController = segue.destination as! ImagePopUpViewController
             if let button:UIButton = sender as! UIButton? {
                 indexImage = button.tag
             }
-            let pieceimage = self.messages[indexImage!].image
+            let pieceimage = mess[indexImage!].image
 
             upcomming.image = UIImage(data: pieceimage!.file as! Data)
             upcomming.desc = pieceimage!.name

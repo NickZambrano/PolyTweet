@@ -29,6 +29,7 @@
         <relationship name="appartient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Departement" inverseName="possede" inverseEntity="Departement" syncable="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="interDepartement" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="annee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Years" inverseName="groups" inverseEntity="Years" syncable="YES"/>
         <relationship name="contient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="contribue" inverseEntity="User" syncable="YES"/>
@@ -90,7 +91,7 @@
         <element name="Enseignant" positionX="-1134" positionY="4491" width="128" height="88"/>
         <element name="Etudiant" positionX="-884" positionY="4503" width="128" height="58"/>
         <element name="Evenement" positionX="-1163" positionY="4115" width="128" height="103"/>
-        <element name="Group" positionX="-920" positionY="4140" width="128" height="30"/>
+        <element name="Group" positionX="-920" positionY="4140" width="128" height="120"/>
         <element name="Information" positionX="-488" positionY="4443" width="128" height="30"/>
         <element name="Message" positionX="-774" positionY="4278" width="128" height="165"/>
         <element name="PieceJointeImage" positionX="-684" positionY="4077" width="128" height="103"/>

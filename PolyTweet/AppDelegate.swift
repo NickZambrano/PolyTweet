@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        //deleteAll()
+        deleteAll()
         loadGroupesAndDep()
         // Override point for customization after application launch.
         return true
@@ -102,9 +102,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let general = Group(context:context);
                 general.name="Général"
+                general.interDepartement=false;
                 
                 let troisA = Group(context:context);
                 troisA.name="3ème année"
+                troisA.interDepartement=false;
                 let trois = Years(context:context);
                 trois.numero=3;
                 troisA.annee=trois;
@@ -113,6 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let quatreA = Group(context:context);
                 quatreA.name="4ème année";
+                quatreA.interDepartement=false;
                 let quatre = Years(context:context);
                 quatre.numero=4;
                 quatreA.annee=quatre;
@@ -121,16 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let cinqA = Group(context:context);
                 cinqA.name="5ème année";
+                cinqA.interDepartement=false;
                 let cinq = Years(context:context);
                 cinq.numero=5;
                 cinqA.annee=cinq;
                 cinq.addToGroups(cinqA);
-                do{
-                    try context.save();
-                }
-                catch let error as NSError{
-                    print(error);
-                }
+                CoreDataManager.save()
             }
             if(resultDep.count==0){
                 let ig = Departement(context:context);
@@ -163,12 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 se.name="SE";
                 se.fullName="Systèmes embarqués";
                 
-                do{
-                    try context.save();
-                }
-                catch let error as NSError{
-                    print(error);
-                }
+                CoreDataManager.save();
             }
         }
         catch let error as NSError{

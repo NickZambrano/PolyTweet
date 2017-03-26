@@ -81,15 +81,10 @@ class InscriptionEnseignantViewController: UIViewController, UIPickerViewDataSou
         
         pickerDepartement.inputAccessoryView = toolBar
         
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
+
         
     }
-    /*func pickerView(_ pickerView: UIPickerView,didSelectRow row: Int, inComponent component: Int) {
-     pickerDepartement.text = departement[row].fullName
-     }*/
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         departement = departements[pickerView.selectedRow(inComponent: 0)]
         pickerDepartement.text = (departement?.fullName!)!;
@@ -124,10 +119,6 @@ class InscriptionEnseignantViewController: UIViewController, UIPickerViewDataSou
         
         self.present(actionsheet, animated: true, completion: nil)
         
-        /*imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePicker, animated: true, completion: nil)*/
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
@@ -154,10 +145,7 @@ class InscriptionEnseignantViewController: UIViewController, UIPickerViewDataSou
             co=(pickOption["Departement"] as AnyObject).count
         }
         return co
-    }/*
-     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-     return departement[row].name;
-     }*/
+    }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var co : String = "";
         if(component==0){
@@ -213,6 +201,5 @@ class InscriptionEnseignantViewController: UIViewController, UIPickerViewDataSou
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

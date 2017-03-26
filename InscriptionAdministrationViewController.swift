@@ -76,16 +76,9 @@ class InscriptionAdministrationViewController: UIViewController, UIPickerViewDat
         toolBar.setItems([flexSpace,textBtn,flexSpace,doneButton], animated: true)
         
         pickerDepartement.inputAccessoryView = toolBar
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
+    
     }
-    /*func pickerView(_ pickerView: UIPickerView,didSelectRow row: Int, inComponent component: Int) {
-     pickerDepartement.text = departement[row].fullName
-     }*/
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         departement = departements[pickerView.selectedRow(inComponent: 0)]
         pickerDepartement.text = (departement?.fullName!)!;
@@ -147,10 +140,7 @@ class InscriptionAdministrationViewController: UIViewController, UIPickerViewDat
             co=(pickOption["Departement"] as AnyObject).count
         }
         return co
-    }/*
-     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-     return departement[row].name;
-     }*/
+    }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var co : String = "";
         if(component==0){
@@ -205,6 +195,5 @@ class InscriptionAdministrationViewController: UIViewController, UIPickerViewDat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

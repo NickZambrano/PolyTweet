@@ -10,7 +10,7 @@ import UIKit
 
 class MessageTableViewCell : UITableViewCell{
     
-    
+    @IBOutlet weak var pieceJointeLabel: UILabel!
     @IBOutlet weak var message: UITextView!
     @IBOutlet weak var dateHeure: UILabel!
     @IBOutlet weak var userName: UILabel!
