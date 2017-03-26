@@ -1813,14 +1813,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sB8-9e-RkW">
-                                                    <rect key="frame" x="243" y="64" width="30" height="27"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sB8-9e-RkW">
+                                                    <rect key="frame" x="243" y="64" width="30" height="30"/>
                                                     <connections>
                                                         <segue destination="eVm-69-xpN" kind="presentation" identifier="showImage" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="aDJ-Mz-Suc"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XeW-aR-Hgy">
-                                                    <rect key="frame" x="243" y="64" width="30" height="25"/>
+                                                    <rect key="frame" x="243" y="64" width="30" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="yPV-1o-fx9"/>
                                                     </constraints>
@@ -1859,16 +1859,16 @@
                                                 <constraint firstItem="9Kp-qB-nhB" firstAttribute="trailing" secondItem="LqG-B8-V9Y" secondAttribute="trailing" id="AT5-2k-7v2"/>
                                                 <constraint firstItem="T4X-5a-gY1" firstAttribute="top" secondItem="T3f-Xb-aq1" secondAttribute="topMargin" id="CCS-VF-QL6"/>
                                                 <constraint firstItem="XeW-aR-Hgy" firstAttribute="leading" secondItem="T3f-Xb-aq1" secondAttribute="leading" constant="243" id="D8n-wO-NFd"/>
-                                                <constraint firstAttribute="bottom" secondItem="XeW-aR-Hgy" secondAttribute="bottom" constant="4" id="E2E-dT-0Y2"/>
+                                                <constraint firstAttribute="bottom" secondItem="XeW-aR-Hgy" secondAttribute="bottom" constant="2" id="E2E-dT-0Y2"/>
                                                 <constraint firstItem="9Kp-qB-nhB" firstAttribute="top" secondItem="T4X-5a-gY1" secondAttribute="top" id="Hcf-tW-N9h"/>
                                                 <constraint firstItem="sch-MZ-TbA" firstAttribute="top" secondItem="9Kp-qB-nhB" secondAttribute="bottom" constant="-1" id="Wzu-49-cEj"/>
                                                 <constraint firstItem="T4X-5a-gY1" firstAttribute="leading" secondItem="T3f-Xb-aq1" secondAttribute="leadingMargin" constant="10" id="Xm2-NR-iOq"/>
-                                                <constraint firstItem="sch-MZ-TbA" firstAttribute="top" secondItem="sB8-9e-RkW" secondAttribute="top" constant="-0.5" id="av6-id-zak"/>
+                                                <constraint firstItem="sch-MZ-TbA" firstAttribute="top" secondItem="sB8-9e-RkW" secondAttribute="top" constant="-2" id="av6-id-zak"/>
                                                 <constraint firstItem="tfc-Lv-TnJ" firstAttribute="top" secondItem="T4X-5a-gY1" secondAttribute="bottom" constant="6" id="dxm-AV-MRW"/>
                                                 <constraint firstItem="QSV-nP-4rq" firstAttribute="baseline" secondItem="LqG-B8-V9Y" secondAttribute="baseline" id="h32-f9-xLU"/>
                                                 <constraint firstItem="sB8-9e-RkW" firstAttribute="leading" secondItem="QSV-nP-4rq" secondAttribute="trailing" constant="8" id="mlU-2I-Txy"/>
                                                 <constraint firstItem="QSV-nP-4rq" firstAttribute="leading" secondItem="tfc-Lv-TnJ" secondAttribute="trailing" constant="8" id="qku-2C-Ff0"/>
-                                                <constraint firstItem="XeW-aR-Hgy" firstAttribute="top" secondItem="sB8-9e-RkW" secondAttribute="top" constant="1.5" id="v9L-kM-JCK"/>
+                                                <constraint firstItem="XeW-aR-Hgy" firstAttribute="top" secondItem="sB8-9e-RkW" secondAttribute="top" id="v9L-kM-JCK"/>
                                                 <constraint firstItem="9Kp-qB-nhB" firstAttribute="leading" secondItem="T4X-5a-gY1" secondAttribute="trailing" constant="25" id="y0F-bz-cbS"/>
                                                 <constraint firstItem="XeW-aR-Hgy" firstAttribute="leading" secondItem="QSV-nP-4rq" secondAttribute="trailing" constant="8" id="yWv-Qu-RGn"/>
                                                 <constraint firstItem="sch-MZ-TbA" firstAttribute="leading" secondItem="XeW-aR-Hgy" secondAttribute="trailing" constant="17" id="zjB-Du-vih"/>
@@ -1954,7 +1954,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugX-8F-5B3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82.03125" y="849.0234375"/>
+            <point key="canvasLocation" x="82" y="849"/>
         </scene>
         <!--Image Pop Up View Controller-->
         <scene sceneID="oPK-6o-1qB">
@@ -2756,6 +2756,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="JQz-tb-73J"/>
         <segue reference="OPJ-nJ-TZW"/>
+        <segue reference="JQz-tb-73J"/>
         <segue reference="aDJ-Mz-Suc"/>
     </inferredMetricsTieBreakers>
 </document>
