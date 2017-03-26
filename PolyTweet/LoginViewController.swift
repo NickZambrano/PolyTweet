@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+
 class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     var user: User?=nil;
@@ -28,7 +29,6 @@ class LoginViewController: UIViewController {
         if let username=self.username.text{
 
             if let pass=self.password.text{
-
                 let request : NSFetchRequest<Etudiant> = Etudiant.fetchRequest();
                 let predicate = NSPredicate(format: "mail == %@",username);
                 request.predicate=predicate;
@@ -117,7 +117,4 @@ class LoginViewController: UIViewController {
 
     
 
-    
-
 }
-

@@ -196,6 +196,7 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
             }else{
                 mess = messages
             }
+            
             let cell = self.tableMessage.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageTableViewCell
             cell.message.text=mess[indexPath.section].contenu
             cell.userName.text=(mess[indexPath.section].sendBy?.fname)!+(mess[indexPath.section].sendBy?.lname)!
@@ -242,7 +243,13 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if(tableView == tableMessage){
-            if(messages[indexPath.section].sendBy==user){
+            var mess:[Message]=[];
+            if searchActive {
+                mess = filtredMessages
+            }else{
+                mess = messages
+            }
+            if(mess[indexPath.section].sendBy==user){
                 return true
             }else{
                 return false
@@ -252,14 +259,32 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-                CoreDataManager.context.delete(messages[indexPath.section])
+
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAtIndexPath indexPath: IndexPath) -> [AnyObject]? {
+
+        let delete = UITableViewRowAction(style: .normal, title: "Supprimer") { action, index in
+            var mess:[Message]=[];
+            if self.searchActive {
+                mess = self.filtredMessages
+            }else{
+                mess = self.messages
+            }
+                CoreDataManager.context.delete(mess[indexPath.section])
                 CoreDataManager.save()
-                loadMessage()
-                tableView.reloadData()
-        
-        
+            if(self.searchActive){
+                self.filtredMessages.remove(at: indexPath.section)
+
+            }else{
+                self.messages.remove(at: indexPath.section)
+            }
+            let indexSet = NSMutableIndexSet()
+            indexSet.add(indexPath.section)
+            self.tableMessage.deleteSections(indexSet as IndexSet, with : .fade)
         }
+        delete.backgroundColor = UIColor.red
+        
+        return [delete]
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
