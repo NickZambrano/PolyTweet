@@ -24,6 +24,7 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
         self.photo.clipsToBounds = true;
     }
     
+    
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
         let actionsheet = UIAlertController(title: "Ajouter une photo :", message: nil, preferredStyle: .actionSheet)
         
@@ -80,6 +81,14 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
     
     
     @IBAction func sendFiles(_ sender: Any) {
+        // On vérifie qu'au moins une des des pieces jointes est renseignée
+        guard photo.image != nil || lienTextField.text != "" else{
+            let alert = UIAlertController(title: "Erreur", message: "Aucune pièce jointes", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        // On vérifie si la piece jointe lien possede  une url conforme
         if lienTextField.text != nil && lienTextField.text != "" {
             if !canOpenURL(string: lienTextField.text){
 
@@ -90,33 +99,16 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
             }
             else{
                 self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)
-                self.resetPieceLien()
-                self.resetPieceImage()
+
             }
-        }
-        else if photo != nil {
+        }else {
             self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)
-            self.resetPieceImage()
-            self.resetPieceLien()
-        }
-        else {
-            let alert = UIAlertController(title: "Erreur", message: "Aucune pièce jointes", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
 
         }
+        
 
     }
     
-    func resetPieceImage(){
-        self.photo.image = nil
-        self.photoTextField.text = ""
-    }
-    
-    func resetPieceLien(){
-        self.lienTextField.text = ""
-        self.nomLien.text = ""
-    }
 
     
     override func didReceiveMemoryWarning() {

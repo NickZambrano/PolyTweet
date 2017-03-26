@@ -2,6 +2,8 @@
 //  ImagePopUpViewController.swift
 //  PolyTweet
 //
+//  Ce controller permet d'afficher en grand l'image d'une piece jointe ou d'une information
+//
 //  Created by QC on 15/03/2017.
 //  Copyright © 2017 Nicolas zambrano. All rights reserved.
 //
@@ -21,11 +23,11 @@ class ImagePopUpViewController: CommonViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         photo.image = image
         photo.contentMode = .scaleAspectFill
-        if desc != nil{
-            legende.text = desc
+        if desc == ""{
+            self.legende.isHidden = true
         }
         else {
-            self.legende.isHidden = true
+            legende.text = desc
         }
     }
     
