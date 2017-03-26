@@ -124,7 +124,7 @@ class AdminViewController: UIViewController, UITableViewDataSource, UITableViewD
         if let userEnseignant=self.users[indexPath.section] as? Enseignant {
                 cell.setResponsable.isHidden=false;
                 if(userEnseignant.respoDepartement){
-                    cell.setResponsable.setTitle("Responsable", for: .normal);
+                    cell.setResponsable.setTitle("Responsable "+String(describing: user?.appartient), for: .normal);
                 }else{
                     cell.setResponsable.setTitle("Non Responsable", for: .normal)
                 }
