@@ -1810,8 +1810,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sB8-9e-RkW">
-                                                    <rect key="frame" x="226" y="65.5" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sB8-9e-RkW">
+                                                    <rect key="frame" x="243" y="64" width="30" height="27"/>
                                                     <connections>
                                                         <segue destination="eVm-69-xpN" kind="presentation" identifier="showImage" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="aDJ-Mz-Suc"/>
                                                     </connections>
@@ -1832,7 +1832,7 @@
                                                         <color key="titleColor" red="0.49193691991390465" green="0.49680758248730961" blue="0.49680758248730961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9Kp-qB-nhB">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9Kp-qB-nhB">
                                                     <rect key="frame" x="98" y="8" width="381" height="56.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1860,12 +1860,12 @@
                                                 <constraint firstItem="9Kp-qB-nhB" firstAttribute="top" secondItem="T4X-5a-gY1" secondAttribute="top" id="Hcf-tW-N9h"/>
                                                 <constraint firstItem="sch-MZ-TbA" firstAttribute="top" secondItem="9Kp-qB-nhB" secondAttribute="bottom" constant="-1" id="Wzu-49-cEj"/>
                                                 <constraint firstItem="T4X-5a-gY1" firstAttribute="leading" secondItem="T3f-Xb-aq1" secondAttribute="leadingMargin" constant="10" id="Xm2-NR-iOq"/>
-                                                <constraint firstItem="sch-MZ-TbA" firstAttribute="top" secondItem="sB8-9e-RkW" secondAttribute="top" constant="-2" id="av6-id-zak"/>
+                                                <constraint firstItem="sch-MZ-TbA" firstAttribute="top" secondItem="sB8-9e-RkW" secondAttribute="top" constant="-0.5" id="av6-id-zak"/>
                                                 <constraint firstItem="tfc-Lv-TnJ" firstAttribute="top" secondItem="T4X-5a-gY1" secondAttribute="bottom" constant="6" id="dxm-AV-MRW"/>
                                                 <constraint firstItem="QSV-nP-4rq" firstAttribute="baseline" secondItem="LqG-B8-V9Y" secondAttribute="baseline" id="h32-f9-xLU"/>
-                                                <constraint firstItem="sB8-9e-RkW" firstAttribute="leading" secondItem="QSV-nP-4rq" secondAttribute="trailing" constant="-9" id="mlU-2I-Txy"/>
+                                                <constraint firstItem="sB8-9e-RkW" firstAttribute="leading" secondItem="QSV-nP-4rq" secondAttribute="trailing" constant="8" id="mlU-2I-Txy"/>
                                                 <constraint firstItem="QSV-nP-4rq" firstAttribute="leading" secondItem="tfc-Lv-TnJ" secondAttribute="trailing" constant="8" id="qku-2C-Ff0"/>
-                                                <constraint firstItem="XeW-aR-Hgy" firstAttribute="top" secondItem="sB8-9e-RkW" secondAttribute="top" id="v9L-kM-JCK"/>
+                                                <constraint firstItem="XeW-aR-Hgy" firstAttribute="top" secondItem="sB8-9e-RkW" secondAttribute="top" constant="1.5" id="v9L-kM-JCK"/>
                                                 <constraint firstItem="9Kp-qB-nhB" firstAttribute="leading" secondItem="T4X-5a-gY1" secondAttribute="trailing" constant="25" id="y0F-bz-cbS"/>
                                                 <constraint firstItem="XeW-aR-Hgy" firstAttribute="leading" secondItem="QSV-nP-4rq" secondAttribute="trailing" constant="8" id="yWv-Qu-RGn"/>
                                                 <constraint firstItem="sch-MZ-TbA" firstAttribute="leading" secondItem="XeW-aR-Hgy" secondAttribute="trailing" constant="17" id="zjB-Du-vih"/>

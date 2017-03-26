@@ -94,6 +94,8 @@ class HomeViewController: CommonViewController, UITableViewDataSource,UITableVie
         CoreDataManager.save()
         messages.append(message)
         messageField.text=""
+        pieceImage = nil
+        pieceLien = nil
         self.tableMessage.reloadData()
         if (self.tableMessage.contentSize.height > self.tableMessage.frame.size.height){
             let offset = CGPoint(x:0,y:self.tableMessage.contentSize.height-self.tableMessage.frame.size.height)

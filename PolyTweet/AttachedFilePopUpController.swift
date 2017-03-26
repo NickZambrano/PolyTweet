@@ -90,10 +90,14 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
             }
             else{
                 self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)
+                self.resetPieceLien()
+                self.resetPieceImage()
             }
         }
         else if photo != nil {
             self.performSegue(withIdentifier: "unwindFromAttachedFile", sender: sender)
+            self.resetPieceImage()
+            self.resetPieceLien()
         }
         else {
             let alert = UIAlertController(title: "Erreur", message: "Aucune pièce jointes", preferredStyle: .alert)
@@ -102,6 +106,16 @@ class AttachedFilePopUpController: UIViewController, UIImagePickerControllerDele
 
         }
 
+    }
+    
+    func resetPieceImage(){
+        self.photo.image = nil
+        self.photoTextField.text = ""
+    }
+    
+    func resetPieceLien(){
+        self.lienTextField.text = ""
+        self.nomLien.text = ""
     }
 
     
