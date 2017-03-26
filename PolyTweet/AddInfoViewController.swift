@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+
+//Permet d'ajouter une nouvelle information
 class AddInfoViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
       var user:User?=nil;
     
@@ -28,6 +30,8 @@ class AddInfoViewController : UIViewController, UIImagePickerControllerDelegate,
     }
     
     let imagePickerController = UIImagePickerController()
+    
+    //Fonction permettant de charger des images de la librairie
     @IBAction func loadImageButtonTapped(_ sender: Any) {
         imagePickerController.allowsEditing = false
         imagePickerController.sourceType = .photoLibrary
@@ -35,10 +39,11 @@ class AddInfoViewController : UIViewController, UIImagePickerControllerDelegate,
         present(imagePickerController, animated: true, completion: nil)
     }
     
-
+    //enleve la popup pour l'image
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    //affiche l'image selectionné
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any])
     {
@@ -49,6 +54,7 @@ class AddInfoViewController : UIViewController, UIImagePickerControllerDelegate,
         
         dismiss(animated: true, completion: nil)
     }
+    //Fonction permettant de tester si c'est un lien valide
     func canOpenURL(string: String?) -> Bool {
         guard let urlString = string else {return false}
         guard let url = NSURL(string: urlString) else {return false}

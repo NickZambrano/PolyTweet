@@ -9,23 +9,22 @@
 import Foundation
 import UIKit
 import CoreData
+//Gère l'affichage de la liste des informations
 class InformationViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
 
     var user:User?=nil;
-
     @IBOutlet weak var searchBar: UISearchBar!
     var searchActive : Bool = false
-
-    
     @IBOutlet weak var addInfoButton: UIButton!
     @IBOutlet weak var tableInformations: UITableView!
     var filtredInfo: [Information] = [];
     var informations:[Information] = [];
     var infoSelected:Information?=nil;
+   
     override func viewDidLoad() {
-            super.viewDidLoad()
+        super.viewDidLoad()
             
-            user=SingleUser.getUser();
+        user=SingleUser.getUser();
         if (user as? Etudiant) != nil {
             addInfoButton.isHidden=true;
         }
@@ -36,8 +35,10 @@ class InformationViewController: UIViewController, UITableViewDataSource,UITable
         }
         searchBar.delegate=self;
 
-            loadInformation()
+        loadInformation()
     }
+    
+    // loadInformation() charge toutes les informations disponibles dans le coreData pour le département de l'utilisateur connecté.
 func loadInformation(){
     let context=CoreDataManager.context
     let request : NSFetchRequest<Information> = Information.fetchRequest();
@@ -50,7 +51,6 @@ func loadInformation(){
     catch let error as NSError{
         print(error);
     }
-    
     self.tableInformations.reloadData()
 }
     
@@ -58,6 +58,7 @@ func loadInformation(){
             return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
+        //si la recherche est active on affiche le nombre de section égal au nombre d'information filtrée sinon on le nombre de section est égal au nombre d'information
         if searchActive {
             return self.filtredInfo.count
         } else {
@@ -65,34 +66,38 @@ func loadInformation(){
         }
 
     }
+    //construction de la table avec des InformationTableViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var info:[Information]=[];
-            if searchActive {
-                info = filtredInfo
-            }else{
-                info = informations
-            }
-            let cell = self.tableInformations.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
-            cell.titreLabel.text=info[info.count-1-indexPath.section].titre
-
-            cell.layer.cornerRadius=10
-        
-            cell.contenu.text=info[info.count-1-indexPath.section].contenu
-            if let pieceImage = info[info.count-1-indexPath.section].image {
-                cell.imageInformation.image = UIImage(data: pieceImage.file as! Data)!
-                cell.imageInformation.contentMode = .scaleAspectFill
-                cell.imageInformation.clipsToBounds = true
-                
-            }
+        //si la recherche est active alors on met les informations filtré sinon les informations classique
+        if searchActive {
+            info = filtredInfo
+        }else{
+            info = informations
+        }
+        let cell = self.tableInformations.dequeueReusableCell(withIdentifier: "informationCell", for: indexPath) as! InformationTableViewCell
+        //Indice Info.count-1-indexPath.section afin de classer les informations à l'envers (de la plus recente à la plus ancienne)
+        cell.titreLabel.text=info[info.count-1-indexPath.section].titre
+        cell.layer.cornerRadius=10
+    
+        cell.contenu.text=info[info.count-1-indexPath.section].contenu
+        //S'il y a une image, l'afficher
+        if let pieceImage = info[info.count-1-indexPath.section].image {
+            cell.imageInformation.image = UIImage(data: pieceImage.file as! Data)!
+            cell.imageInformation.contentMode = .scaleAspectFill
+            cell.imageInformation.clipsToBounds = true
+            
+        }
         cell.imageInformation.layer.cornerRadius=5
-            if let pieceLien = info[info.count-1-indexPath.section].lien {
-                cell.lien.setTitle(pieceLien.name,for: .normal)
-                cell.lien.tag = indexPath.section
-            }else {
-                cell.lien.isHidden = true
-            }
-            cell.accessoryType = .none
-            return cell
+        //S'il y'a un lien l'afficher
+        if let pieceLien = info[info.count-1-indexPath.section].lien {
+            cell.lien.setTitle(pieceLien.name,for: .normal)
+            cell.lien.tag = indexPath.section
+        }else {
+            cell.lien.isHidden = true
+        }
+        cell.accessoryType = .none
+        return cell
     
         
     }
@@ -100,6 +105,7 @@ func loadInformation(){
         dismiss(animated: true, completion: nil)
     }
 
+    //Permet la selection d'un row et de selectionner la bonne information pour la mettre dans infoSelected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var info:[Information]=[];
         if searchActive{
@@ -126,13 +132,16 @@ func loadInformation(){
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
+    
+    // searchBar() permet de rechercher en fonction des titres les informations dans le coredata en fonction de ce que l'utilisateur tape dans la barre de recherche
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // Supprimer tous les éléments du filtredInfo
         self.filtredInfo.removeAll(keepingCapacity: false)
+        //Si chaine vide alors on prend toutes les informations
         if (searchText==""){
             self.filtredInfo=informations;
         }else{
-        // Créer le Predicate
+        // Créer le Predicate et on effectue la requête
         let searchPredicate = NSPredicate(format: "titre CONTAINS[c] %@ AND departement == %@",searchText,(user?.appartient)!)
         let request : NSFetchRequest<Information> = Information.fetchRequest();
         request.predicate=searchPredicate;
@@ -149,21 +158,21 @@ func loadInformation(){
         self.tableInformations.reloadData()
         
     }
-
+    // unwind afin d'enregistrer la nouvelle information et de l'afficher
     @IBAction func unwindtoHomeFomAddInfoView(segue: UIStoryboardSegue) {
         let oldController = segue.source as! AddInfoViewController
+        //controle s'il y a un lien
         if oldController.lienTextField.text != nil && oldController.lienTextField.text != "" {
+            // Si lien invalide afficher erreur
             if !oldController.canOpenURL(string: oldController.lienTextField.text){
-                /*let alert : UIAlertView = UIAlertView(title: "Erreur", message: "Mauvaise URL",       delegate: nil, cancelButtonTitle: "Retour")
-                 
-                 alert.show()*/
+
                 let alert = UIAlertController(title: "Erreur", message: "Mauvaise URL", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
             }
             else{
-                
+                // lien valide création d'une info
                 
                 let info=Information(context: CoreDataManager.context);
                 info.titre=oldController.titreField.text;
@@ -193,7 +202,7 @@ func loadInformation(){
             }
         }
         else{
-            
+            //création de l'information
             let info=Information(context: CoreDataManager.context);
             info.titre=oldController.titreField.text;
             info.contenu=oldController.contenuField.text;
@@ -215,10 +224,12 @@ func loadInformation(){
             
             CoreDataManager.save()
         }
+        //recharge de la table
         loadInformation()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //segue pour afficher l'information en détail
         if (segue.identifier == "showInfo"){
             let upcomming: InformationPopupViewController = segue.destination as! InformationPopupViewController
             upcomming.information=infoSelected;
