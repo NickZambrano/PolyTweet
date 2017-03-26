@@ -1900,7 +1900,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bdb-t6-dRy">
-                                <rect key="frame" x="242" y="28" width="506" height="44"/>
+                                <rect key="frame" x="242" y="20" width="506" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ZvZ-DJ-yI5"/>
                                 </constraints>
@@ -1915,21 +1915,21 @@
                             <constraint firstItem="WdL-qD-zBN" firstAttribute="leading" secondItem="dm7-lz-VHF" secondAttribute="trailing" id="42I-9y-QNd"/>
                             <constraint firstAttribute="trailing" secondItem="WdL-qD-zBN" secondAttribute="trailing" id="4XG-rG-8qn"/>
                             <constraint firstItem="dm7-lz-VHF" firstAttribute="leading" secondItem="Bcj-T2-ApT" secondAttribute="trailing" constant="4" id="4nR-qT-oLd"/>
-                            <constraint firstItem="CQw-gq-Y6M" firstAttribute="top" secondItem="kyE-ID-BUS" secondAttribute="bottom" constant="47" id="Fk3-tY-4vq"/>
+                            <constraint firstItem="bdb-t6-dRy" firstAttribute="top" secondItem="a3y-lt-5sm" secondAttribute="top" constant="20" id="CS9-kC-l3U"/>
                             <constraint firstItem="dm7-lz-VHF" firstAttribute="leading" secondItem="a3y-lt-5sm" secondAttribute="trailing" constant="35" id="GlO-Ha-CS2"/>
                             <constraint firstItem="a3y-lt-5sm" firstAttribute="top" secondItem="Ld7-dr-YAN" secondAttribute="top" id="HKf-p5-GHa"/>
-                            <constraint firstItem="bdb-t6-dRy" firstAttribute="leading" secondItem="a3y-lt-5sm" secondAttribute="trailing" constant="20" id="OKY-vK-9Ii"/>
+                            <constraint firstItem="bdb-t6-dRy" firstAttribute="trailing" secondItem="Ld7-dr-YAN" secondAttribute="trailingMargin" id="J2K-2S-Img"/>
                             <constraint firstItem="WdL-qD-zBN" firstAttribute="height" secondItem="dm7-lz-VHF" secondAttribute="height" id="OLB-nf-5ts"/>
                             <constraint firstItem="Bcj-T2-ApT" firstAttribute="leading" secondItem="a3y-lt-5sm" secondAttribute="trailing" constant="3" id="RlT-7W-AdM"/>
                             <constraint firstItem="CQw-gq-Y6M" firstAttribute="trailing" secondItem="Ld7-dr-YAN" secondAttribute="trailingMargin" id="SiH-x0-ojr"/>
                             <constraint firstItem="Bcj-T2-ApT" firstAttribute="top" secondItem="CQw-gq-Y6M" secondAttribute="bottom" constant="8" symbolic="YES" id="UkY-WK-J2P"/>
                             <constraint firstItem="a3y-lt-5sm" firstAttribute="leading" secondItem="Ld7-dr-YAN" secondAttribute="leading" id="W2f-C2-oMz"/>
-                            <constraint firstItem="bdb-t6-dRy" firstAttribute="top" secondItem="kyE-ID-BUS" secondAttribute="bottom" constant="8" id="Y0Y-TQ-VbW"/>
                             <constraint firstItem="CQw-gq-Y6M" firstAttribute="leading" secondItem="a3y-lt-5sm" secondAttribute="trailing" constant="20" id="Ymf-61-Edg"/>
+                            <constraint firstItem="CQw-gq-Y6M" firstAttribute="top" secondItem="bdb-t6-dRy" secondAttribute="bottom" constant="3" id="dad-29-hiE"/>
                             <constraint firstItem="b3U-80-u1r" firstAttribute="top" secondItem="a3y-lt-5sm" secondAttribute="bottom" id="ggy-kB-Nna"/>
                             <constraint firstItem="dm7-lz-VHF" firstAttribute="top" secondItem="CQw-gq-Y6M" secondAttribute="bottom" constant="8" symbolic="YES" id="ll9-3a-BWo"/>
                             <constraint firstItem="b3U-80-u1r" firstAttribute="top" secondItem="dm7-lz-VHF" secondAttribute="bottom" id="plJ-oS-bp1"/>
-                            <constraint firstItem="bdb-t6-dRy" firstAttribute="trailing" secondItem="Ld7-dr-YAN" secondAttribute="trailingMargin" id="s8M-OC-Qo3"/>
+                            <constraint firstItem="bdb-t6-dRy" firstAttribute="leading" secondItem="a3y-lt-5sm" secondAttribute="trailing" constant="20" id="zlV-L6-F34"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="layer.UIBorderColor">
@@ -2754,6 +2754,7 @@
         <image name="valider" width="205" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="JQz-tb-73J"/>
         <segue reference="OPJ-nJ-TZW"/>
         <segue reference="JQz-tb-73J"/>
         <segue reference="aDJ-Mz-Suc"/>
