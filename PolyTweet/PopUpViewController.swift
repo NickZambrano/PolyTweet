@@ -2,6 +2,8 @@
 //  PopUpViewController.swift
 //  PolyTweet
 //
+// Ce controller permet de voir le profil de l'utilisateur sous forme d'un popup, et permet uniquement le changement de sa photo de profil
+//
 //  Created by QC on 07/03/2017.
 //  Copyright © 2017 Nicolas zambrano. All rights reserved.
 //
@@ -12,24 +14,24 @@ class PopUpViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var user:User?=nil;
     
-    
     @IBOutlet weak var username: UILabel!
-    
     @IBOutlet var photo: UIImageView!
     @IBOutlet var statusUser: UILabel!
+    
     let imagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        user=SingleUser.getUser();
-        username.text="@"+(user?.fname)!+(user?.lname)!;
-        username.textAlignment = .center;
-        self.photo.clipsToBounds = true;
-        //self.photo.contentMode = .scaleAspectFit
+        user=SingleUser.getUser()
+        username.text="@"+(user?.fname)!+(user?.lname)!
+        username.textAlignment = .center
+        
+        self.photo.clipsToBounds = true
         if let image=user?.img {
             photo.image=UIImage(data: image as Data)!
         }
         imagePickerController.delegate = self
+        
         if (user as? Etudiant) != nil {
             statusUser.text="Etudiant";
         }
@@ -64,12 +66,6 @@ class PopUpViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
         
         self.present(actionsheet, animated: true, completion: nil)
-        
-        /*
-        imagePickerController.allowsEditing = false
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePickerController, animated: true, completion: nil)*/
 
     }
     
@@ -82,7 +78,6 @@ class PopUpViewController: UIViewController, UIImagePickerControllerDelegate, UI
             photo.image = pickedImage
             photo.contentMode = .scaleAspectFill
             user?.img=UIImageJPEGRepresentation(pickedImage,1) as NSData?
-            //picker.dismiss(animated: true, completion: nil)
             
             CoreDataManager.save();
             

@@ -15,8 +15,7 @@ class DatePopUpController: CommonViewController, UIImagePickerControllerDelegate
     
     @IBOutlet weak var titreTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var descTextField: UITextField!
-    
+    @IBOutlet weak var descTextField: UITextView!
     var date:Date? = nil
 
     
@@ -50,26 +49,22 @@ class DatePopUpController: CommonViewController, UIImagePickerControllerDelegate
             dateFormatter.dateFormat = "MM-dd-yyyy"
             dateFormatter.dateStyle = DateFormatter.Style.medium
             let date = dateFormatter.date(from: dateTextField.text!)
-            
+            //On vérifie que la date est au moins celle d'ajourd'hui
             if date?.compare(Date()) == ComparisonResult.orderedAscending && date?.compare(Date()) == ComparisonResult.orderedSame{
                 let alert = UIAlertController(title: "Erreur", message: "Date passée", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
             else{
-            
+            //Ajout de l'evement au CoreData
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
                 return
             }
             let context=appDelegate.persistentContainer.viewContext
             let event = Evenement(context: context)
-            
             event.titre = titreTextField.text
-            
-            
             event.date =  date as NSDate?
             event.detail = descTextField.text
-            
             CoreDataManager.save()
             }
         }
