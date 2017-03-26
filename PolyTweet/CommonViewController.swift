@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+
 class CommonViewController : UIViewController {
     var notUpKeyboard : Bool=false;
     override func viewDidLoad() {
