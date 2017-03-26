@@ -174,7 +174,7 @@ class InscriptionViewController: UIViewController, UIPickerViewDataSource,UIImag
             let result: [User] = try CoreDataManager.context.fetch(request)
             guard result.count==0
                 else{
-                    let alert = UIAlertController(title: "Erreur", message: "Adresse mail déjà utilisé", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Erreur", message: "Adresse mail déjà utilisée", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Retour", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     return
